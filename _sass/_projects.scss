@@ -1,0 +1,79 @@
+.highlight-project {
+  @extend .col-sm-12;
+  @extend .col-md-6;
+  margin-bottom: 2rem;
+
+  a {
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    display: block;
+    height: 504px;
+    padding: 2rem;
+    position: relative;
+    &:hover, &:active, &:focus {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    a {
+      height: 558px;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 2.5rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.highlight-project_uja {
+  a {
+    background-image: linear-gradient(rgba(41, 128, 185, 0.75), rgba(41, 128, 185, 0.75)), url('../images/project-universidad-de-jaen.jpg');
+  }
+}
+
+.highlight-project_willco {
+  a {
+    background-image: linear-gradient(rgba(41, 128, 185, 0.75), rgba(41, 128, 185, 0.75)), url('../images/project-willco.jpg');
+  }
+}
+
+.highlight-project_teatro {
+  a {
+    background-image: linear-gradient(rgba(41, 128, 185, 0.75), rgba(41, 128, 185, 0.75)), url('../images/project-teatro-universitario.jpg');
+  }
+}
+
+.highlight-project_mybookings {
+  a {
+    background-image: linear-gradient(rgba(41, 128, 185, 0.75), rgba(41, 128, 185, 0.75)), url('../images/project-mybookings.jpg');
+  }
+}
+
+.highlight-project_wla {
+  a {
+    background-image: linear-gradient(rgba(41, 128, 185, 0.75), rgba(41, 128, 185, 0.75)), url('../images/project-wla.jpg');
+  }
+}
+
+.highlight-project_lmj {
+  a {
+    background-image: linear-gradient(rgba(41, 128, 185, 0.75), rgba(41, 128, 185, 0.75)), url('../images/project-lmj.jpg');
+  }
+}
+
+.highlight-project__content {
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  position: absolute;
+}
+
+.section-highlighted-projects {
+  @extend .big-bottom-margin;
+}

@@ -1,0 +1,12 @@
+header, section {
+  @extend .big-bottom-margin;
+}
+
+.wrapper {
+  @extend .container;
+}
+
+.section__inner, .quote__inner {
+  @extend .row;
+}
+

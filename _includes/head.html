@@ -1,0 +1,33 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.tagline %}{{ page.tagline | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" size="12x12">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700,800" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/js/map.js"></script>
+
+  <meta content='Delirium Coder - Construimos productos digitales.' property='og:title'>
+  <meta content='Delirium Coder' property='og:site_name'>
+  <meta content='http://www.deliriumcoder.com' property='og:url'>
+  <meta content='Desde 2012 ayudamos a startups, instituciones y empresas en el diseño, desarrollo e implantación de soluciones tecnológicas que les permitan alcanzar sus objetivos.' property='og:description'>
+  <meta content='website' property='og:type'>
+  <meta content='https://www.facebook.com/deliriumcoder' property='article:author'>
+  <meta content='http://www.deliriumcoder.com/images/ofi-rrss.jpg' property='og:image'>
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@dlcoder">
+  <meta name="twitter:creator" content="@dlcoder">
+  <meta name="twitter:title" content="Delirium Coder - Construimos productos digitales.">
+  <meta name="twitter:description" content="Somos un pequeño estudio de desarrollo web situado en Jaén. Desde 2012 ponemos nuestro esfuerzo en construir aplicaciones y sitios web usables e intuitivos que ayuden a nuestros clientes a alcanzar sus objetivos.">
+  <meta name="twitter:image" content="http://www.deliriumcoder.com/images/ofi-rrss.jpg">
+</head>

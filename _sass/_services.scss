@@ -1,0 +1,27 @@
+.section-content__services-intro {
+  @extend .col-sm-12;
+  @extend .col-lg-8;
+  @extend .default-bottom-margin;
+}
+
+.section-content__services-list-left, .section-content__services-list-right {
+  @extend .col-sm-12;
+  @extend .col-lg-6;
+}
+
+.service {
+  @extend .mini-bottom-margin;
+
+  h3 {
+    padding-left: 2rem;
+    position: relative;
+    &:before {
+      @include retina-sprite($arrow-icon-group);
+      content: "";
+      display: block;
+      left: 0;
+      position: absolute;
+      top: .1rem;
+    }
+  }
+}

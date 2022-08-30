@@ -1,0 +1,12 @@
+.section-body__content {
+  @extend .col-sm-12;
+  @extend .col-lg-9;
+}
+
+.section-write-us {
+  @extend .big-padding;
+  background: $color-blue-dark;
+  color: white;
+  margin-bottom: 0;
+  text-align: center;
+}

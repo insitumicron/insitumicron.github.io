@@ -1,0 +1,95 @@
+---
+collection: projects
+layout: project
+title: Apps Facultad de Ciencias Experimentales
+color: blue
+path: apps-facultad-ciencias-experimentales
+tagline: Aplicaciones para móviles y tabletas con contenidos autogestionables
+summary:
+  - Arquitectura de la información.
+  - Desarrollo de un backend para el preprocesamiento de los contenidos publicados en el gestor de contenidos de la Universidad de Jaén
+  - Desarrollo de una API para servir los contenidos a las aplicaciones móviles.
+  - Diseño y desarrollo de aplicaciones móviles basadas en el framework de desarollo web ionic.
+dates:
+  - "Fecha de lanzamiento: Junio de 2015."
+
+---
+
+<section class="section-content section-content-project">
+  <div class="wrapper">
+    <div class="section__inner">
+      <div class="section-content__main section-content__main-project">
+        <p>La dirección de la Facultad de Ciencias Experimentales de la Universidad de Jaén tenía entre sus objetivos dar a conocer a estudiantes de futuro ingreso la oferta académica de la Facultad, así como las instalaciones y servicios que ofrecen a estudiantes y las ventajas de formarse en sus aulas. Por otro lado, se quería facilitar el acceso  a distintos contenidos a los estudiantes que ya cursan alguna de las titulaciones de la Facultad: noticias, horarios, fechas de exámenes, etc.</p>
+        <p>Con estas dos premisas contactaron con nosotros para que desarrollásemos una aplicación móvil para complementar la labor de difusión que se venía realizando desde la web de la Facultad y otros canales.</p>
+        <p>Partiendo del hecho de que los contenidos a los que se daría acceso desde la aplicación eran susceptibles de variar a menudo (con el coste de mantenimiento que ello supone para actualizar distintas aplicaciones móviles), les propusimos una solución que les permitiría gestionar a ellos mismos el contenido de las aplicaciones desde el gestor de contenidos de la Universidad, herramienta que los administrativos de la Facultad utilizan a diario para publicar contenidos en su sitio web. De este modo se reaprovecharían recursos existentes en la institución y se evitaría tener que formar al personal en el uso de nuevas herramientas de gestión de contenidos.</p>
+      </div>
+      {% include project_summary.html %}
+    </div>
+  </div>
+</section>
+
+<section class="section-content">
+  <div class="wrapper">
+    <div class="section-content__image">
+      <img class="screenshoot" src="/images/proyectos/facexp/facexp_android_5.jpg">
+    </div>
+  </div>
+</section>
+
+<section class="section-content section-content-project">
+  <div class="wrapper">
+    <div class="section__inner">
+      <div class="section-content__main section-content__main-project">
+        <p>Comenzamos nuestro trabajo estudiando en colaboración con el cliente los apartados y contenidos que sería necesario incluir en las aplicaciones. De este modo llegamos hasta la solución de arquitectura de información que finalmente implementamos, consistente en la categorización en base a dos perfiles de usuario. Los usuarios al acceder a la aplicación seleccionarían su perfil (futuro estudiante o estudiante de la facultad), y según la elección, la aplicación mostraría distintos menús y contenidos adaptados a cada perfil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-content">
+  <div class="wrapper">
+    <div class="section-content__image">
+      <div class="section__inner">
+        <div class="screenshoot--inline"><img class="screenshoot" src="/images/proyectos/facexp/facexp_ios_1.jpg"></div>
+        <div class="screenshoot--inline"><img class="screenshoot" src="/images/proyectos/facexp/facexp_ios_2.jpg"></div>
+        <div class="screenshoot--inline"><img class="screenshoot" src="/images/proyectos/facexp/facexp_ios_4.jpg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-content section-content-project">
+  <div class="wrapper">
+    <div class="section__inner">
+      <div class="section-content__main section-content__main-project">
+        <p>Teniendo clara la arquitectura de la información, pasamos a trabajar en la solución técnica, implantando un módulo en el gestor de contenidos de la Universidad de Jaén, en colaboración con el Servicio de Informática, que nos facilitase el acceso a los contenidos del gestor de contenidos a través de una API.</p>
+        <p>Comenzamos así pues a trabajar en un motor que accede a los datos del gestor de contenidos de la universidad de forma periódica para comprobar si hay nuevos cambios en una serie de contenidos seleccionados para las aplicaciones móviles. Estos datos se preprocesan y se almacenan en una base de datos, para posteriormente servirlos mediante una API REST, que es de la que leen los contenidos las distintas aplicaciones móviles.</p>
+        <p>En esta base de datos se define también el esquema de contenidos de la aplicación, que se sirve a las aplicaciones de forma dinámica, evitando tener que publicar nuevas actualizaciones de las aplicaciones si se desea quitar o añadir algún elemento de la jerarquía de contenidos.</p>
+        <p>También se llevó a cabo un trabajo de selección y maquetación de los contenidos de la facultad, adaptándolos así al canal objetivo: el de un dispositivo móvil. No obstante, hubo contenidos que por limitación de presupuesto y debido a su extensión o complejidad estructural (horarios, por ejemplo) se optó por una solución que permitiría al usuario acceder directamente al documento PDF que contenía la información.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-content">
+  <div class="wrapper">
+    <div class="section-content__image">
+      <div class="section__inner">
+        <div class="screenshoot--inline"><img class="screenshoot" src="/images/proyectos/facexp/facexp_android_2.jpg"></div>
+        <div class="screenshoot--inline"><img class="screenshoot" src="/images/proyectos/facexp/facexp_android_3.jpg"></div>
+        <div class="screenshoot--inline"><img class="screenshoot" src="/images/proyectos/facexp/facexp_android_4.jpg"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-content section-content-project">
+  <div class="wrapper">
+    <div class="section__inner">
+      <div class="section-content__main section-content__main-project">
+        <p>Finalmente, abordamos el diseño y desarrollo de las aplicaciones móviles, para lo cual hicimos uso de <a href="http://ionicframework.com/" target="_blank">ionic</a>. El uso de este <em>SDK</em> para desarrollo de aplicaciones móviles, basado en tecnologías web como HTML, CSS y JavaScript, nos permitió reducir los costes del proyecto al posibilitarnos el desarrollo de una única aplicación, con la que podríamos generar el código para las distintas aplicaciones, basadas en iOS y Android, y válidas tanto para móviles como para tabletas.</p>
+        <p>Una vez concluído el desarrollo, se generaron las correspondientes aplicaciones y materiales para que desde el Servicio de Informática de la Universidad de Jaén se distribuyesen a través de sus cuentas institucionales de <a href="https://itunes.apple.com/es/app/uja-ciencias-experimentales/id1001554213?mt=8" target="_blank">App Store</a> y <a href="https://play.google.com/store/apps/details?id=com.ionicframework.ujaappsfacexp775351" target="_blank">Google Play</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>

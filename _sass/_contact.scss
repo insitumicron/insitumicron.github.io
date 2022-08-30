@@ -1,0 +1,50 @@
+.section-contact__address, .section-contact__partners {
+  @extend .col-sm-12;
+  @extend .col-md-6;
+}
+
+.section-contact__address {
+  margin-bottom: 2rem;
+  @include media-breakpoint-up(md) {
+    margin-bottom: 0;
+  }
+}
+
+.section-workspace__intro {
+  @extend .col-sm-12;
+  @extend .col-lg-8;
+  @extend .col-xl-9;
+
+  @extend .default-bottom-margin;
+}
+
+.section-workspace__ofi, .section-workspace__gallery {
+  @extend .col-sm-12;
+}
+
+.section-workspace__gallery {
+  @extend .col-lg-4;
+  img {
+    margin-bottom: 2rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    img {
+      margin-bottom: 25px;
+    }
+  }
+}
+
+.section-workspace__ofi {
+  @extend .col-lg-8;
+
+  img {
+    margin-bottom: 2rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,124 @@
+---
+collection: projects
+layout: project
+title: Universidad de Jaén
+color: blue
+path: "universidad-de-jaen"
+tagline: "Drupal 8 multisite para la web institucional de la Universidad de Jaén"
+summary:
+  - Estudio y revisión de la arquitectura de la información de contenidos web de la Universidad de Jaén.
+  - Desarrollo de múltiples perfiles de instalación de Drupal 8 para cubrir los distintos tipos de sitio de la organización.
+  - Migración de contenidos de Drupal 6 a una nueva estructura multisite en Drupal 8, con más de un centenar de sitios.
+  - Automatización del provisionamiento de infraestructura y despliegues con Ansible.
+  - Desarrollo de múltiples funcionalidades e integración con otros sistemas del cliente.
+  - Desarrollo de nuevos portales temáticos para las principales áreas de la Universidad de Jaén.
+  - Implementación de múltiples temas de diseño accesibles y responsive.
+  - Implementación de una librería de componentes visuales prediseñados mediante Paragraphs.
+  - Formación para la edición de contenidos garantizando el cumplimiento de las condiciones de accesibilidad.
+dates:
+  - "Fecha de lanzamiento: Mayo de 2018."
+project-url: https://www.uja.es
+project-url-title: www.uja.es
+---
+
+<section class="section-content section-content-project">
+  <div class="wrapper">
+    <div class="section__inner">
+      <div class="section-content__main section-content__main-project">
+        <h2>Descripción</h2>
+        <p>Este trabajo está enmarcado dentro de un contrato público sacado a concurso por la Universidad de Jáen para el rediseño de su antiguo sitio web, desarrollado en Drupal 6.</p>
+        <p>El antiguo sitio web incluía toda la estructura universitaria dentro de una misma instalación de Drupal 6, lo que generaba graves problemas de rendimiento, principalmente en lo que al trabajo de los editores se refiere.</p>
+        <p>Nuestro principal cometido ha sido el de automatizar el proceso de provisión de un sistema multisite en Drupal 8, migrando todos los contenidos existentes en el antiguo portal.</p>
+        <p>Durante la primera fase del proyecto acometimos las tareas de análisis de la información existente en el sitio del cliente, determinando y acotando los tipos de contenido y las estructuras que habría que replicar y migrar al nuevo sistema.</p>
+        <p>A la par que acometíamos este trabajo de análisis, comenzábamos a definir la arquitectura de la información, que hemos trabajado en los niveles superiores de navegación. Empleando técnicas como:</p>
+        <ul class='quotes'>
+          <li>Entrevistas con los responsables de departamentos, servicios, centros, etc.</li>
+          <li>Test con usuarios</li>
+          <li>Valoración del diseño antiguo con heurísticas</li>
+          <li>Informes de content mapping</li>
+          <li>Informes de benchmarking</li>
+          <li>Pruebas de card sorting</li>
+        </ul>
+        <p>Esto desembocó en una nueva propuesta de arquitectura para los niveles superiores de navegación, proponiendo soluciones a los principales problemas detectados y dejando para una segunda fase el trabajo de mejora de la arquitectura de los niveles inferiores.</p>
+        <p>Tras lo anterior, se llevaron los trabajos técnicos de provisión de entornos y nuevos sitios del multisite a través de Ansible. Se implementaron los perfiles de instalación requeridos y se desarrolló un módulo para la migración de los contenidos del antiguo portal –usando la API de migración provista por Drupal 8– al mismo tiempo que se fusionaron algunos tipos de contenido. Durante el proceso de migración se limpió el marcado HTML de los contenidos existentes.</p>
+      </div>
+      {% include project_summary.html %}
+    </div>
+  </div>
+</section>
+
+<section class="section-content">
+  <div class="wrapper">
+    <div class="section-content__image">
+      <img class="screenshoot" src="/images/proyectos/uja/uja1.jpg">
+    </div>
+  </div>
+</section>
+
+<section class="section-content">
+  <div class="wrapper">
+    <div class="section-content__image">
+      <img class="screenshoot" src="/images/proyectos/uja/uja4.jpg">
+    </div>
+  </div>
+</section>
+
+<section class="section-content section-content-project">
+  <div class="wrapper">
+    <div class="section__inner">
+      <div class="section-content__main section-content__main-project">
+        <p>Una vez concluido el trabajo de migración de los contenidos, comenzamos con la fase de desarrollo de las nuevas funcionalidades solicitadas por el cliente. En este aspecto se ha sacado provecho de todas las mejoras ofrecidas por Drupal 8 respecto a sus versiones anteriores, como por ejemplo el uso de los servicios web REST para la promoción de contenidos entre distintos portales.</p>
+        <p>Centrándonos es aspectos más ligados a la naturaleza el trabajo, podemos destacar la creación de varios perfiles de instalación enfocados a satisfacer las necesidades de los distintos tipos de sitios (portal principal, portales promocionales, portales de servicios, centros o departamentos, etc).</p>
+        <p>A continuación citamos algunas de las funcionalidaes más destacadas de los nuevos portales:</p>
+        <ul class='quotes'>
+          <li>Desarrollo de un sistema para la creación de zonas privadas protegidas, con distintas opciones para limitar el acceso a los mismos por IP, por usuario, etc.</li>
+          <li>Integraciones con servicios de terceros para la incorporación de contenidos.</li>
+          <li>Creación de un sistema de notificaciones interno para avisar a las unidades responsables de cambios importantes en la información.</li>
+          <li>Desarrollo de un sistema de promoción de contenidos a través de la API Rest de Drupal 8.</li>
+          <li>Provisión de una librería de componentes o bloques prediseñados que los editores pueden incluir en sus páginas.</li>
+          <li>Autenticación a editores con el servidor LDAP institucional en los distintos sitios del multisite, desde una página única de login.</li>
+          <li>Provisión de una serie de opciones de configuración para que los editores puedan personalizar aspectos de sus páginas como el layout o la cabecera, dentro de unos parámetros establecidos que garanticen la línea de diseño institucional.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-content">
+  <div class="wrapper">
+    <div class="section-content__image">
+      <img class="screenshoot" src="/images/proyectos/uja/uja3.jpg">
+    </div>
+  </div>
+</section>
+
+<section class="section-content section-content-project">
+  <div class="wrapper">
+    <div class="section__inner">
+      <div class="section-content__main section-content__main-project">
+        <p>En cuanto al diseño de los nuevos portales, nuestro trabajo comenzó en la definición de los mismos, asesorando a la empresa de diseño  durante todo el proceso para cumplir los requisitos de accesibilidad y garantizar una correcta experiencia de usuario.</p>
+        <p>En términos de implementación, se han desarrollado distintas plantillas (llamados themes en Drupal 8) que se aplican en función del tipo de sitio concreto, incluyendo variaciones respecto a una misma línea de diseño.</p>
+        <p>Todos los diseños están adaptados a dispositivos móviles y cumplen con los criterios de accesibilidad de la normativa <a href='https://www.w3.org/TR/WCAG20/' abbr='Web Content Accessibility Guidelines 2.0'>WCAG 2.0</a> en su nivel AA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-content">
+  <div class="wrapper">
+    <div class="section-content__image">
+      <img class="screenshoot" src="/images/proyectos/uja/uja2.jpg">
+    </div>
+  </div>
+</section>
+
+<section class="section-content section-content-project">
+  <div class="wrapper">
+    <div class="section__inner">
+      <div class="section-content__main section-content__main-project">
+        <p>Hemos tratado de describir a groso modo y de la forma más breve posible un proceso de trabajo extenso –en tiempo y volumen–, motivo por el cual hemos ahorrado numerosos detalles y caracterísiticas del mismo.</p>
+        <p>Si estás interesado en conocer más detalles ponte en <a href='/contacto'>contacto con nosotros</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>

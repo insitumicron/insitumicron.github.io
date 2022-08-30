@@ -1,0 +1,21 @@
+{% if page.summary or page.dates %}
+  <div class="section-content__sidebar">
+    <div class="panel panel_grey">
+      {% if page.summary %}
+        <h3>Lo que hicimos</h3>
+        <ul class="quotes">
+          {% for description in page.summary %}
+            <li>{{ description }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if page.dates %}
+        <h3>Publicación</h3>
+        {% for date in page.dates %}
+          <p>{{ date }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
