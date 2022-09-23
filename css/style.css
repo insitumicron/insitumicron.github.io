@@ -39,7 +39,10 @@ p, li, blockquote, label {
   line-height: 25px;
   color: #808080;
   margin-bottom: 0;
+
 }
+
+
 
 cite {
   font-size: 14px;
@@ -867,7 +870,7 @@ button:focus,
 @media (max-width: 768px) {
   .feature .feature-content h2,
 .feature .feature-content p {
-    text-align: center;
+    text-align: justify;
   }
 }
 @media (max-width: 768px) {
