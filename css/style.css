@@ -142,7 +142,7 @@ a:hover {
 }
 
 .bg-1 {
-  background: url(../images/background/promo-video-back.jpg) fixed no-repeat;
+  background: url(../images/background/Promo-video-back.jpg) fixed no-repeat;
   background-size: cover;
 }
 
@@ -758,6 +758,11 @@ button:focus,
   margin-left: 0;
 }
 
+.magic-im {
+  max-width: 10%;
+  height: auto;
+}
+
 .slider {
   padding: 180px 0 300px;
   text-align: center;
@@ -1016,7 +1021,7 @@ button:focus,
 
 /* homepage 3 */
 .gradient-banner {
-  padding: 100px 0 170px;
+  padding: 25px 0 75px;
   position: relative;
   overflow: hidden;
 }
@@ -1029,11 +1034,11 @@ button:focus,
   width: 200%;
   height: 200%;
   border-radius: 50%;
-  background-image: linear-gradient(45deg, #344AA8 0%, #2DA3B0 50%, #2CB5B1 90%);
+  background-image: linear-gradient(45deg, #5667b5 0%, #2DA3B0 50%, #5bc3c0 90%);
 }
 
 .pull-top {
-  margin-top: -100px;
+  margin-top: -65px;
 }
 
 .shapes-container {
