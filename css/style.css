@@ -137,6 +137,10 @@ a:hover {
   background: #fafafa;
 }
 
+.bg-white {
+  background: #ffffff;
+}
+
 .bg-blue {
   background: #2e7eed;
 }
