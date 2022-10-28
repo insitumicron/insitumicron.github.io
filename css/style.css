@@ -530,8 +530,8 @@ button:focus,
 }
 
 .footer-main {
-  padding: 92px 0;
-  background: #1a1b1f;
+  padding: 50px 0;
+  background: #262626;
 }
 @media (max-width: 768px) {
   .footer-main {
@@ -802,9 +802,9 @@ button:focus,
 
 .services .service-block {
   background: #fff;
-  padding: 30px 40px;
+  padding: 10px 20px;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: 50px;
 }
 .services .service-block:last-child {
   margin-bottom: 0;
@@ -815,16 +815,10 @@ button:focus,
   }
 }
 .services .service-block h3 {
-  line-height: 30px;
+  line-height: 25px;
   text-transform: capitalize;
   font-size: 16px;
   font-weight: 500;
-}
-.services .service-block i {
-  font-size: 30px;
-  color: #2e7eed;
-  margin-bottom: 10px;
-  display: inline-block;
 }
 .services .service-block p {
   margin-bottom: 0;
@@ -836,7 +830,7 @@ button:focus,
   justify-content: center !important;
 }
 .services .app-preview img {
-  height: 500px;
+  height: 450px;
   width: auto;
 }
 @media (max-width: 992px) {
@@ -881,7 +875,7 @@ button:focus,
 
 .feature .feature-content h2,
 .feature .feature-content p {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 @media (max-width: 768px) {
   .feature .feature-content h2,
