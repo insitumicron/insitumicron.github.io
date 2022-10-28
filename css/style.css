@@ -162,11 +162,11 @@ a:hover {
 
 .section-title {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 10px;
 }
 .section-title h2 {
   font-size: 35px;
-  margin-bottom: 13px;
+  margin-bottom: 5px;
 }
 .section-title p {
   width: 50%;
@@ -803,7 +803,7 @@ button:focus,
 .services .service-block {
   background: #fff;
   padding: 30px 40px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   border-radius: 5px;
 }
 .services .service-block:last-child {
@@ -811,7 +811,7 @@ button:focus,
 }
 @media (max-width: 480px) {
   .services .service-block:last-child {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 }
 .services .service-block h3 {
@@ -823,7 +823,7 @@ button:focus,
 .services .service-block i {
   font-size: 30px;
   color: #2e7eed;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   display: inline-block;
 }
 .services .service-block p {
@@ -852,7 +852,7 @@ button:focus,
   }
 }
 .service .service-box {
-  padding: 20px;
+  padding: 10px;
   background: #fff;
   border-radius: 4px;
 }
@@ -874,7 +874,9 @@ button:focus,
   margin-bottom: 10px;
 }
 .service .service-box .service-item p {
+  display: flex;
   font-size: 14px;
+  justify-content: center;
 }
 
 .feature .feature-content h2,
