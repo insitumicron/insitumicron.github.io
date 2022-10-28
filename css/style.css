@@ -108,7 +108,7 @@ body {
   overflow-x: hidden;
 }
 
-.shadow, .coming-soon .block .count-down .syotimer-cell, .user-login .block .image img, .privacy .block, .job-list .block, .team-sm .image img, .founder img, .service .service-box {
+.shadow, .coming-soon .block .count-down .syotimer-cell, .user-login .block .image img, .privacy .block, .job-list .block, .team-sm .image img, .founder img, .capability .capability-box, .service .service-box {
   box-shadow: 0 7px 20px 0 rgba(0, 0, 0, 0.08);
 }
 
@@ -279,7 +279,7 @@ textarea.form-control.main {
   }
 }
 
-.hide-overflow, .service {
+.hide-overflow, .capability, .service {
   overflow: hidden;
 }
 
@@ -868,6 +868,41 @@ button:focus,
   margin-bottom: 10px;
 }
 .service .service-box .service-item p {
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .capability .capability-thumb {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+.capability .capability-box {
+  margin-bottom: 20px;
+  padding: 5px;
+  background: #fff;
+  border-radius: 10px;
+}
+@media (max-width: 768px) {
+  .capability .capability-box {
+    width: 80%;
+    margin: 10px auto;
+  }
+}
+.capability .capability-box .capability-item {
+  text-align: center;
+  padding: 5px;
+  margin: 10px 0;
+}
+.capability .capability-box .capability-item i {
+  font-size: 20px;
+  color: #2e7eed;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.capability .capability-box .capability-item p {
   display: flex;
   font-size: 14px;
   justify-content: center;
