@@ -1503,11 +1503,14 @@ hr {
   }
 }
 .about .content h2 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-transform: capitalize;
 }
+.about .content p {
+  margin-bottom: 20px;
+}
 .about .about-slider .item {
-  padding: 20px;
+  padding: 5px;
 }
 .about .about-slider .owl-dots .owl-dot:hover span {
   background: #2e7eed;
