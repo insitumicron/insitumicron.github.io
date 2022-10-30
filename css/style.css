@@ -137,6 +137,10 @@ a:hover {
   background: #fafafa;
 }
 
+.bg-dgray {
+  background: #8d8d8d;
+}
+
 .bg-white {
   background: #ffffff;
 }
@@ -371,6 +375,22 @@ button:focus,
   background: #52adf7;
   border: 1px solid #fff;
   padding: 13px 50px;
+}
+
+.moveup50 {
+  margin-top: -50px;
+}
+
+.moveup100 {
+  margin-top: -100px;
+}
+
+.moveup150 {
+  margin-top: -150px;
+}
+
+.moveupn50 {
+  margin-top: 50px;
 }
 
 .main-nav {
