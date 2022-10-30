@@ -108,7 +108,7 @@ body {
   overflow-x: hidden;
 }
 
-.shadow, .coming-soon .block .count-down .syotimer-cell, .user-login .block .image img, .privacy .block, .job-list .block, .team-sm .image img, .founder img, .capability .capability-box, .service .service-box {
+.shadow, .coming-soon .block .count-down .syotimer-cell, .user-login .block .image img, .privacy .block, .job-list .block, .team-sm .image img, .founder img, .service .service-box {
   box-shadow: 0 7px 20px 0 rgba(0, 0, 0, 0.08);
 }
 
@@ -880,10 +880,11 @@ button:focus,
   }
 }
 .capability .capability-box {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 5px;
-  background: #fff;
-  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 5px 5px 5px 3px rgba(146, 145, 145, 0.629);
+  border-radius: 5px;
 }
 @media (max-width: 768px) {
   .capability .capability-box {
@@ -901,6 +902,18 @@ button:focus,
   color: #2e7eed;
   display: inline-block;
   margin-bottom: 10px;
+}
+.capability .capability-box .capability-item img {
+  max-width: 50;
+  filter: invert(100%);
+  margin: 10px;
+}
+.capability .capability-box .capability-item h3 {
+  display: flex;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  margin-bottom: 5px;
+  justify-content: center;
 }
 .capability .capability-box .capability-item p {
   display: flex;
