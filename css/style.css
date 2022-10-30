@@ -393,9 +393,16 @@ button:focus,
   margin-top: 50px;
 }
 
+.moveupn100 {
+  margin-top: 100px;
+}
+
 .main-nav {
   background: #fff;
   z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .main-nav .navbar-brand {
   padding: 0;
