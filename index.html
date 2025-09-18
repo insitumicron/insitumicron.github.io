@@ -2,157 +2,135 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>InsituMicron - Miniaturized Testing Innovation</title>
-  <meta name="description" content="Engineering the future of materials testing with advanced micro-testing systems for research and industry.">
+  <title>InsituMicron</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Miniaturized Mechanical Testing Systems for Advanced Materials">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="author" content="InsituMicron">
-  
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="images/logo-insitu_micron.png"/>
-  <!-- Fonts & Icons -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Small Apps Template v1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="images/logo-insitu_micron.png" />
+  <!-- PLUGINS CSS STYLE -->
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
-  <!-- Custom CSS -->
+  <link rel="stylesheet" href="plugins/slick/slick.css">
+  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="plugins/aos/aos.css">
+  <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
   <style>
     body {
-      font-family: 'Inter', sans-serif;
-      background: #171e2e;
-      color: #f2f3f7;
+      font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+      letter-spacing: 0.01em;
     }
-    .section-title h2, h1 {
+    h1, h2, h3, h4, h5 {
       font-weight: 700;
-      color: #55aaff;
-      letter-spacing: 1px;
+      letter-spacing: 0.03em;
     }
-    .navbar {
-      background: #22293c !important;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    .section-title h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
     }
-    .navbar-brand img {
-      filter: drop-shadow(0 0 2px #55aaff);
+    .section-title {
+      margin-bottom: 2rem;
     }
-    .nav-link {
-      color: #e1e7ec !important;
-      font-weight: 500;
-      transition: color 0.1s;
+    .block.text-center {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
     }
-    .nav-link:hover {
-      color: #55aaff !important;
-    }
-    .banner {
-      background: linear-gradient(120deg, #22304e 90%, #293759 100%);
-      padding: 60px 0 50px 0;
-      border-radius: 0 0 60px 60px;
-      box-shadow: 0 2px 26px #10254b2b;
-    }
-    .block h1 {
-      font-size: 2.6em;
-      color: #fff;
-      margin-bottom: 14px;
-      text-shadow: 0 1px 6px #122f5015;
-    }
-    .block p {
-      font-size: 1.2em;
-      color: #e1e7ec;
-      margin-bottom: 24px;
-    }
-    .app-badge img { filter: grayscale(30%); }
-    .video, .clients-logo { margin-top: 24px; }
-    .section {
-      padding: 60px 0;
-      border-bottom: 1px solid #293759;
-    }
-    .services {
-      background: #1c2337;
-      color: #b8c0ce;
-    }
-    .service-block {
-      background: #22293c;
-      border-radius: 20px;
-      box-shadow: 0 3px 18px #14294011;
-      padding: 24px 18px;
-      margin-bottom: 26px;
+    .service-block, .app-feature {
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+      background: #fff;
+      margin-bottom: 2rem;
       transition: box-shadow 0.2s;
     }
-    .service-block:hover {
-      box-shadow: 0 8px 34px #0e32533a;
+    .service-block:hover, .app-feature:hover {
+      box-shadow: 0 10px 32px rgba(0,0,0,0.12);
     }
-    .feature-image img {
-      border-radius: 28px;
-      box-shadow: 0 7px 20px #18293d26;
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      font-size: 1.05rem;
     }
-    .feature-content {
-      color: #e2eafc;
-      padding: 20px 0 0 0;
-    }
-    .call-to-action-app {
-      background: linear-gradient(90deg, #55aaff 70%, #2f4866 100%);
-      color: #fff;
-      text-align: center;
-      border-radius: 30px;
-      box-shadow: 0 8px 22px #1f3b681a;
-      padding: 55px 10px;
-      margin: 44px 0 0 0;
-    }
-    .call-to-action-app h2 { color: #fff; font-weight: 700; }
-    .btn-rounded-icon {
-      background: #fff;
-      color: #3471ec;
-      border-radius: 40px;
+    .btn.btn-rounded-icon {
+      border-radius: 25px;
       font-weight: 600;
-      padding: 12px 24px;
-      box-shadow: 0 2px 18px #10254b1f;
-      transition: background 0.13s;
+      font-size: 1.1rem;
+      padding: 0.7rem 2.2rem;
+      letter-spacing: 0.03em;
     }
-    .btn-rounded-icon:hover {
-      background: #55aaff;
-      color: #fff;
+    .feature-content h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom:1rem;
     }
-    footer {
-      background: #22293c;
-      color: #b8c0ce;
-      border-top: 1px solid #293759;
-      padding: 38px 0 0 0;
+    .app-badge img {
+      border-radius: 14px;
     }
-    .footer-main .block img {
-      filter: drop-shadow(0 0 2px #55aaff);
+    .clients-logo img {
+      max-height: 32px;
+      filter: grayscale(80%);
+      opacity: 0.75;
     }
-    @media (max-width: 768px) {
-      .banner, .section, .feature { padding: 35px 0; }
-      .feature-image img { border-radius: 14px; }
+    @media(max-width:767px){
+      .block.text-center, .section-title, .feature-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .feature-content h2{ font-size:1.6rem; }
     }
   </style>
 </head>
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
   <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="images/title.png" width="200" alt="logo"></a>
+    <a class="navbar-brand" href="index.html"><img src="images/title.png" width="200" height="auto" alt="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="ti-menu"></span></button>
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="ti-menu"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown active"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">Company</a></li>
-        <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
-        <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item dropdown active">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item @@about">
+          <a class="nav-link" href="about.html">Company</a>
+        </li>
+        <li class="nav-item @@solutions">
+          <a class="nav-link" href="solutions.html">Solutions</a>
+        </li>
+        <li class="nav-item @@timeline">
+          <a class="nav-link" href="timeline.html">Timeline</a>
+        </li>
+        <li class="nav-item @@contact">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+<!-- HERO SECTION -->
 <section class="banner">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 m-auto">
         <div class="block text-center">
-          <h1>Advancing Material Testing with Miniaturization</h1>
-          <p>Breakthrough micro-mechanical testing systems for academia and industry.<br>Unlocking reliable data from smallest samples, powered by cutting-edge design.</p>
+          <h1>Miniaturized Testing. Maximum Innovation.</h1>
+          <p>
+            InsituMicron is pioneering advanced mechanical testing systems for ceramic and composite materials—empowering research, Industry 4.0, and real-world product development with precision and portability.
+          </p>
+          <!-- App badges -->
           <ul class="list-inline app-badge">
-            <li class="list-inline-item"><a href="FAQ.html"><img src="images/app/appple-store.jpg" alt="Apple Store"></a></li>
-            <li class="list-inline-item"><a href="FAQ.html"><img src="images/app/google-play.jpg" alt="Google Play"></a></li>
+            <li class="list-inline-item">
+              <a href="FAQ.html"><img src="images/app/appple-store.jpg" alt="Apple Store"></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="FAQ.html"><img src="images/app/google-play.jpg" alt="Google Play"></a>
+            </li>
           </ul>
+          <!-- Video -->
           <div class="video">
             <img class="img-fluid shadow" src="images/thumbs/promo-video-thumbnail.jpg" alt="video-thumbnail">
             <div class="video-button video-box">
@@ -161,71 +139,79 @@
               </a>
             </div>
           </div>
-          <ul class="list-inline clients-logo">
-            <li class="list-inline-item"><img src="images/clients/buzz-feed.png" alt="buzz-feed"></li>
-            <li class="list-inline-item"><img src="images/clients/the-new-york-times.png" alt="the-new-york-times"></li>
-            <li class="list-inline-item"><img src="images/clients/tech-crunch.png" alt="tech-crunch"></li>
-            <li class="list-inline-item"><img src="images/clients/the-washington-post.png" alt="the-washington-post"></li>
+          <!-- Clients -->
+          <ul class="list-inline clients-logo mt-4">
+            <li class="list-inline-item"><a href="#"><img src="images/clients/buzz-feed.png" alt="buzz-feed"></a></li>
+            <li class="list-inline-item"><a href="#"><img src="images/clients/the-new-york-times.png" alt="the-new-york-times"></a></li>
+            <li class="list-inline-item"><a href="#"><img src="images/clients/tech-crunch.png" alt="tech-crunch"></a></li>
+            <li class="list-inline-item"><a href="#"><img src="images/clients/the-washington-post.png" alt="the-washington-post"></a></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 </section>
+<!-- SERVICES -->
 <section class="services section bg-gray">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <div class="section-title text-center">
-          <h2>Micro-scale Testing Solutions</h2>
-          <p>Delivering precision, versatility, and speed for advanced research and industrial applications.</p>
-        </div>
+        <div class="section-title">
+          <h2>Innovative Solutions for Materials Science</h2>
+          <p>
+            At InsituMicron, we deliver compact, modular mechanical testing platforms for advanced ceramics, composites, and new-age materials. Designed for both industrial and research environments.
+          </p>
+        </div> 
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-3 col-md-6 align-self-center">
-        <div class="service-block shadow text-center">
-          <img class="img-fluid mb-3" src="images/icons/testing.svg" width="50">
-          <h3>Miniaturized Mechanical Testing</h3>
-          <p>Obtain reliable fracture, fatigue, and other mechanical data from tiny specimens. Suitable for metals, ceramics, and composites.</p>
+      <div class="col-lg-4 col-md-6 align-self-center">
+        <div class="service-block shadow">
+          <img class="img-fluid" src=" ti-dashboard " width="50">
+          <h3>Materials Innovation</h3>
+          <p>Transforming mechanical testing with miniaturized, high-throughput and customizable systems for research and manufacturing.</p>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 align-self-center">
-        <div class="service-block shadow text-center">
-          <img class="img-fluid mb-3" src="images/icons/automation.svg" width="50">
-          <h3>Automation & Analytics</h3>
-          <p>Seamless data capture, processing, and AI-assisted analytics. Interface with modern research workflow.</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 align-self-center">
-        <div class="service-block shadow text-center">
-          <img class="img-fluid mb-3" src="images/icons/modularity.svg" width="50">
-          <h3>Modular & Customizable</h3>
-          <p>Configurable for custom research needs and diverse industry challenges, from hydrogen storage to additive manufacturing.</p>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 align-self-center">
-        <div class="service-block shadow text-center">
-          <img class="img-fluid mb-3" src="images/icons/support.svg" width="50">
+        <div class="service-block shadow">
+          <img class="img-fluid" src=" ti-headphone-alt " width="50">
           <h3>Expert Support</h3>
-          <p>Backed by material scientists and engineers at IIT Madras. Dedicated onboarding and tech support for clients.</p>
+          <p>Responsive, research-driven guidance from engineers and scientists specializing in additive manufacturing and ceramic technology.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 m-auto">
+        <div class="app-preview">
+          <img src="images/feature/iphone.jpg" alt="iphone">
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 align-self-center">
+        <div class="service-block shadow">
+          <img class="img-fluid" src=" ti-ruler-pencil " width="50">
+          <h3>Precision Engineering</h3>
+          <p>Developed for clarity in data and repeatability in experiments, our devices raise the standard for measurable material performance.</p>
+        </div>
+        <div class="service-block shadow">
+          <img class="img-fluid" src=" ti-stats-up " width="50">
+          <h3>Smart Data Analytics</h3>
+          <p>Integrated solutions for rapid analysis, visualizations, and interpretation—fueling breakthroughs in industrial and academic projects.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+<!-- FEATURE GRID -->
 <section class="feature section" id="features">
   <div class="container-fluid p-0">
     <div class="row no-gutters">
       <div class="col-lg-6">
         <div class="feature-image left" data-aos="fade-right">
-          <img class="img-fluid" src="images/feature/iphone-ipad.jpg" alt="testing-instruments">
+          <img class="img-fluid" src="images/feature/iphone-ipad.jpg" alt="iphone-ipad">
         </div>
       </div>
       <div class="col-lg-4 mr-auto align-self-center">
         <div class="feature-content">
-          <h2>Bring Materials Innovation to Life</h2>
-          <p>Pushing the limits of material characterization: Real-time insights, instant results, highly reproducible tests—at micro and macro-scales.</p>
+          <h2>Comprehensive Testing Toolkit</h2>
+          <p>
+            Portable, modular mechanical testing systems designed for seamless integration in research labs, startups, and manufacturing facilities. From flexural to compression strength, achieve more with less.
+          </p>
         </div>
       </div>
     </div>
@@ -236,28 +222,71 @@
     <div class="row no-gutters">
       <div class="col-lg-4 ml-auto align-self-center">
         <div class="feature-content">
-          <h2>Digitalized R&D Workflows</h2>
-          <p>Integrate with lab management software, interactive dashboards, and secure data storage for seamless research progression.</p>
+          <h2>Future-ready Materials Analysis</h2>
+          <p>
+            Our devices enable precise characterization and rapid analytics for materials innovation, supporting Industry 4.0, digitalization, and entrepreneurship.
+          </p>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="feature-image right" data-aos="fade-left">
-          <img class="img-fluid" src="images/feature/ipad.jpg" alt="digital-analytics">
+          <img class="img-fluid" src="images/feature/ipad.jpg" alt="ipad">
         </div>
       </div>
     </div>
   </div>
 </section>
-<section class="call-to-action-app section bg-blue">
+<!-- APP FEATURES -->
+<section class="app-features section">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h2>Experience the Future of Mechanical Testing</h2>
+        <div class="section-title">
+          <h2>Why InsituMicron?</h2>
+          <p>
+            Accelerate discovery and quality assurance with a versatile suite for additively manufactured ceramics, composites, and more.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="app-explore" data-aos="fade-down">
+          <img class="img-fluid" src="images/feature/ipad-lied.jpg" alt="ipad-lied">
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="app-feature text-center">
+          <h3>Cutting-edge Design</h3>
+          <p>Engineered for maximal portability, reliability and repeatability—purpose-built for researchers and manufacturers.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="app-feature text-center">
+          <h3>Highly Customizable</h3>
+          <p>Configurable modules and tests for a wide range of materials, standards, and workflows.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="app-feature text-center">
+          <h3>Startup-led Innovation</h3>
+          <p>Industry-driven, research-backed advancement tested at IIT Madras and with leading partners.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CTA -->
+<section class="call-to-action-app section bg-blue">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2>Transform Materials Testing. Join the Movement.</h2>
         <ul class="list-inline">
           <li class="list-inline-item">
             <a href="contact.html" class="btn btn-rounded-icon">
               <i class="ti-email"></i>
-            Get in touch!
+              Get in Touch
             </a>
           </li>
         </ul>
@@ -265,13 +294,14 @@
     </div>
   </div>
 </section>
+<!-- FOOTER -->
 <footer>
   <div class="footer-main">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
           <div class="block">
-            <a href="index.html"><img src="images/title2.png"  width="200" alt="footer-logo"></a>
+            <a href="index.html"><img src="images/title2.png"  width="200" height="auto" alt="footer-logo"></a>
             <ul class="social-icon list-inline">
               <li class="list-inline-item">
                 <a href="https://linkedin.com/"><i class="ti-linkedin"></i></a>
@@ -300,15 +330,22 @@
     </div>
   </div>
   <div class="text-center bg-dark py-4">
-    <small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by InsituMicron.</small>
+    <small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by InsituMicron.</small class="text-secondary">
   </div>
 </footer>
-<div class="scroll-top-to"><i class="ti-angle-up"></i></div>
+<!-- To Top -->
+<div class="scroll-top-to">
+  <i class="ti-angle-up"></i>
+</div>
+<!-- JAVASCRIPTS -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/bootstrap.min.js"></script>
 <script src="plugins/slick/slick.min.js"></script>
 <script src="plugins/fancybox/jquery.fancybox.min.js"></script>
+<script src="plugins/syotimer/jquery.syotimer.min.js"></script>
 <script src="plugins/aos/aos.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
+<script src="plugins/google-map/gmap.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
