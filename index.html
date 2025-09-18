@@ -1,311 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="utf-8">
-  <title>InsituMicron | Precision Material Testing Solutions</title>
-
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="InsituMicron provides cutting-edge solutions for in-situ material testing and analysis at the micro and nano scale.">
+  <title>InsituMicron - Miniaturized Testing Innovation</title>
+  <meta name="description" content="Engineering the future of materials testing with advanced micro-testing systems for research and industry.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="author" content="Themefisher">
-  <meta name="generator" content="Themefisher Small Apps Template v1.0">
-
-  <link rel="shortcut icon" type="image/x-icon" href="images/logo-insitu_micron.png" />
+  <meta name="author" content="InsituMicron">
   
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/logo-insitu_micron.png"/>
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap">
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
-  <link rel="stylesheet" href="plugins/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
-  <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="plugins/aos/aos.css">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <!-- Custom CSS -->
   <link href="css/style.css" rel="stylesheet">
-  
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      color: #495057; /* A softer black for text */
+      font-family: 'Inter', sans-serif;
+      background: #171e2e;
+      color: #f2f3f7;
     }
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
+    .section-title h2, h1 {
+      font-weight: 700;
+      color: #55aaff;
+      letter-spacing: 1px;
     }
-    .main-nav .nav-link {
-      font-weight: 400;
+    .navbar {
+      background: #22293c !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .navbar-brand img {
+      filter: drop-shadow(0 0 2px #55aaff);
+    }
+    .nav-link {
+      color: #e1e7ec !important;
+      font-weight: 500;
+      transition: color 0.1s;
+    }
+    .nav-link:hover {
+      color: #55aaff !important;
     }
     .banner {
-        background: #f8f9fa; /* Light, clean background */
-        padding: 120px 0;
+      background: linear-gradient(120deg, #22304e 90%, #293759 100%);
+      padding: 60px 0 50px 0;
+      border-radius: 0 0 60px 60px;
+      box-shadow: 0 2px 26px #10254b2b;
     }
-    .banner h1 {
-        font-size: 3.5rem;
-        font-weight: 700;
-        color: #212529; /* Darker heading */
+    .block h1 {
+      font-size: 2.6em;
+      color: #fff;
+      margin-bottom: 14px;
+      text-shadow: 0 1px 6px #122f5015;
     }
-    .banner p {
-        font-size: 1.15rem;
-        color: #6c757d;
+    .block p {
+      font-size: 1.2em;
+      color: #e1e7ec;
+      margin-bottom: 24px;
     }
-    .btn-primary-solid {
-        background-color: #003366; /* Deep Navy Blue */
-        border-color: #003366;
-        color: #fff;
-        padding: 15px 35px;
-        border-radius: 50px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: all 0.3s ease;
+    .app-badge img { filter: grayscale(30%); }
+    .video, .clients-logo { margin-top: 24px; }
+    .section {
+      padding: 60px 0;
+      border-bottom: 1px solid #293759;
     }
-    .btn-primary-solid:hover {
-        background-color: #004080;
-        transform: translateY(-3px);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-    .section-title h2 {
-        font-weight: 700;
+    .services {
+      background: #1c2337;
+      color: #b8c0ce;
     }
     .service-block {
-      text-align: left;
-      padding: 30px;
-      transition: all 0.3s ease;
+      background: #22293c;
+      border-radius: 20px;
+      box-shadow: 0 3px 18px #14294011;
+      padding: 24px 18px;
+      margin-bottom: 26px;
+      transition: box-shadow 0.2s;
     }
-    .service-block .service-icon {
-        font-size: 2.5rem;
-        color: #003366; /* Navy Icon Color */
-        margin-bottom: 20px;
+    .service-block:hover {
+      box-shadow: 0 8px 34px #0e32533a;
     }
-    .service-block h3 {
-        font-size: 1.25rem;
-        font-weight: 600;
+    .feature-image img {
+      border-radius: 28px;
+      box-shadow: 0 7px 20px #18293d26;
     }
-    .feature-content h2 {
-      font-size: 2.5rem;
+    .feature-content {
+      color: #e2eafc;
+      padding: 20px 0 0 0;
     }
     .call-to-action-app {
-        background: #003366; /* Navy CTA background */
-        color: #fff;
+      background: linear-gradient(90deg, #55aaff 70%, #2f4866 100%);
+      color: #fff;
+      text-align: center;
+      border-radius: 30px;
+      box-shadow: 0 8px 22px #1f3b681a;
+      padding: 55px 10px;
+      margin: 44px 0 0 0;
     }
-    .call-to-action-app h2 {
-        font-size: 2.2rem;
-        font-weight: 600;
-    }
+    .call-to-action-app h2 { color: #fff; font-weight: 700; }
     .btn-rounded-icon {
-        background: #fff;
-        color: #003366;
+      background: #fff;
+      color: #3471ec;
+      border-radius: 40px;
+      font-weight: 600;
+      padding: 12px 24px;
+      box-shadow: 0 2px 18px #10254b1f;
+      transition: background 0.13s;
     }
     .btn-rounded-icon:hover {
-        background: #f0f0f0;
-        color: #003366;
+      background: #55aaff;
+      color: #fff;
     }
     footer {
-        background: #212529; /* Dark footer */
+      background: #22293c;
+      color: #b8c0ce;
+      border-top: 1px solid #293759;
+      padding: 38px 0 0 0;
+    }
+    .footer-main .block img {
+      filter: drop-shadow(0 0 2px #55aaff);
+    }
+    @media (max-width: 768px) {
+      .banner, .section, .feature { padding: 35px 0; }
+      .feature-image img { border-radius: 14px; }
     }
   </style>
-
 </head>
-
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
-
-
 <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
   <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="images/title.png" width="180" height="auto" alt="logo"></a>
+    <a class="navbar-brand" href="index.html"><img src="images/title.png" width="200" alt="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="ti-menu"></span>
-    </button>
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="ti-menu"></span></button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">Company</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="solutions.html">Solutions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="timeline.html">Timeline</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
+        <li class="nav-item dropdown active"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">Company</a></li>
+        <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
+        <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 <section class="banner">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-10 m-auto">
-				<div class="block text-center">
-					<h1 data-aos="fade-up" data-aos-duration="800">Precision at the Nanoscale</h1>
-					<p class="mt-3 mb-4" data-aos="fade-up" data-aos-duration="1000">Pioneering in-situ solutions to accelerate materials discovery and innovation.<br> We provide the tools that redefine the boundaries of material science.</p>
-					<a href="solutions.html" class="btn btn-primary-solid" data-aos="fade-up" data-aos-duration="1200">Discover Our Solutions</a>
-
-					<div class="video mt-5" data-aos="fade-up" data-aos-duration="1400">
-						<img class="img-fluid shadow-lg" src="https://via.placeholder.com/900x500.png/003366/FFFFFF?text=Product+Animation+or+Lab+Footage" alt="video-thumbnail">
-						<div class="video-button video-box">
-							<a href="javascript:void(0)">
-								<i class="ti-control-play" data-video="https://www.youtube.com/embed/jrkvirglgaQ?autoplay=1"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 m-auto">
+        <div class="block text-center">
+          <h1>Advancing Material Testing with Miniaturization</h1>
+          <p>Breakthrough micro-mechanical testing systems for academia and industry.<br>Unlocking reliable data from smallest samples, powered by cutting-edge design.</p>
+          <ul class="list-inline app-badge">
+            <li class="list-inline-item"><a href="FAQ.html"><img src="images/app/appple-store.jpg" alt="Apple Store"></a></li>
+            <li class="list-inline-item"><a href="FAQ.html"><img src="images/app/google-play.jpg" alt="Google Play"></a></li>
+          </ul>
+          <div class="video">
+            <img class="img-fluid shadow" src="images/thumbs/promo-video-thumbnail.jpg" alt="video-thumbnail">
+            <div class="video-button video-box">
+              <a href="javascript:void(0)">
+                <i class="ti-control-play" data-video="https://www.youtube.com/embed/jrkvirglgaQ?autoplay=1"></i>
+              </a>
+            </div>
+          </div>
+          <ul class="list-inline clients-logo">
+            <li class="list-inline-item"><img src="images/clients/buzz-feed.png" alt="buzz-feed"></li>
+            <li class="list-inline-item"><img src="images/clients/the-new-york-times.png" alt="the-new-york-times"></li>
+            <li class="list-inline-item"><img src="images/clients/tech-crunch.png" alt="tech-crunch"></li>
+            <li class="list-inline-item"><img src="images/clients/the-washington-post.png" alt="the-washington-post"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-
 <section class="services section bg-gray">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="section-title">
-					<h2>Core Competencies</h2>
-					<p>InsituMicron empowers researchers and engineers with state-of-the-art technology<br> for unparalleled material characterization.</p>
-				</div> 
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-6 align-self-center">
-				<div class="service-block shadow" data-aos="fade-right">
-                    <i class="ti-stats-up service-icon"></i>
-                    <h3>Advanced Material Analysis</h3>
-                    <p>Gain deeper insights with our high-resolution imaging and analytics platforms for comprehensive material evaluation.</p>
-                </div>
-				<div class="service-block shadow" data-aos="fade-right" data-aos-delay="100">
-                    <i class="ti-settings service-icon"></i>
-                    <h3>Custom Instrumentation</h3>
-                    <p>We design and develop bespoke testing modules tailored to your unique research and development requirements.</p>
-                </div>
-			</div>
-			<div class="col-lg-4 m-auto">
-				<div class="app-preview" data-aos="zoom-in">
-                    <img src="https://via.placeholder.com/400x800.png/EFEFEF/333333?text=Product+Showcase" alt="product-image">				
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 align-self-center">
-				<div class="service-block shadow" data-aos="fade-left">
-                    <i class="ti-ruler-pencil service-icon"></i>
-                    <h3>In-Situ Experimentation</h3>
-                    <p>Observe material behavior in real-time under various stimuli, including thermal, mechanical, and electrical loads.</p>
-                </div>
-				<div class="service-block shadow" data-aos="fade-left" data-aos-delay="100">
-                    <i class="ti-headphone-alt service-icon"></i>
-                    <h3>Dedicated Expert Support</h3>
-                    <p>Our team of scientists and engineers provides dedicated support to ensure your success from integration to analysis.</p>
-                </div>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-title text-center">
+          <h2>Micro-scale Testing Solutions</h2>
+          <p>Delivering precision, versatility, and speed for advanced research and industrial applications.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 align-self-center">
+        <div class="service-block shadow text-center">
+          <img class="img-fluid mb-3" src="images/icons/testing.svg" width="50">
+          <h3>Miniaturized Mechanical Testing</h3>
+          <p>Obtain reliable fracture, fatigue, and other mechanical data from tiny specimens. Suitable for metals, ceramics, and composites.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 align-self-center">
+        <div class="service-block shadow text-center">
+          <img class="img-fluid mb-3" src="images/icons/automation.svg" width="50">
+          <h3>Automation & Analytics</h3>
+          <p>Seamless data capture, processing, and AI-assisted analytics. Interface with modern research workflow.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 align-self-center">
+        <div class="service-block shadow text-center">
+          <img class="img-fluid mb-3" src="images/icons/modularity.svg" width="50">
+          <h3>Modular & Customizable</h3>
+          <p>Configurable for custom research needs and diverse industry challenges, from hydrogen storage to additive manufacturing.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 align-self-center">
+        <div class="service-block shadow text-center">
+          <img class="img-fluid mb-3" src="images/icons/support.svg" width="50">
+          <h3>Expert Support</h3>
+          <p>Backed by material scientists and engineers at IIT Madras. Dedicated onboarding and tech support for clients.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section class="feature section" id="features">
-	<div class="container-fluid p-0">
-		<div class="row no-gutters">
-			<div class="col-lg-6">
-				<div class="feature-image left" data-aos="fade-right">
-                    <img class="img-fluid" src="https://via.placeholder.com/1200x800.png/212529/FFFFFF?text=Data+Visualization+Software" alt="software-screenshot">
-				</div>
-			</div>
-			<div class="col-lg-4 mr-auto align-self-center">
-				<div class="feature-content p-5">
-					<h2>Intuitive Software, Powerful Results</h2>
-					<p>Our integrated software suite offers a seamless workflow from experiment setup to data analysis. Experience user-centric design that doesn't compromise on powerful analytical capabilities.</p>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="container-fluid p-0">
+    <div class="row no-gutters">
+      <div class="col-lg-6">
+        <div class="feature-image left" data-aos="fade-right">
+          <img class="img-fluid" src="images/feature/iphone-ipad.jpg" alt="testing-instruments">
+        </div>
+      </div>
+      <div class="col-lg-4 mr-auto align-self-center">
+        <div class="feature-content">
+          <h2>Bring Materials Innovation to Life</h2>
+          <p>Pushing the limits of material characterization: Real-time insights, instant results, highly reproducible tests—at micro and macro-scales.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-
 <section class="feature section bg-gray">
-	<div class="container-fluid p-0">
-		<div class="row no-gutters">
-			<div class="col-lg-4 ml-auto align-self-center">
-				<div class="feature-content p-5">
-					<h2>Engineered for Versatility</h2>
-					<p>From academic labs to industrial R&D, our platforms are designed for a wide range of applications. Modular components and flexible configurations allow for adaptation to your evolving research needs.</p>
-				</div>
-			</div>
-			<div class="col-lg-6">
-				<div class="feature-image right" data-aos="fade-left">
-                    <img class="img-fluid" src="https://via.placeholder.com/1200x800.png/DEE2E6/212529?text=Hardware+in+Lab+Setting" alt="lab-equipment">
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="container-fluid p-0">
+    <div class="row no-gutters">
+      <div class="col-lg-4 ml-auto align-self-center">
+        <div class="feature-content">
+          <h2>Digitalized R&D Workflows</h2>
+          <p>Integrate with lab management software, interactive dashboards, and secure data storage for seamless research progression.</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="feature-image right" data-aos="fade-left">
+          <img class="img-fluid" src="images/feature/ipad.jpg" alt="digital-analytics">
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="call-to-action-app section">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="text-center">
-                    <h2 class="mb-4">It's time to change the way you test materials.</h2>
-                    <p class="mb-5 lead">Ready to push the boundaries of your research? Let's talk about your project.</p>
-                    <a href="contact.html" class="btn btn-primary-solid">
-                        <i class="ti-email mr-2"></i>
-                        Contact Our Experts
-                    </a>
-                </div>
-			</div>
-		</div>
-	</div>
+<section class="call-to-action-app section bg-blue">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Experience the Future of Mechanical Testing</h2>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a href="contact.html" class="btn btn-rounded-icon">
+              <i class="ti-email"></i>
+            Get in touch!
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
-
 <footer>
   <div class="footer-main">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
           <div class="block">
-            <a href="index.html"><img src="images/title2.png" width="180" height="auto" alt="footer-logo"></a>
-            <p class="mt-4">Advancing material science through precision engineering and innovative in-situ technology.</p>
-            <ul class="social-icon list-inline mt-3">
+            <a href="index.html"><img src="images/title2.png"  width="200" alt="footer-logo"></a>
+            <ul class="social-icon list-inline">
               <li class="list-inline-item">
                 <a href="https://linkedin.com/"><i class="ti-linkedin"></i></a>
               </li>
             </ul>
           </div>
         </div>
-        
-        <div class="col-lg-2 offset-lg-2 col-md-4 col-6 mt-5 mt-lg-0">
+        <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
           <div class="block-2">
             <h6>Product</h6>
             <ul>
-              <li><a href="solutions.html">Solutions</a></li>
-              <li><a href="#">Technology</a></li>
-              <li><a href="#">Applications</a></li>
+              <li><a href="sign-up.html">Solutions</a></li>
             </ul>
           </div>
         </div>
-        <div class="col-lg-2 col-md-4 col-6 mt-5 mt-lg-0">
+        <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
           <div class="block-2">
             <h6>Company</h6>
             <ul>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="timeline.html">Timeline</a></li>
+              <li><a href="career.html">Timeline</a></li>
               <li><a href="contact.html">Contact</a></li>
             </ul>
           </div>
         </div>
-         <div class="col-lg-2 col-md-4 col-6 mt-5 mt-lg-0">
-          <div class="block-2">
-            <h6>Resources</h6>
-            <ul>
-              <li><a href="#">Case Studies</a></li>
-              <li><a href="#">White Papers</a></li>
-              <li><a href="#">Support</a></li>
-            </ul>
-          </div>
-        </div>
-        
       </div>
     </div>
   </div>
@@ -313,20 +303,12 @@
     <small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by InsituMicron.</small>
   </div>
 </footer>
-
-
-  <div class="scroll-top-to">
-    <i class="ti-angle-up"></i>
-  </div>
-  
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <script src="plugins/bootstrap/bootstrap.min.js"></script>
-  <script src="plugins/slick/slick.min.js"></script>
-  <script src="plugins/fancybox/jquery.fancybox.min.js"></script>
-  <script src="plugins/syotimer/jquery.syotimer.min.js"></script>
-  <script src="plugins/aos/aos.js"></script>
-
-  <script src="js/script.js"></script>
+<div class="scroll-top-to"><i class="ti-angle-up"></i></div>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="plugins/slick/slick.min.js"></script>
+<script src="plugins/fancybox/jquery.fancybox.min.js"></script>
+<script src="plugins/aos/aos.js"></script>
+<script src="js/script.js"></script>
 </body>
-
 </html>
