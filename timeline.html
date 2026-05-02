@@ -1,46 +1,111 @@
 <!DOCTYPE html>
-
-<!--
- // WEBSITE: https://themefisher.com
- // TWITTER: https://twitter.com/themefisher
- // FACEBOOK: https://www.facebook.com/themefisher
- // GITHUB: https://github.com/themefisher/
--->
-
 <html lang="en">
 <head>
-
-  <!-- Basic Page Needs
-  ================================================== -->
   <meta charset="utf-8">
-  <title>InsituMicron</title>
-
-  <!-- Mobile Specific Metas
-  ================================================== -->
+  <title>InsituMicron | Timeline</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Bootstrap App Landing Template">
+  <meta name="description" content="InsituMicron journey — from idea to product">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="author" content="Themefisher">
-  <meta name="generator" content="Themefisher Small Apps Template v1.0">
 
-  <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="images/logo-insitu_micron.png" />
-  
-  <!-- PLUGINS CSS STYLE -->
+
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
   <link rel="stylesheet" href="plugins/slick/slick.css">
   <link rel="stylesheet" href="plugins/slick/slick-theme.css">
   <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
   <link rel="stylesheet" href="plugins/aos/aos.css">
-
-  <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
 
+  <style>
+    /* ── Timeline Component ── */
+    .timeline-section { padding: 80px 0; background: #f8f9fa; }
+    .timeline-wrapper { position: relative; padding: 20px 0; }
+    .timeline-wrapper::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #6c63ff, #a78bfa);
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: calc(50% + 40px);
+      margin-bottom: 50px;
+      position: relative;
+    }
+    .timeline-item.right {
+      justify-content: flex-start;
+      padding-right: 0;
+      padding-left: calc(50% + 40px);
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      width: 18px; height: 18px;
+      background: #6c63ff;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 3px #6c63ff;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+    .timeline-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 25px 30px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+      max-width: 420px;
+      width: 100%;
+    }
+    .timeline-card .year {
+      font-size: 13px;
+      font-weight: 700;
+      color: #6c63ff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .timeline-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 10px;
+    }
+    .timeline-card p { font-size: 15px; color: #808080; margin: 0; }
+    .timeline-card .status {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .status-done { background: #d4edda; color: #155724; }
+    .status-inprogress { background: #fff3cd; color: #856404; }
+    .status-upcoming { background: #d1ecf1; color: #0c5460; }
+
+    /* Mobile: stack vertically */
+    @media (max-width: 768px) {
+      .timeline-wrapper::before { left: 20px; }
+      .timeline-item,
+      .timeline-item.right {
+        justify-content: flex-start;
+        padding-left: 55px;
+        padding-right: 15px;
+      }
+      .timeline-dot { left: 20px; }
+    }
+  </style>
 </head>
 
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
-
 
 <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
   <div class="container">
@@ -51,128 +116,222 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown @@home">
-          <a class="nav-link" href="index.html">Home
-          </a>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
         </li>
-        <li class="nav-item @@about">
+        <li class="nav-item">
           <a class="nav-link" href="about.html">Company</a>
         </li>
-        <li class="nav-item @@solutions">
+        <li class="nav-item">
           <a class="nav-link" href="solutions.html">Solutions</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="timeline.html">Timeline</a>
         </li>
-        <li class="nav-item @@contact">
+        <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact</a>
         </li>
-
       </ul>
     </div>
   </div>
 </nav>
 
-<!--================================
-=            Page Title            =
-=================================-->
-
-<section class="section page-title moveupn50">
-	<div class="container moveup50">
-		<div class="row">
-			<div class="col-sm-8 m-auto">
-				<!-- Page Title -->
-				<h1>Timeline</h1>
-				<!-- Page Description -->
-				<p>Dreams brings ideas, a proper plan make them a reality. <br>Great things happen when you plan them well in advance.</p>
-			</div>
-		</div>
-	</div>
+<!-- Hero -->
+<section class="section gradient-banner moveupn50">
+  <div class="shapes-container">
+    <div class="shape" data-aos="fade-down-left" data-aos-duration="1500" data-aos-delay="100"></div>
+    <div class="shape" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100"></div>
+    <div class="shape" data-aos="fade-up-right" data-aos-duration="1000" data-aos-delay="200"></div>
+    <div class="shape" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"></div>
+    <div class="shape" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"></div>
+    <div class="shape" data-aos="zoom-out" data-aos-duration="2000" data-aos-delay="500"></div>
+  </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8 text-center text-md-left">
+        <h1 class="text-white font-weight-bold mb-4">Our Journey</h1>
+        <p class="text-white mb-5">Great things happen when you plan them well. Here's how InsituMicron went from a research idea to a company building the next generation of material testing instruments.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!--====  End of Page Title  ====-->
+<!-- Timeline -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title text-center mb-5">
+          <h2>Milestones &amp; Roadmap</h2>
+          <p>From inception to the future — every step of the InsituMicron story</p>
+        </div>
+      </div>
+    </div>
 
+    <div class="timeline-wrapper">
 
-<!--============================
-=            Banner            =
-=============================-->
+      <!-- Item 1 -->
+      <div class="timeline-item" data-aos="fade-right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="year">2019</div>
+          <h3>The Idea</h3>
+          <p>Research at IIT Madras identified a critical gap: no affordable miniature mechanical testing instrument existed that could integrate with common characterization tools.</p>
+          <span class="status status-done">&#10003; Completed</span>
+        </div>
+      </div>
 
-<!--====  End of Banner  ====-->
+      <!-- Item 2 -->
+      <div class="timeline-item right" data-aos="fade-left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="year">2020</div>
+          <h3>First Prototype</h3>
+          <p>Built and tested the first working prototype of the miniature mechanical testing fixture, validating the core concept and design principles.</p>
+          <span class="status status-done">&#10003; Completed</span>
+        </div>
+      </div>
 
+      <!-- Item 3 -->
+      <div class="timeline-item" data-aos="fade-right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="year">2021</div>
+          <h3>IIT Madras Research Park Incubation</h3>
+          <p>InsituMicron was formally incubated at IIT Madras Research Park, gaining access to world-class infrastructure, mentorship, and the broader IIT Madras research ecosystem.</p>
+          <span class="status status-done">&#10003; Completed</span>
+        </div>
+      </div>
 
+      <!-- Item 4 -->
+      <div class="timeline-item right" data-aos="fade-left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="year">2022</div>
+          <h3>Product Validation &amp; First Customers</h3>
+          <p>Validated the instrument with academic research partners. First successful in-situ XRD experiments conducted using our miniature fixture — proving the core value proposition.</p>
+          <span class="status status-done">&#10003; Completed</span>
+        </div>
+      </div>
 
-<!--============================
-=            Footer            =
-=============================-->
+      <!-- Item 5 -->
+      <div class="timeline-item" data-aos="fade-right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="year">2023</div>
+          <h3>Multi-Mode Capability</h3>
+          <p>Expanded the instrument to support tension, compression, and bending modes in a single compact fixture — a key technical breakthrough that differentiates us in the market.</p>
+          <span class="status status-done">&#10003; Completed</span>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="timeline-item right" data-aos="fade-left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="year">2024</div>
+          <h3>Custom Software Suite</h3>
+          <p>Launched our proprietary software for experiment control, real-time data acquisition, and analysis — completing the end-to-end testing workflow for customers.</p>
+          <span class="status status-done">&#10003; Completed</span>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="timeline-item" data-aos="fade-right">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="year">2025</div>
+          <h3>Scale &amp; Expand</h3>
+          <p>Scaling manufacturing capabilities, expanding the customer base across academia and industry, and launching partnerships with key characterization equipment manufacturers.</p>
+          <span class="status status-inprogress">&#9654; In Progress</span>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="timeline-item right" data-aos="fade-left">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="year">2026 &amp; Beyond</div>
+          <h3>Global Reach</h3>
+          <p>Targeting international research institutes and industrial R&amp;D labs. Building the next generation of instruments with automated testing, AI-assisted analysis, and broader compatibility.</p>
+          <span class="status status-upcoming">&#9670; Upcoming</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="call-to-action-app section bg-blue">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2>Want to be part of our journey?</h2>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a href="contact.html" class="btn btn-rounded-icon">
+              <i class="ti-email"></i>
+              Contact us!!
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
 <footer>
   <div class="footer-main">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
           <div class="block">
-            <a href="index.html"><img src="images/title2.png"  width="200" height="auto" alt="footer-logo"></a>
-            <!-- Social Site Icons -->
+            <a href="index.html"><img src="images/title2.png" width="200" height="auto" alt="footer-logo"></a>
             <ul class="social-icon list-inline">
-
               <li class="list-inline-item">
                 <a href="https://linkedin.com/"><i class="ti-linkedin"></i></a>
               </li>
-
             </ul>
           </div>
         </div>
-        
         <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
           <div class="block-2">
-            <!-- heading -->
             <h6>Product</h6>
-            <!-- links -->
             <ul>
-              <li><a href="sign-up.html">Solutions</a></li>
-
+              <li><a href="solutions.html">Solutions</a></li>
             </ul>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
           <div class="block-2">
-            <!-- heading -->
             <h6>Company</h6>
-            <!-- links -->
             <ul>
-              <li><a href="career.html">Timeline</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="timeline.html">Timeline</a></li>
               <li><a href="contact.html">Contact</a></li>
-            
-      
             </ul>
           </div>
         </div>
-        
       </div>
     </div>
   </div>
   <div class="text-center bg-dark py-4">
-    <small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by InsituMicron.</small class="text-secondary">
+    <small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by InsituMicron.</small>
   </div>
 </footer>
 
+<div class="scroll-top-to">
+  <i class="ti-angle-up"></i>
+</div>
 
-  <!-- To Top -->
-  <div class="scroll-top-to">
-    <i class="ti-angle-up"></i>
-  </div>
-  
-  <!-- JAVASCRIPTS -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <script src="plugins/bootstrap/bootstrap.min.js"></script>
-  <script src="plugins/slick/slick.min.js"></script>
-  <script src="plugins/fancybox/jquery.fancybox.min.js"></script>
-  <script src="plugins/syotimer/jquery.syotimer.min.js"></script>
-  <script src="plugins/aos/aos.js"></script>
-  <!-- google map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
-  <script src="plugins/google-map/gmap.js"></script>
-  
-  <script src="js/script.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="plugins/slick/slick.min.js"></script>
+<script src="plugins/fancybox/jquery.fancybox.min.js"></script>
+<script src="plugins/aos/aos.js"></script>
+<script src="js/script.js"></script>
+
 </body>
-
 </html>
