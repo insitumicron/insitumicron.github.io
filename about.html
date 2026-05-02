@@ -2,24 +2,335 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>InsituMicron | Company</title>
+  <title>InsituMicron | Products</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="InsituMicron - Precision material testing solutions for academia and industry">
+  <meta name="description" content="InsituMicron Products — M3TEq-U miniature mechanical tester and EduDIC digital image correlation system">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 
   <link rel="shortcut icon" type="image/x-icon" href="images/logo-insitu_micron.png" />
 
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
-  <link rel="stylesheet" href="plugins/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
-  <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
   <link rel="stylesheet" href="plugins/aos/aos.css">
   <link href="css/style.css" rel="stylesheet">
+
+  <style>
+    /* ── Product Cards ── */
+    .products-section { padding: 80px 0; background: #f8f9fa; }
+
+    .product-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 35px rgba(0,0,0,0.09);
+      overflow: hidden;
+      margin-bottom: 50px;
+    }
+    .product-card .product-header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      padding: 40px 45px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .product-card .product-header .product-title-block h2 {
+      color: #fff;
+      font-weight: 700;
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+    .product-card .product-header .product-title-block p {
+      color: rgba(255,255,255,0.75);
+      font-size: 16px;
+      margin: 0;
+    }
+    .product-tag {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .product-body { padding: 45px; }
+
+    /* Spec table */
+    .spec-table { width: 100%; border-collapse: collapse; margin-bottom: 0; }
+    .spec-table tr { border-bottom: 1px solid #f0f0f0; }
+    .spec-table tr:last-child { border-bottom: none; }
+    .spec-table td {
+      padding: 11px 14px;
+      font-size: 15px;
+      vertical-align: top;
+    }
+    .spec-table td:first-child {
+      font-weight: 600;
+      color: #333;
+      width: 42%;
+      white-space: nowrap;
+    }
+    .spec-table td:last-child { color: #555; }
+    .spec-table tr:nth-child(even) td { background: #fafafa; }
+
+    /* Feature badges */
+    .feature-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #f0edff;
+      color: #5a52cc;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin: 4px 4px 4px 0;
+    }
+    .feature-badge i { margin-right: 6px; font-size: 12px; }
+
+    /* Integration chips */
+    .integration-chip {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin: 4px 4px 4px 0;
+    }
+
+    /* Action buttons */
+    .btn-spec {
+      background: #fff;
+      color: #5a52cc;
+      border: 2px solid #5a52cc;
+      border-radius: 30px;
+      padding: 12px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-right: 12px;
+      margin-top: 8px;
+    }
+    .btn-spec:hover { background: #5a52cc; color: #fff; }
+    .btn-quote {
+      background: #5a52cc;
+      color: #fff;
+      border: 2px solid #5a52cc;
+      border-radius: 30px;
+      padding: 12px 28px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+    .btn-quote:hover { background: #433b9e; border-color: #433b9e; }
+
+    /* ── Modals ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 40px;
+      width: 100%;
+      max-width: 520px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      animation: slideUp 0.25s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none; border: none;
+      font-size: 22px; color: #999;
+      cursor: pointer; line-height: 1;
+    }
+    .modal-close:hover { color: #333; }
+    .modal-box h4 { font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+    .modal-box .modal-subtitle { font-size: 14px; color: #888; margin-bottom: 24px; }
+    .modal-form-group { margin-bottom: 18px; }
+    .modal-form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .modal-form-group input,
+    .modal-form-group select,
+    .modal-form-group textarea {
+      width: 100%;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 15px;
+      color: #333;
+      background: #fafafa;
+      outline: none;
+      transition: border-color 0.2s;
+      font-family: inherit;
+    }
+    .modal-form-group input:focus,
+    .modal-form-group select:focus,
+    .modal-form-group textarea:focus {
+      border-color: #5a52cc;
+      background: #fff;
+    }
+    .modal-form-group textarea { resize: vertical; min-height: 90px; }
+    .btn-modal-submit {
+      width: 100%;
+      background: #5a52cc;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: inherit;
+    }
+    .btn-modal-submit:hover { background: #433b9e; }
+    .modal-success {
+      display: none;
+      text-align: center;
+      padding: 20px 0 10px;
+    }
+    .modal-success .success-icon {
+      width: 60px; height: 60px;
+      background: #e8f5e9;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 28px; color: #2e7d32;
+    }
+    .modal-success h5 { font-weight: 700; color: #1a1a2e; margin-bottom: 8px; }
+    .modal-success p { font-size: 14px; color: #666; }
+
+    /* Quote modal specifics */
+    .quote-email-block {
+      background: #f0edff;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .quote-email-block .email-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .quote-email-block a {
+      font-size: 18px;
+      font-weight: 700;
+      color: #5a52cc;
+      text-decoration: none;
+      display: block;
+    }
+    .quote-email-block a:hover { text-decoration: underline; }
+    .quote-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      color: #bbb;
+      font-size: 13px;
+    }
+    .quote-divider::before,
+    .quote-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e0e0e0;
+    }
+    .quote-tip {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: 1.5px solid #5a52cc;
+      color: #5a52cc;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+    .copy-btn:hover { background: #5a52cc; color: #fff; }
+
+    /* Section divider */
+    .product-divider {
+      border: none;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+      margin: 10px 0 40px;
+    }
+
+    /* Image placeholder for products */
+    .product-img-wrap {
+      background: #f0f0f0;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      margin-bottom: 30px;
+    }
+    .product-img-wrap img { max-width: 100%; max-height: 300px; object-fit: contain; }
+    .product-img-placeholder {
+      text-align: center;
+      color: #bbb;
+      padding: 40px;
+    }
+    .product-img-placeholder i { font-size: 4rem; display: block; margin-bottom: 12px; }
+    .product-img-placeholder span { font-size: 14px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .product-body { padding: 25px 20px; }
+      .product-header { padding: 30px 25px; }
+      .product-card .product-header .product-title-block h2 { font-size: 24px; }
+      .btn-spec, .btn-quote { width: 100%; margin-right: 0; text-align: center; display: block; }
+    }
+  </style>
 </head>
 
-<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
+<body class="body-wrapper">
 
+<!-- Nav -->
 <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
   <div class="container">
     <a class="navbar-brand" href="index.html"><img src="images/title.png" width="200" height="auto" alt="logo"></a>
@@ -29,21 +340,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="about.html">Company</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="solutions.html">Solutions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="timeline.html">Timeline</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item active"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
+        <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -56,185 +357,229 @@
     <div class="shape" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100"></div>
     <div class="shape" data-aos="fade-up-right" data-aos-duration="1000" data-aos-delay="200"></div>
     <div class="shape" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"></div>
-    <div class="shape" data-aos="fade-down-left" data-aos-duration="1000" data-aos-delay="100"></div>
     <div class="shape" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"></div>
-    <div class="shape" data-aos="fade-down-right" data-aos-duration="500" data-aos-delay="200"></div>
     <div class="shape" data-aos="zoom-out" data-aos-duration="2000" data-aos-delay="500"></div>
   </div>
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-md-7 text-center text-md-left">
-        <h1 class="text-white font-weight-bold mb-4">Precision at the Nanoscale</h1>
-        <p class="text-white mb-5">Pioneering in-situ solutions to accelerate materials discovery and innovation. We provide the tools that redefine the boundaries of material science.</p>
-        <a href="solutions.html" class="btn btn-main-md">Discover Our Solutions</a>
-      </div>
-      <div class="col-md-5 text-center mt-5 mt-md-0" data-aos="fade-left" data-aos-duration="1000">
-        <img class="img-fluid" src="images/Render9.png" alt="InsituMicron product">
+      <div class="col-md-8 text-center text-md-left">
+        <h1 class="text-white font-weight-bold mb-4">Our Products</h1>
+        <p class="text-white mb-5">Purpose-built instruments for microscale mechanical testing and full-field strain measurement. Designed for researchers who need reliable data, not just another piece of lab equipment.</p>
+        <a href="contact.html" class="btn btn-main-md">Get in Touch</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Mission Cards -->
-<section class="section pt-0 position-relative pull-top">
+<!-- Products Section -->
+<section class="products-section">
   <div class="container">
-    <div class="rounded shadow p-5 bg-white">
-      <div class="d-flex justify-content-center flex-wrap">
-        <div class="col-lg-3 col-md-6 mt-3 mt-md-0 text-center">
-          <img class="img-fluid" src="images/icons/innovate.png" width="50" alt="Innovate">
-          <h3 class="mt-4 text-capitalize h5">Innovate</h3>
-          <p class="regular text-muted">Create innovative products which aid in augmented materials research.</p>
-        </div>
-        <div class="col-lg-3 col-md-6 mt-3 mt-md-0 text-center">
-          <img class="img-fluid" src="images/icons/shake hand.png" width="110" alt="Collaborate">
-          <h3 class="mt-4 text-capitalize h5">Collaborate</h3>
-          <p class="regular text-muted">Partner with academia and industry to enhance product capabilities.</p>
-        </div>
-        <div class="col-lg-3 col-md-6 mt-3 mt-md-0 text-center">
-          <img class="img-fluid" src="images/icons/democra.png" width="60" alt="Democratize">
-          <h3 class="mt-4 text-capitalize h5">Democratize</h3>
-          <p class="regular text-muted">Make our technologies accessible to all research institutes.</p>
-        </div>
-        <div class="col-lg-3 col-md-6 mt-3 mt-md-0 text-center">
-          <img class="img-fluid" src="images/icons/advance.png" width="70" alt="Advance">
-          <h3 class="mt-4 text-capitalize h5">Advance</h3>
-          <p class="regular text-muted">Strategically expand the horizon of materials testing and characterization.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Who We Are -->
-<section class="feature section pt-0">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6" data-aos="fade-right">
-        <div class="image-content">
-          <img class="img-fluid" src="images/Gifs/Miniatured-mech-testing-3.gif" alt="Miniaturized testing">
+    <!-- ── PRODUCT 1: M3TEq-U ── -->
+    <div class="product-card" data-aos="fade-up">
+      <div class="product-header">
+        <div class="product-title-block">
+          <h2>M3TEq-U</h2>
+          <p>Miniature Multi-Mode Mechanical Testing Equipment — Uniaxial</p>
         </div>
+        <span class="product-tag">Mechanical Testing</span>
       </div>
-      <div class="col-lg-6">
-        <div class="feature-content">
-          <h2>Who We Are</h2>
-          <p class="desc">InsituMicron is a deep-tech startup incubated at IIT Madras Research Park, Chennai. We design and build miniaturized mechanical testing instruments that integrate seamlessly with characterization equipment like electron microscopes, X-ray diffractometers, and Raman spectrometers.</p>
-          <p class="desc mt-3">Our goal is simple: give researchers the tools to observe what actually happens inside a material as it deforms — in real time, at the microscale.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- What Drives Us -->
-<section class="feature section pt-0">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-2 order-lg-1">
-        <div class="feature-content">
-          <h2>What Drives Us</h2>
-          <p>Material failure causes everything from aircraft accidents to infrastructure collapse. Understanding failure at the microscale is the only way to truly prevent it. Traditional testing misses the picture — it measures after the fact, at the macro level.</p>
-          <p class="mt-3">We believe researchers deserve better. That's why we build instruments that let them <em>watch</em> materials fail, deform, and recover — with full characterization running simultaneously.</p>
-        </div>
-      </div>
-      <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
-        <div class="image-content">
-          <img class="img-fluid" src="images/Gifs/insitu-testing_4.gif" alt="In-situ testing">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="product-body">
+        <div class="row">
+          <!-- Image -->
+          <div class="col-lg-5 mb-4 mb-lg-0">
+            <div class="product-img-wrap">
+              <!-- Replace src with your actual product image path -->
+              <img src="images/Render9.png" alt="M3TEq-U miniature mechanical tester">
+            </div>
+            <!-- Key highlights -->
+            <div class="mb-3">
+              <span class="feature-badge"><i class="ti-bolt"></i> 5 kN Capacity</span>
+              <span class="feature-badge"><i class="ti-move"></i> 20 mm Stroke</span>
+              <span class="feature-badge"><i class="ti-eye"></i> 50× Magnification</span>
+              <span class="feature-badge"><i class="ti-loop"></i> Dual Control Modes</span>
+            </div>
+            <p style="font-size:13px; color:#aaa;">Compatible with:</p>
+            <span class="integration-chip">Optical Microscope</span>
+            <span class="integration-chip">XRD</span>
+            <span class="integration-chip">Raman</span>
+            <span class="integration-chip">DIC</span>
+          </div>
 
-<!-- Core Competencies -->
-<section class="service section bg-gray">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="section-title">
-          <h2>Core Competencies</h2>
-          <p>InsituMicron empowers researchers and engineers with state-of-the-art technology for unparalleled material characterization.</p>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-5">
-      <div class="col-lg-6 col-md-6 mb-5" data-aos="fade-up" data-aos-delay="0">
-        <div class="rounded shadow bg-white p-4 h-100">
-          <i class="ti-search text-primary" style="font-size:2rem;"></i>
-          <h3 class="mt-3 h5">Advanced Material Analysis</h3>
-          <p class="text-muted">Gain deeper insights with our high-resolution testing platforms for comprehensive material evaluation at the microscale.</p>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 mb-5" data-aos="fade-up" data-aos-delay="100">
-        <div class="rounded shadow bg-white p-4 h-100">
-          <i class="ti-settings text-primary" style="font-size:2rem;"></i>
-          <h3 class="mt-3 h5">Custom Instrumentation</h3>
-          <p class="text-muted">We design and develop bespoke testing modules tailored to your unique research and development requirements.</p>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 mb-5" data-aos="fade-up" data-aos-delay="200">
-        <div class="rounded shadow bg-white p-4 h-100">
-          <i class="ti-timer text-primary" style="font-size:2rem;"></i>
-          <h3 class="mt-3 h5">In-Situ Experimentation</h3>
-          <p class="text-muted">Observe material behavior in real-time under various stimuli, including thermal, mechanical, and electrical loads.</p>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 mb-5" data-aos="fade-up" data-aos-delay="300">
-        <div class="rounded shadow bg-white p-4 h-100">
-          <i class="ti-headphone-alt text-primary" style="font-size:2rem;"></i>
-          <h3 class="mt-3 h5">Dedicated Expert Support</h3>
-          <p class="text-muted">Our team of scientists and engineers provides dedicated support from integration to analysis — we don't just sell hardware.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <!-- Specs -->
+          <div class="col-lg-7">
+            <h4 style="font-weight:700; color:#1a1a2e; margin-bottom:18px;">Technical Specifications</h4>
+            <table class="spec-table">
+              <tr>
+                <td>Load Capacity</td>
+                <td>5 kN</td>
+              </tr>
+              <tr>
+                <td>Displacement Stroke</td>
+                <td>20 mm</td>
+              </tr>
+              <tr>
+                <td>Load Cell Accuracy</td>
+                <td>Class 0.2 with integrated displacement sensor</td>
+              </tr>
+              <tr>
+                <td>Control Modes</td>
+                <td>Load controlled &amp; Crosshead displacement control</td>
+              </tr>
+              <tr>
+                <td>Crosshead Speed Range</td>
+                <td>10<sup>−4</sup> mm/s to 10<sup>−1</sup> mm/s</td>
+              </tr>
+              <tr>
+                <td>Testing Modes</td>
+                <td>Uniaxial tension, Compression, 3-point bending, 4-point bending</td>
+              </tr>
+              <tr>
+                <td>Optics</td>
+                <td>50× magnification objective</td>
+              </tr>
+              <tr>
+                <td>Integrations</td>
+                <td>Optical Microscope, XRD, Raman Spectroscopy, DIC</td>
+              </tr>
+            </table>
 
-<!-- Software Section -->
-<section class="feature section">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6" data-aos="fade-right">
-        <img class="img-fluid rounded shadow" src="images/TOP_VIEW4.png" alt="InsituMicron software">
-      </div>
-      <div class="col-lg-6">
-        <div class="feature-content">
-          <h2>Intuitive Software, Powerful Results</h2>
-          <p class="desc">Our integrated software suite offers a seamless workflow from experiment setup to data acquisition and analysis. Built by researchers, for researchers — it doesn't make you learn a tool, it gets out of your way.</p>
-          <p class="mt-3">Real-time data visualization, automated load control, and direct export formats for downstream analysis software. Everything in one place.</p>
+            <div class="mt-4">
+              <p style="font-size:14px; color:#888; margin-bottom:20px;">Full datasheet available on request. Get the PDF or talk to our team directly.</p>
+              <button class="btn-spec" onclick="openSpecModal('m3teq')">
+                <i class="ti-file mr-2"></i> See Full Specifications
+              </button>
+              <button class="btn-quote" onclick="openQuoteModal('M3TEq-U')">
+                <i class="ti-tag mr-2"></i> Get a Quote
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- Where We Are -->
-<section class="section bg-gray">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <div class="section-title">
-          <h2>Where We Are</h2>
-          <p>Based out of IIT Madras Research Park — one of India's premier innovation hubs.</p>
+    <hr class="product-divider">
+
+    <!-- ── PRODUCT 2: EduDIC ── -->
+    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="product-header">
+        <div class="product-title-block">
+          <h2>EduDIC</h2>
+          <p>2D Digital Image Correlation System for Full-Field Strain Measurement</p>
+        </div>
+        <span class="product-tag">Strain Measurement</span>
+      </div>
+
+      <div class="product-body">
+        <div class="row">
+          <!-- Image -->
+          <div class="col-lg-5 mb-4 mb-lg-0">
+            <div class="product-img-wrap">
+              <!-- Replace src with your actual DIC product image -->
+              <div class="product-img-placeholder">
+                <i class="ti-camera"></i>
+                <span>EduDIC System Image<br><small>Replace with actual product photo</small></span>
+              </div>
+            </div>
+            <!-- Key highlights -->
+            <div class="mb-3">
+              <span class="feature-badge"><i class="ti-camera"></i> 2.3 Mpx CMOS Sensor</span>
+              <span class="feature-badge"><i class="ti-pulse"></i> 166 Hz Frame Rate</span>
+              <span class="feature-badge"><i class="ti-ruler"></i> 5 µm Resolution</span>
+              <span class="feature-badge"><i class="ti-desktop"></i> In-House Software</span>
+            </div>
+            <p style="font-size:13px; color:#aaa;">Can be coupled with:</p>
+            <span class="integration-chip">M3TEq-U</span>
+            <span class="integration-chip">Tensile Machines</span>
+            <span class="integration-chip">Fatigue Rigs</span>
+          </div>
+
+          <!-- Specs -->
+          <div class="col-lg-7">
+            <h4 style="font-weight:700; color:#1a1a2e; margin-bottom:18px;">Technical Specifications</h4>
+            <table class="spec-table">
+              <tr>
+                <td>Number of Cameras</td>
+                <td>1 or 2</td>
+              </tr>
+              <tr>
+                <td>Interface</td>
+                <td>USB3 Vision</td>
+              </tr>
+              <tr>
+                <td>Sensor</td>
+                <td>2.3 Mpx (1920 × 1200 px), CMOS</td>
+              </tr>
+              <tr>
+                <td>Frame Rate</td>
+                <td>166 Hz</td>
+              </tr>
+              <tr>
+                <td>Std. Lens Focal Length</td>
+                <td>25 mm</td>
+              </tr>
+              <tr>
+                <td>Camera Setup Configuration</td>
+                <td>Adjustable</td>
+              </tr>
+              <tr>
+                <td>Std. Field-of-View (FoV)</td>
+                <td>200 mm (H) × 125 mm (V)</td>
+              </tr>
+              <tr>
+                <td>Std. Distance-to-Object</td>
+                <td>470 mm</td>
+              </tr>
+              <tr>
+                <td colspan="2" style="background:#f0edff; color:#5a52cc; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:0.5px; padding:10px 14px;">Measurement Performance</td>
+              </tr>
+              <tr>
+                <td>Std. Spatial Resolution</td>
+                <td>105 µm/px</td>
+              </tr>
+              <tr>
+                <td>Std. In-Plane Resolution</td>
+                <td>5 µm</td>
+              </tr>
+              <tr>
+                <td>Std. Out-of-Plane Resolution</td>
+                <td>10 µm – 50 µm</td>
+              </tr>
+              <tr>
+                <td>Strain Resolution</td>
+                <td>50 µstrain</td>
+              </tr>
+              <tr>
+                <td>Analysis Software</td>
+                <td>In-house developed — purpose-built for DIC analysis workflows</td>
+              </tr>
+            </table>
+
+            <div class="mt-4">
+              <p style="font-size:14px; color:#888; margin-bottom:20px;">Full datasheet available on request. Get the PDF or talk to our team directly.</p>
+              <button class="btn-spec" onclick="openSpecModal('edudic')">
+                <i class="ti-file mr-2"></i> See Full Specifications
+              </button>
+              <button class="btn-quote" onclick="openQuoteModal('EduDIC')">
+                <i class="ti-tag mr-2"></i> Get a Quote
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row mt-4 justify-content-center text-center">
-      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
-        <div class="rounded shadow bg-white p-4">
-          <i class="ti-location-pin text-primary" style="font-size:2.5rem;"></i>
-          <h4 class="mt-3">IIT Madras Research Park</h4>
-          <p class="text-muted">Kanagam Road, Taramani<br>Chennai – 600 113, India</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="rounded shadow bg-white p-4">
-          <i class="ti-email text-primary" style="font-size:2.5rem;"></i>
-          <h4 class="mt-3">Get In Touch</h4>
-          <p class="text-muted">Have a question about our instruments or want to test your samples? Reach out — we respond fast.</p>
-          <a href="contact.html" class="btn btn-main-sm mt-2">Contact Us</a>
-        </div>
+
+    <!-- Custom requirement nudge -->
+    <div class="text-center mt-5" data-aos="fade-up">
+      <div class="rounded shadow bg-white p-5">
+        <i class="ti-settings" style="font-size:2.5rem; color:#5a52cc; display:block; margin-bottom:16px;"></i>
+        <h3 style="font-weight:700; color:#1a1a2e;">Need Something Custom?</h3>
+        <p style="color:#808080; max-width:520px; margin: 10px auto 24px;">Our instruments are designed to be modular. If your application needs a specific load range, fixture geometry, or integration that isn't listed here — we can build it. Tell us what you're trying to measure.</p>
+        <a href="contact.html" class="btn-quote" style="text-decoration:none; display:inline-block;">Talk to Our Engineers</a>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -243,12 +588,11 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h2>It's time to change the way you test Materials</h2>
+        <h2>Ready to change the way you test materials?</h2>
         <ul class="list-inline">
           <li class="list-inline-item">
             <a href="contact.html" class="btn btn-rounded-icon">
-              <i class="ti-email"></i>
-              Contact us!!
+              <i class="ti-email"></i> Contact us!!
             </a>
           </li>
         </ul>
@@ -274,9 +618,10 @@
         </div>
         <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
           <div class="block-2">
-            <h6>Product</h6>
+            <h6>Products</h6>
             <ul>
-              <li><a href="solutions.html">Solutions</a></li>
+              <li><a href="products.html">M3TEq-U</a></li>
+              <li><a href="products.html">EduDIC</a></li>
             </ul>
           </div>
         </div>
@@ -284,7 +629,7 @@
           <div class="block-2">
             <h6>Company</h6>
             <ul>
-              <li><a href="about.html">About Us</a></li>
+              <li><a href="solutions.html">Solutions</a></li>
               <li><a href="timeline.html">Timeline</a></li>
               <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -298,16 +643,216 @@
   </div>
 </footer>
 
-<div class="scroll-top-to">
-  <i class="ti-angle-up"></i>
+<div class="scroll-top-to"><i class="ti-angle-up"></i></div>
+
+
+<!-- ════════════════════════════════════════
+     MODAL 1: SPEC REQUEST (shared for both products)
+     ════════════════════════════════════════ -->
+<div class="modal-overlay" id="specModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('specModal')">&#10005;</button>
+
+    <!-- Form view -->
+    <div id="specFormView">
+      <h4>Download Full Specifications</h4>
+      <p class="modal-subtitle" id="specModalSubtitle">Fill in your details and we'll send the datasheet straight to your inbox.</p>
+
+      <div class="modal-form-group">
+        <label>Full Name *</label>
+        <input type="text" id="specName" placeholder="Dr. Jane Smith" required>
+      </div>
+      <div class="modal-form-group">
+        <label>Email Address *</label>
+        <input type="email" id="specEmail" placeholder="jane@university.edu" required>
+      </div>
+      <div class="modal-form-group">
+        <label>Organization / Institute</label>
+        <input type="text" id="specOrg" placeholder="IIT Madras">
+      </div>
+      <div class="modal-form-group">
+        <label>Your Requirement</label>
+        <textarea id="specRequirement" placeholder="Briefly describe your application or what you're trying to test..."></textarea>
+      </div>
+      <input type="hidden" id="specProduct" value="">
+      <button class="btn-modal-submit" onclick="submitSpecForm()">
+        <i class="ti-download mr-2"></i> Send Me the Datasheet
+      </button>
+      <p style="font-size:12px; color:#bbb; margin-top:12px; text-align:center;">We don't spam. Your details are only used to send the spec sheet and follow up if needed.</p>
+    </div>
+
+    <!-- Success view -->
+    <div class="modal-success" id="specSuccessView">
+      <div class="success-icon">&#10003;</div>
+      <h5>You're all set!</h5>
+      <p>We've received your request. The full specification PDF for <strong id="specSuccessProduct"></strong> will be sent to your email shortly.</p>
+      <p style="font-size:13px; color:#aaa; margin-top:10px;">Can't wait? Reach us directly at <strong>info@insitumicron.com</strong></p>
+      <button class="btn-modal-submit mt-3" onclick="closeModal('specModal')" style="background:#2e7d32;">Close</button>
+    </div>
+  </div>
 </div>
 
+
+<!-- ════════════════════════════════════════
+     MODAL 2: GET A QUOTE
+     ════════════════════════════════════════ -->
+<div class="modal-overlay" id="quoteModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('quoteModal')">&#10005;</button>
+    <h4>Get a Quote</h4>
+    <p class="modal-subtitle" id="quoteModalSubtitle">We'll get back to you with pricing within 1–2 business days.</p>
+
+    <div class="quote-email-block">
+      <div class="email-label">Send your enquiry directly to</div>
+      <a href="mailto:info@insitumicron.com?subject=Quote Request" id="quoteMailLink">info@insitumicron.com</a>
+      <button class="copy-btn" onclick="copyEmail()">
+        <i class="ti-files"></i> <span id="copyBtnText">Copy email</span>
+      </button>
+    </div>
+
+    <div class="quote-divider">or fill the form below</div>
+
+    <p class="quote-tip">Include: the product you're interested in, quantity, your institution/organization, and any specific requirements.</p>
+
+    <div class="modal-form-group">
+      <label>Your Name *</label>
+      <input type="text" id="quoteName" placeholder="Dr. Jane Smith" required>
+    </div>
+    <div class="modal-form-group">
+      <label>Email Address *</label>
+      <input type="email" id="quoteEmail" placeholder="jane@university.edu" required>
+    </div>
+    <div class="modal-form-group">
+      <label>Organization</label>
+      <input type="text" id="quoteOrg" placeholder="IIT Madras">
+    </div>
+    <div class="modal-form-group">
+      <label>Requirement / Message</label>
+      <textarea id="quoteMsg" placeholder="e.g. Looking for pricing on 1 unit of M3TEq-U for tensile testing of thin films..."></textarea>
+    </div>
+    <input type="hidden" id="quoteProduct" value="">
+    <button class="btn-modal-submit" onclick="submitQuoteForm()">
+      <i class="ti-email mr-2"></i> Send Quote Request
+    </button>
+  </div>
+</div>
+
+
+<!-- Scripts -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/bootstrap.min.js"></script>
-<script src="plugins/slick/slick.min.js"></script>
-<script src="plugins/fancybox/jquery.fancybox.min.js"></script>
 <script src="plugins/aos/aos.js"></script>
 <script src="js/script.js"></script>
+
+<script>
+  // ── Modal open/close ──
+  function openSpecModal(product) {
+    var names = { m3teq: 'M3TEq-U', edudic: 'EduDIC' };
+    var name = names[product] || product;
+    document.getElementById('specProduct').value = name;
+    document.getElementById('specModalSubtitle').textContent =
+      'Fill in your details and we\'ll send the ' + name + ' datasheet straight to your inbox.';
+    document.getElementById('specFormView').style.display = 'block';
+    document.getElementById('specSuccessView').style.display = 'none';
+    document.getElementById('specModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openQuoteModal(product) {
+    document.getElementById('quoteProduct').value = product;
+    document.getElementById('quoteModalSubtitle').textContent =
+      'Requesting a quote for: ' + product + '. We\'ll get back to you within 1–2 business days.';
+    var subject = encodeURIComponent('Quote Request — ' + product);
+    document.getElementById('quoteMailLink').href =
+      'mailto:info@insitumicron.com?subject=' + subject;
+    document.getElementById('quoteModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close on overlay click
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closeModal(overlay.id);
+    });
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(function(m) {
+        closeModal(m.id);
+      });
+    }
+  });
+
+  // ── Spec form submit ──
+  function submitSpecForm() {
+    var name = document.getElementById('specName').value.trim();
+    var email = document.getElementById('specEmail').value.trim();
+    if (!name || !email) {
+      alert('Please fill in your name and email.');
+      return;
+    }
+    // ── Hook up to your backend / Formspree / EmailJS here ──
+    // Example with Formspree: replace YOUR_FORM_ID below and uncomment
+    /*
+    fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        org: document.getElementById('specOrg').value,
+        requirement: document.getElementById('specRequirement').value,
+        product: document.getElementById('specProduct').value,
+        _subject: 'Spec Sheet Request — ' + document.getElementById('specProduct').value
+      })
+    });
+    */
+    var product = document.getElementById('specProduct').value;
+    document.getElementById('specSuccessProduct').textContent = product;
+    document.getElementById('specFormView').style.display = 'none';
+    document.getElementById('specSuccessView').style.display = 'block';
+  }
+
+  // ── Quote form submit ──
+  function submitQuoteForm() {
+    var name = document.getElementById('quoteName').value.trim();
+    var email = document.getElementById('quoteEmail').value.trim();
+    if (!name || !email) {
+      alert('Please fill in your name and email.');
+      return;
+    }
+    var product = document.getElementById('quoteProduct').value;
+    var msg = document.getElementById('quoteMsg').value;
+    var org = document.getElementById('quoteOrg').value;
+    // Build mailto as fallback — works without a backend
+    var subject = encodeURIComponent('Quote Request — ' + product);
+    var body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Organization: ' + org + '\n' +
+      'Product: ' + product + '\n\n' +
+      'Message:\n' + msg
+    );
+    window.location.href = 'mailto:info@insitumicron.com?subject=' + subject + '&body=' + body;
+  }
+
+  // ── Copy email ──
+  function copyEmail() {
+    navigator.clipboard.writeText('info@insitumicron.com').then(function() {
+      document.getElementById('copyBtnText').textContent = 'Copied!';
+      setTimeout(function() {
+        document.getElementById('copyBtnText').textContent = 'Copy email';
+      }, 2000);
+    });
+  }
+</script>
 
 </body>
 </html>
