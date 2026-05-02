@@ -1,46 +1,113 @@
 <!DOCTYPE html>
-
-<!--
- // WEBSITE: https://themefisher.com
- // TWITTER: https://twitter.com/themefisher
- // FACEBOOK: https://www.facebook.com/themefisher
- // GITHUB: https://github.com/themefisher/
--->
-
 <html lang="en">
 <head>
-
-  <!-- Basic Page Needs
-  ================================================== -->
   <meta charset="utf-8">
-  <title>InsituMicron</title>
-
-  <!-- Mobile Specific Metas
-  ================================================== -->
+  <title>InsituMicron | Contact</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Bootstrap App Landing Template">
+  <meta name="description" content="Get in touch with InsituMicron — material testing instruments, failure analysis, and in-situ characterization">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta name="author" content="Themefisher">
-  <meta name="generator" content="Themefisher Small Apps Template v1.0">
 
-  <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="images/logo-insitu_micron.png" />
-  
-  <!-- PLUGINS CSS STYLE -->
+
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
   <link rel="stylesheet" href="plugins/slick/slick.css">
   <link rel="stylesheet" href="plugins/slick/slick-theme.css">
   <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
   <link rel="stylesheet" href="plugins/aos/aos.css">
-
-  <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
 
+  <style>
+    .contact-form-section { padding: 80px 0; background: #f8f9fa; }
+    .contact-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+      height: 100%;
+    }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 35px;
+    }
+    .contact-info-item .icon-box {
+      width: 55px; height: 55px;
+      background: #f0edff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-right: 20px;
+    }
+    .contact-info-item .icon-box i {
+      font-size: 1.3rem;
+      color: #6c63ff;
+    }
+    .contact-info-item .info h5 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 5px;
+    }
+    .contact-info-item .info p, .contact-info-item .info a {
+      font-size: 15px;
+      color: #808080;
+      margin: 0;
+      text-decoration: none;
+    }
+    .contact-info-item .info a:hover { color: #6c63ff; }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .form-control {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 15px;
+      color: #333;
+      background: #fafafa;
+      transition: border-color 0.2s;
+    }
+    .form-control:focus {
+      border-color: #6c63ff;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(108,99,255,0.1);
+    }
+    textarea.form-control { resize: vertical; min-height: 130px; }
+    .btn-submit {
+      background: #6c63ff;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 40px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      width: 100%;
+    }
+    .btn-submit:hover { background: #574fd6; transform: translateY(-1px); }
+    .form-success {
+      display: none;
+      background: #d4edda;
+      border-radius: 8px;
+      padding: 15px 20px;
+      color: #155724;
+      font-size: 15px;
+      margin-top: 15px;
+    }
+
+    /* Map embed */
+    .map-section { padding: 0; }
+    .map-section iframe { width: 100%; height: 400px; border: 0; display: block; }
+  </style>
 </head>
 
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
-
 
 <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
   <div class="container">
@@ -51,253 +118,234 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown @@home">
-          <a class="nav-link" href="index.html">Home
-          </a>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
         </li>
-        <li class="nav-item @@about">
+        <li class="nav-item">
           <a class="nav-link" href="about.html">Company</a>
         </li>
-        <li class="nav-item @@solutions">
+        <li class="nav-item">
           <a class="nav-link" href="solutions.html">Solutions</a>
         </li>
-        <li class="nav-item @@timeline">
+        <li class="nav-item">
           <a class="nav-link" href="timeline.html">Timeline</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="contact.html">Contact</a>
         </li>
-
       </ul>
     </div>
   </div>
 </nav>
 
-<!--================================
-=            Page Title            =
-=================================-->
-
-<section class="section page-title moveupn50">
-	<div class="container moveup50">
-		<div class="row">
-			<div class="col-sm-8 m-auto">
-				<!-- Page Title -->
-				<h1>Contact Us</h1>
-				<!-- Page Description -->
-				<p>For all enquries, please contact us!.</p>
-			</div>
-		</div>
-	</div>
+<!-- Hero -->
+<section class="section gradient-banner moveupn50">
+  <div class="shapes-container">
+    <div class="shape" data-aos="fade-down-left" data-aos-duration="1500" data-aos-delay="100"></div>
+    <div class="shape" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100"></div>
+    <div class="shape" data-aos="fade-up-right" data-aos-duration="1000" data-aos-delay="200"></div>
+    <div class="shape" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"></div>
+    <div class="shape" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"></div>
+    <div class="shape" data-aos="zoom-out" data-aos-duration="2000" data-aos-delay="500"></div>
+  </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8 text-center text-md-left">
+        <h1 class="text-white font-weight-bold mb-4">Get In Touch</h1>
+        <p class="text-white mb-5">Interested in our products? Want to test your samples? Looking for failure analysis? We respond fast — reach out and let's talk.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!--====  End of Page Title  ====-->
+<!-- Contact Section -->
+<section class="contact-form-section">
+  <div class="container">
+    <div class="row">
 
+      <!-- Info Column -->
+      <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+        <div class="contact-card">
+          <h3 class="mb-4" style="font-weight:600;">Contact Information</h3>
 
-<!--=====================================
-=            Address and Map            =
-======================================-->
-<section class="address moveup50">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-5 align-self-center">
-				<div class="block">
-					<div class="address-block text-center mb-5">
-						<div class="icon">
-							<i class="ti-mobile"></i>
-						</div>
-						<div class="details">
-							<h3>(+91) 7673978662</h3>
-							<h3>(+91) 9834620142</h3>
-						</div>
-					</div>
-					<div class="address-block text-center">
-						<div class="icon">
-							<i class="ti-map-alt"></i>
-						</div>
-						<div class="details">
-							<h3>IIT Madras Research Park</h3>
-							<h3>Chennai - 600113, India</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-7 mt-5 mt-lg-0">
-			    <div id="googleMap" style="width:100%;height:400px;"></div>
-			
-			    <script>
-			        function myMap() {
-			            var location = new google.maps.LatLng(12.99327366546197, 80.24391972291076);
-			            var style = [
-			                {
-			                    "stylers": [
-			                        { "hue": "#2c3e50" },
-			                        { "saturation": 250 }
-			                    ]
-			                },
-			                {
-			                    "featureType": "road",
-			                    "elementType": "geometry",
-			                    "stylers": [
-			                        { "lightness": 50 },
-			                        { "visibility": "simplified" }
-			                    ]
-			                },
-			                {
-			                    "featureType": "road",
-			                    "elementType": "labels",
-			                    "stylers": [
-			                        { "visibility": "off" }
-			                    ]
-			                }
-			            ];
-			
-			            var mapProp = {
-			                center: location,
-			                mapTypeId: google.maps.MapTypeId.ROADMAP,
-			                backgroundColor: "#000",
-			                zoom: 15,
-			                panControl: false,
-			                zoomControl: true,
-			                mapTypeControl: false,
-			                scaleControl: false,
-			                streetViewControl: false,
-			                overviewMapControl: false,
-			                zoomControlOptions: {
-			                    style: google.maps.ZoomControlStyle.LARGE
-			                }
-			            };
-			
-			            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-			
-			            var mapType = new google.maps.StyledMapType(style, { name: "Grayscale" });
-			            map.mapTypes.set('grey', mapType);
-			            map.setMapTypeId('grey');
-			
-			            var marker_image = 'plugins/google-map/images/marker.png';
-			            var pinIcon = new google.maps.MarkerImage(marker_image, null, null, null, new google.maps.Size(37, 37));
-			
-			            var marker = new google.maps.Marker({
-			                position: location,
-			                map: map,
-			                icon: pinIcon,
-			                title: 'Chennai Location'
-			            });
-			        }
-			    </script>
-			
-			    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9aXByUcDdjfzjl24xWXq58AePd_BK_6I&callback=myMap"></script>
-			</div>
+          <div class="contact-info-item">
+            <div class="icon-box"><i class="ti-location-pin"></i></div>
+            <div class="info">
+              <h5>Address</h5>
+              <p>IIT Madras Research Park<br>Kanagam Road, Taramani<br>Chennai – 600 113, India</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="icon-box"><i class="ti-mobile"></i></div>
+            <div class="info">
+              <h5>Phone</h5>
+              <a href="tel:+917673978662">+91 76739 78662</a><br>
+              <a href="tel:+919834620142">+91 98346 20142</a>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="icon-box"><i class="ti-linkedin"></i></div>
+            <div class="info">
+              <h5>LinkedIn</h5>
+              <a href="https://linkedin.com/" target="_blank">Follow us on LinkedIn</a>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <h5 class="mb-3" style="font-weight:600; color:#000;">What we can help with</h5>
+          <ul class="list-unstyled" style="font-size:15px; color:#808080;">
+            <li class="mb-2"><i class="ti-check mr-2" style="color:#6c63ff;"></i> Miniature mechanical testing of your samples</li>
+            <li class="mb-2"><i class="ti-check mr-2" style="color:#6c63ff;"></i> In-situ XRD, Raman &amp; microscopy experiments</li>
+            <li class="mb-2"><i class="ti-check mr-2" style="color:#6c63ff;"></i> Failure analysis for industrial components</li>
+            <li class="mb-2"><i class="ti-check mr-2" style="color:#6c63ff;"></i> Custom instrument development</li>
+            <li class="mb-2"><i class="ti-check mr-2" style="color:#6c63ff;"></i> Product demos and trials</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Form Column -->
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="contact-card">
+          <h3 class="mb-4" style="font-weight:600;">Send Us a Message</h3>
+
+          <form id="contactForm" action="https://formspree.io/f/yourformid" method="POST">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="name">Full Name *</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Dr. Jane Smith" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="jane@university.edu" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="+91 00000 00000">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="organization">Organization / Institute</label>
+                  <input type="text" class="form-control" id="organization" name="organization" placeholder="IIT Madras">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="interest">I'm interested in *</label>
+              <select class="form-control" id="interest" name="interest" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="product-demo">Product Demo / Trial</option>
+                <option value="sample-testing">Testing My Samples</option>
+                <option value="failure-analysis">Failure Analysis Service</option>
+                <option value="instrument-purchase">Instrument Purchase</option>
+                <option value="custom-development">Custom Instrument Development</option>
+                <option value="collaboration">Research Collaboration</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea class="form-control" id="message" name="message" placeholder="Tell us about your application, the material you're testing, or what you're looking to achieve..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Send Message <i class="ti-arrow-right ml-2"></i></button>
+            <div class="form-success" id="formSuccess">
+              &#10003; Thanks! We've received your message and will get back to you shortly.
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<!--====  End of Address and Map  ====-->
-<section class="contact-form section moveup50">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="mb-5 text-center">Drop us a mail</h2>
-			</div>
-			<div class="col-12">
-				<form action="">
-					<div class="row">
-						<!-- Name -->
-						<div class="col-md-6 mb-2">
-							<input class="form-control main" type="text" placeholder="Name" required>
-						</div>
-						<!-- Email -->
-						<div class="col-md-6 mb-2">
-							<input class="form-control main" type="email" placeholder="Your Email Address" required>
-						</div>
-						<!-- subject -->
-						<div class="col-md-12 mb-2">
-							<input class="form-control main" type="text" placeholder="Subject" required>
-						</div>
-						<!-- Message -->
-						<div class="col-md-12 mb-2">
-							<textarea class="form-control main" name="message" rows="10" placeholder="Your Message"></textarea>
-						</div>
-						<!-- Submit Button -->
-						<div class="col-12 text-right">
-							<button class="btn btn-main-md">Submit</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+<!-- Map -->
+<section class="map-section">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.6497!2d80.2430!3d12.9926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267e0f0a1c9cd%3A0x2b9a9e6bb7ea5f43!2sIIT%20Madras%20Research%20Park!5e0!3m2!1sen!2sin!4v1"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="IIT Madras Research Park">
+  </iframe>
 </section>
 
-<!--============================
-=            Footer            =
-=============================-->
+<!-- Footer -->
 <footer>
   <div class="footer-main">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
           <div class="block">
-            <a href="index.html"><img src="images/title2.png"  width="200" height="auto" alt="footer-logo"></a>
-            <!-- Social Site Icons -->
+            <a href="index.html"><img src="images/title2.png" width="200" height="auto" alt="footer-logo"></a>
             <ul class="social-icon list-inline">
-
               <li class="list-inline-item">
                 <a href="https://linkedin.com/"><i class="ti-linkedin"></i></a>
               </li>
-
             </ul>
           </div>
         </div>
-        
         <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
           <div class="block-2">
-            <!-- heading -->
             <h6>Product</h6>
-            <!-- links -->
             <ul>
-              <li><a href="sign-up.html">Solutions</a></li>
-
+              <li><a href="solutions.html">Solutions</a></li>
             </ul>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
           <div class="block-2">
-            <!-- heading -->
             <h6>Company</h6>
-            <!-- links -->
             <ul>
-              <li><a href="career.html">Timeline</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="timeline.html">Timeline</a></li>
               <li><a href="contact.html">Contact</a></li>
-            
-      
             </ul>
           </div>
         </div>
-        
       </div>
     </div>
   </div>
   <div class="text-center bg-dark py-4">
-    <small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by InsituMicron.</small class="text-secondary">
+    <small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by InsituMicron.</small>
   </div>
 </footer>
 
+<div class="scroll-top-to">
+  <i class="ti-angle-up"></i>
+</div>
 
-  <!-- To Top -->
-  <div class="scroll-top-to">
-    <i class="ti-angle-up"></i>
-  </div>
-  
-  <!-- JAVASCRIPTS -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <script src="plugins/bootstrap/bootstrap.min.js"></script>
-  <script src="plugins/slick/slick.min.js"></script>
-  <script src="plugins/fancybox/jquery.fancybox.min.js"></script>
-  <script src="plugins/syotimer/jquery.syotimer.min.js"></script>
-  <script src="plugins/aos/aos.js"></script>
-  <!-- google map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
-  <script src="plugins/google-map/gmap.js"></script>
-  
-  <script src="js/script.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="plugins/slick/slick.min.js"></script>
+<script src="plugins/fancybox/jquery.fancybox.min.js"></script>
+<script src="plugins/aos/aos.js"></script>
+<script src="js/script.js"></script>
+
+<script>
+  // Simple form feedback — works without Formspree too, just shows confirmation
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // If you're NOT using Formspree, uncomment the next line and remove the action attr
+    // e.preventDefault();
+    setTimeout(function() {
+      document.getElementById('formSuccess').style.display = 'block';
+    }, 500);
+  });
+</script>
+
 </body>
-
 </html>
