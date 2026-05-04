@@ -2,26 +2,193 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>InsituMicron | Timeline</title>
+  <title>InsituMicron | About Us</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="InsituMicron journey — from idea to product">
+  <meta name="description" content="About InsituMicron — founded at IIT Madras, building intelligent materials testing instruments">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 
   <link rel="shortcut icon" type="image/x-icon" href="images/logo-insitu_micron.png" />
-
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
-  <link rel="stylesheet" href="plugins/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
-  <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
   <link rel="stylesheet" href="plugins/aos/aos.css">
   <link href="css/style.css" rel="stylesheet">
 
   <style>
-    /* ── Timeline Component ── */
-    .timeline-section { padding: 80px 0; background: #f8f9fa; }
-    .timeline-wrapper { position: relative; padding: 20px 0; }
-    .timeline-wrapper::before {
+    /* ── Global helpers ── */
+    .section-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #6c63ff;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .section-heading {
+      font-size: 34px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+    .section-subtext {
+      font-size: 16px;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Mission / Vision ── */
+    .mv-section { padding: 90px 0; background: #fff; }
+    .mv-card {
+      border-radius: 14px;
+      padding: 40px 36px;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .mv-card.mission {
+      background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+      color: #fff;
+    }
+    .mv-card.vision {
+      background: linear-gradient(135deg, #6c63ff 0%, #a78bfa 100%);
+      color: #fff;
+    }
+    .mv-card .mv-icon {
+      width: 56px; height: 56px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+    }
+    .mv-card .mv-icon i { font-size: 1.4rem; color: #fff; }
+    .mv-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .mv-card p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.75;
+      margin: 0;
+    }
+    .mv-card .bg-shape {
+      position: absolute;
+      bottom: -30px; right: -30px;
+      width: 120px; height: 120px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+
+    /* ── Story ── */
+    .story-section { padding: 90px 0; background: #f8f9fa; }
+    .story-stat {
+      text-align: center;
+      padding: 28px 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    }
+    .story-stat .number {
+      font-size: 42px;
+      font-weight: 800;
+      color: #6c63ff;
+      line-height: 1;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .story-stat .label {
+      font-size: 14px;
+      color: #888;
+      font-weight: 600;
+    }
+
+    /* ── Team ── */
+    .team-section { padding: 90px 0; background: #fff; }
+    .team-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+      padding: 36px 28px 32px;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+      height: 100%;
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(108,99,255,0.15);
+    }
+    .team-avatar {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6c63ff, #a78bfa);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .team-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+    .team-card .role {
+      font-size: 13px;
+      font-weight: 700;
+      color: #6c63ff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+    .team-card .bio {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.65;
+      margin: 0;
+    }
+    .team-card .credential {
+      display: inline-block;
+      background: #f0edff;
+      color: #5a52cc;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 14px;
+    }
+    /* Advisor styling — smaller, different accent */
+    .advisor-card {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+      border: 1.5px solid #e8e8f0;
+      height: 100%;
+    }
+    .advisor-avatar {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a1a2e, #0f3460);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .advisor-card h5 { font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+    .advisor-card .role { font-size: 12px; font-weight: 700; color: #6c63ff; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+    .advisor-card .bio { font-size: 13px; color: #888; line-height: 1.6; margin: 0; }
+
+    /* ── Timeline ── */
+    .timeline-section { padding: 90px 0; background: #f8f9fa; }
+    .tl-wrap { position: relative; padding: 10px 0; }
+    .tl-wrap::before {
       content: '';
       position: absolute;
       left: 50%;
@@ -30,23 +197,23 @@
       background: linear-gradient(to bottom, #6c63ff, #a78bfa);
       transform: translateX(-50%);
     }
-    .timeline-item {
+    .tl-item {
       display: flex;
       justify-content: flex-end;
-      padding-right: calc(50% + 40px);
-      margin-bottom: 50px;
+      padding-right: calc(50% + 44px);
+      margin-bottom: 44px;
       position: relative;
     }
-    .timeline-item.right {
+    .tl-item.right {
       justify-content: flex-start;
       padding-right: 0;
-      padding-left: calc(50% + 40px);
+      padding-left: calc(50% + 44px);
     }
-    .timeline-dot {
+    .tl-dot {
       position: absolute;
       left: 50%;
-      top: 20px;
-      width: 18px; height: 18px;
+      top: 18px;
+      width: 16px; height: 16px;
       background: #6c63ff;
       border-radius: 50%;
       border: 3px solid #fff;
@@ -54,59 +221,124 @@
       transform: translateX(-50%);
       z-index: 1;
     }
-    .timeline-card {
+    .tl-dot.future { background: #a78bfa; box-shadow: 0 0 0 3px #a78bfa; }
+    .tl-card {
       background: #fff;
-      border-radius: 10px;
-      padding: 25px 30px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-      max-width: 420px;
+      border-radius: 12px;
+      padding: 22px 26px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      max-width: 400px;
       width: 100%;
     }
-    .timeline-card .year {
-      font-size: 13px;
-      font-weight: 700;
+    .tl-card .period {
+      font-size: 12px;
+      font-weight: 800;
       color: #6c63ff;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
-    .timeline-card h3 {
-      font-size: 18px;
-      font-weight: 600;
-      color: #000;
-      margin-bottom: 10px;
-    }
-    .timeline-card p { font-size: 15px; color: #808080; margin: 0; }
-    .timeline-card .status {
+    .tl-card h4 { font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; }
+    .tl-card ul { padding-left: 18px; margin: 0; }
+    .tl-card ul li { font-size: 14px; color: #666; margin-bottom: 4px; }
+    .tl-badge {
       display: inline-block;
       font-size: 11px;
       font-weight: 700;
       padding: 3px 10px;
       border-radius: 20px;
-      margin-top: 12px;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+    .tl-done  { background: #d4edda; color: #155724; }
+    .tl-next  { background: #fff3cd; color: #856404; }
+    .tl-ahead { background: #d1ecf1; color: #0c5460; }
+
+    @media (max-width: 768px) {
+      .tl-wrap::before { left: 18px; }
+      .tl-item, .tl-item.right {
+        justify-content: flex-start;
+        padding-left: 50px;
+        padding-right: 12px;
+      }
+      .tl-dot { left: 18px; }
+      .tl-card { max-width: 100%; }
+    }
+
+    /* ── Awards ── */
+    .awards-section { padding: 80px 0; background: #fff; }
+    .award-card {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: center;
+      border: 1.5px solid #e8e8f0;
+      height: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .award-card:hover {
+      border-color: #6c63ff;
+      box-shadow: 0 6px 25px rgba(108,99,255,0.1);
+    }
+    .award-card .award-icon {
+      width: 55px; height: 55px;
+      background: linear-gradient(135deg, #6c63ff, #a78bfa);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .award-card .award-icon i { font-size: 1.2rem; color: #fff; }
+    .award-card h5 { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+    .award-card p { font-size: 13px; color: #888; margin: 0; }
+
+    /* ── Case Studies ── */
+    .cases-section { padding: 80px 0; background: #f8f9fa; }
+    .case-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      height: 100%;
+      border-left: 4px solid #6c63ff;
+    }
+    .case-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      background: #f0edff;
+      color: #6c63ff;
+      padding: 3px 10px;
+      border-radius: 20px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      margin-bottom: 14px;
     }
-    .status-done { background: #d4edda; color: #155724; }
-    .status-inprogress { background: #fff3cd; color: #856404; }
-    .status-upcoming { background: #d1ecf1; color: #0c5460; }
-
-    /* Mobile: stack vertically */
-    @media (max-width: 768px) {
-      .timeline-wrapper::before { left: 20px; }
-      .timeline-item,
-      .timeline-item.right {
-        justify-content: flex-start;
-        padding-left: 55px;
-        padding-right: 15px;
-      }
-      .timeline-dot { left: 20px; }
+    .case-card h4 { font-size: 17px; font-weight: 700; color: #1a1a2e; margin-bottom: 10px; }
+    .case-card .case-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
     }
+    .case-meta-item { font-size: 12px; color: #888; }
+    .case-meta-item strong { color: #555; }
+    .case-card p { font-size: 14px; color: #666; line-height: 1.65; margin: 0; }
+    .case-result {
+      margin-top: 14px;
+      background: #f0edff;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #5a52cc;
+      font-weight: 600;
+    }
+    .case-result i { margin-right: 6px; }
   </style>
 </head>
 
-<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
+<body class="body-wrapper">
 
+<!-- Nav -->
 <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
   <div class="container">
     <a class="navbar-brand" href="index.html"><img src="images/title.png" width="200" height="auto" alt="logo"></a>
@@ -116,27 +348,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">Company</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="solutions.html">Solutions</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="timeline.html">Timeline</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item active"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Hero -->
+<!-- ── HERO ── -->
 <section class="section gradient-banner moveupn50">
   <div class="shapes-container">
     <div class="shape" data-aos="fade-down-left" data-aos-duration="1500" data-aos-delay="100"></div>
@@ -149,112 +371,292 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-8 text-center text-md-left">
-        <h1 class="text-white font-weight-bold mb-4">Our Journey</h1>
-        <p class="text-white mb-5">Great things happen when you plan them well. Here's how InsituMicron went from a research idea to a company building the next generation of material testing instruments.</p>
+        <h1 class="text-white font-weight-bold mb-4">About InsituMicron</h1>
+        <p class="text-white mb-5">Founded by researchers from IIT Madras, we build compact, intelligent instruments for materials testing — bridging the physical and digital worlds of engineering.</p>
+        <a href="#mission" class="btn btn-main-md">Our Story</a>
+      </div>
+      <div class="col-md-4 text-center mt-5 mt-md-0" data-aos="fade-left">
+        <img class="img-fluid" src="images/Render9.png" alt="InsituMicron instrument">
       </div>
     </div>
   </div>
 </section>
 
-<!-- Timeline -->
-<section class="timeline-section">
+<!-- ── QUICK STATS ── -->
+<section class="section pt-0 position-relative pull-top">
   <div class="container">
-    <div class="row">
+    <div class="rounded shadow p-5 bg-white">
+      <div class="row text-center">
+        <div class="col-6 col-md-3 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="0">
+          <div class="story-stat">
+            <span class="number">100+</span>
+            <span class="label">Customer Interviews</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+          <div class="story-stat">
+            <span class="number">4</span>
+            <span class="label">Co-Founders</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="200">
+          <div class="story-stat">
+            <span class="number">IIT</span>
+            <span class="label">Madras Incubated</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="story-stat">
+            <span class="number">4+</span>
+            <span class="label">Industries Served</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MISSION & VISION ── -->
+<section class="mv-section" id="mission">
+  <div class="container">
+    <div class="row mb-5 text-center">
       <div class="col-12">
-        <div class="section-title text-center mb-5">
-          <h2>Milestones &amp; Roadmap</h2>
-          <p>From inception to the future — every step of the InsituMicron story</p>
+        <span class="section-label">What we stand for</span>
+        <h2 class="section-heading">Mission &amp; Vision</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+        <div class="mv-card mission">
+          <div class="mv-icon"><i class="ti-target"></i></div>
+          <h3>Our Mission</h3>
+          <p>To develop compact, modular, and intelligent materials testing systems that replicate real-world conditions, generate high-fidelity experimental data, and empower researchers and industries to accelerate materials and product development through data-driven insights.</p>
+          <div class="bg-shape"></div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="mv-card vision">
+          <div class="mv-icon"><i class="ti-eye"></i></div>
+          <h3>Our Vision</h3>
+          <p>To transform materials and manufacturing R&amp;D by bridging real-world testing with data-driven digital twins — enabling faster, more reliable innovation across industries worldwide.</p>
+          <div class="bg-shape"></div>
         </div>
       </div>
     </div>
 
-    <div class="timeline-wrapper">
+    <!-- Story paragraph -->
+    <div class="row mt-5">
+      <div class="col-lg-10 mx-auto text-center" data-aos="fade-up">
+        <p style="font-size:17px; color:#555; line-height:1.8;">
+          InsituMicron develops intelligent testing systems that not only replicate real-world conditions but also generate structured, high-quality experimental data to enable digital twins and data-driven R&amp;D. We serve materials like composites, ceramics, metals, and semiconductors — across academia and industry. We convert real testing into <strong style="color:#6c63ff;">design intelligence.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <!-- Item 1 -->
-      <div class="timeline-item" data-aos="fade-right">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="year">2019</div>
-          <h3>The Idea</h3>
-          <p>Research at IIT Madras identified a critical gap: no affordable miniature mechanical testing instrument existed that could integrate with common characterization tools.</p>
-          <span class="status status-done">&#10003; Completed</span>
+<!-- ── TEAM ── -->
+<section class="team-section">
+  <div class="container">
+    <div class="row mb-5 text-center">
+      <div class="col-12">
+        <span class="section-label">The people behind the instruments</span>
+        <h2 class="section-heading">Our Team</h2>
+        <p class="section-subtext">Researchers, engineers, and entrepreneurs — all from IIT Madras — who got tired of waiting for someone else to build better testing instruments.</p>
+      </div>
+    </div>
+
+    <!-- Co-Founders -->
+    <div class="row mb-3">
+      <div class="col-12 mb-4">
+        <h5 style="font-weight:700; color:#1a1a2e; border-left:3px solid #6c63ff; padding-left:12px;">Co-Founders</h5>
+      </div>
+
+      <!-- Kousik -->
+      <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="team-card">
+          <div class="team-avatar">KP</div>
+          <h4>Dr. Kousik Papakollu</h4>
+          <div class="role">Co-Founder &amp; CEO</div>
+          <p class="bio">Leads product development, strategy, and day-to-day operations. Drives the intersection of materials science and instrument engineering.</p>
+          <span class="credential">M.Tech &amp; PhD — IIT Madras &amp; TU Darmstadt</span>
         </div>
       </div>
 
-      <!-- Item 2 -->
-      <div class="timeline-item right" data-aos="fade-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="year">2020</div>
-          <h3>First Prototype</h3>
-          <p>Built and tested the first working prototype of the miniature mechanical testing fixture, validating the core concept and design principles.</p>
-          <span class="status status-done">&#10003; Completed</span>
+      <!-- Mayank -->
+      <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-card">
+          <div class="team-avatar">MM</div>
+          <h4>Mayank Mishra</h4>
+          <div class="role">Co-Founder &amp; CMO</div>
+          <p class="bio">Leads market development, customer outreach, and commercialization strategy. Brings entrepreneurship rigor to a deep-tech venture.</p>
+          <span class="credential">B.Tech Mech. + MS Entrepreneurship — IIT Madras</span>
         </div>
       </div>
 
-      <!-- Item 3 -->
-      <div class="timeline-item" data-aos="fade-right">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="year">2021</div>
-          <h3>IIT Madras Research Park Incubation</h3>
-          <p>InsituMicron was formally incubated at IIT Madras Research Park, gaining access to world-class infrastructure, mentorship, and the broader IIT Madras research ecosystem.</p>
-          <span class="status status-done">&#10003; Completed</span>
+      <!-- Ravi Kumar -->
+      <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-card">
+          <div class="team-avatar" style="background: linear-gradient(135deg,#1a1a2e,#0f3460);">RK</div>
+          <h4>Prof. Ravi Kumar</h4>
+          <div class="role">Co-Founder &amp; Director</div>
+          <p class="bio">Provides strategic direction and deep expertise in metallurgical and materials engineering. One of IIT Madras' foremost materials testing researchers.</p>
+          <span class="credential">Professor — Metallurgical &amp; Materials Engg., IIT Madras</span>
         </div>
       </div>
 
-      <!-- Item 4 -->
-      <div class="timeline-item right" data-aos="fade-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="year">2022</div>
-          <h3>Product Validation &amp; First Customers</h3>
-          <p>Validated the instrument with academic research partners. First successful in-situ XRD experiments conducted using our miniature fixture — proving the core value proposition.</p>
-          <span class="status status-done">&#10003; Completed</span>
+      <!-- Lalith -->
+      <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="team-card">
+          <div class="team-avatar" style="background: linear-gradient(135deg,#1a1a2e,#0f3460);">LB</div>
+          <h4>Dr. Lalith Bhaskar</h4>
+          <div class="role">Co-Founder &amp; Director</div>
+          <p class="bio">Brings world-class expertise in materials microstructure, deformation mechanisms, and experimental characterization from top-tier European research.</p>
+          <span class="credential">Scientist — Max-Planck-Institut (MPIE), Germany</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advisors placeholder -->
+    <div class="row mt-3">
+      <div class="col-12 mb-4">
+        <h5 style="font-weight:700; color:#1a1a2e; border-left:3px solid #a78bfa; padding-left:12px;">Scientific Advisors</h5>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+        <div class="advisor-card">
+          <div class="advisor-avatar">IIT</div>
+          <h5>IIT Madras</h5>
+          <div class="role">Institutional Mentor</div>
+          <p class="bio">Incubated at the IIT Madras Research Park — access to world-class labs, mentorship, and the broader IITM innovation ecosystem.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="advisor-card">
+          <div class="advisor-avatar">+</div>
+          <h5>Join Our Team</h5>
+          <div class="role">We're hiring</div>
+          <p class="bio">Looking for engineers, scientists, and operators who want to build instruments that matter. Reach out if that's you.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── TIMELINE / MILESTONES ── -->
+<section class="timeline-section" id="timeline">
+  <div class="container">
+    <div class="row mb-5 text-center">
+      <div class="col-12">
+        <span class="section-label">Where we've been and where we're going</span>
+        <h2 class="section-heading">Milestones</h2>
+      </div>
+    </div>
+
+    <div class="tl-wrap">
+
+      <!-- 2019 -->
+      <div class="tl-item" data-aos="fade-right">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="period">2019 — 2020</div>
+          <h4>The Idea &amp; First Prototype</h4>
+          <ul>
+            <li>Identified the gap — no affordable miniature tester compatible with XRD, Raman, and optical microscopes</li>
+            <li>Built and validated the first working prototype at IIT Madras</li>
+          </ul>
+          <span class="tl-badge tl-done">&#10003; Done</span>
         </div>
       </div>
 
-      <!-- Item 5 -->
-      <div class="timeline-item" data-aos="fade-right">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="year">2023</div>
-          <h3>Multi-Mode Capability</h3>
-          <p>Expanded the instrument to support tension, compression, and bending modes in a single compact fixture — a key technical breakthrough that differentiates us in the market.</p>
-          <span class="status status-done">&#10003; Completed</span>
+      <!-- 2021 -->
+      <div class="tl-item right" data-aos="fade-left">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="period">2021 — 2022</div>
+          <h4>Incubation &amp; First Customers</h4>
+          <ul>
+            <li>Incubated at IIT Madras Research Park</li>
+            <li>First successful in-situ XRD experiments with the miniature fixture</li>
+            <li>Validated product with academic research partners</li>
+          </ul>
+          <span class="tl-badge tl-done">&#10003; Done</span>
         </div>
       </div>
 
-      <!-- Item 6 -->
-      <div class="timeline-item right" data-aos="fade-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="year">2024</div>
-          <h3>Custom Software Suite</h3>
-          <p>Launched our proprietary software for experiment control, real-time data acquisition, and analysis — completing the end-to-end testing workflow for customers.</p>
-          <span class="status status-done">&#10003; Completed</span>
+      <!-- 2023 -->
+      <div class="tl-item" data-aos="fade-right">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="period">2023 — 2024</div>
+          <h4>Multi-Mode &amp; DIC Launch</h4>
+          <ul>
+            <li>Tension, compression, and bending in a single compact fixture</li>
+            <li>Launched EduDIC — India's only in-house DIC software</li>
+            <li>Served Rane Madras, IIT Madras, Vel Tech University</li>
+            <li>Won "Most Promising Startup" — ELCINA ESDM</li>
+          </ul>
+          <span class="tl-badge tl-done">&#10003; Done</span>
         </div>
       </div>
 
-      <!-- Item 7 -->
-      <div class="timeline-item" data-aos="fade-right">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="year">2025</div>
-          <h3>Scale &amp; Expand</h3>
-          <p>Scaling manufacturing capabilities, expanding the customer base across academia and industry, and launching partnerships with key characterization equipment manufacturers.</p>
-          <span class="status status-inprogress">&#9654; In Progress</span>
+      <!-- Jul 2026 -->
+      <div class="tl-item right" data-aos="fade-left">
+        <div class="tl-dot future"></div>
+        <div class="tl-card">
+          <div class="period">July 2026</div>
+          <h4>Scale Up</h4>
+          <ul>
+            <li>Office setup — 10-seat capacity</li>
+            <li>Corrosion add-on &amp; fully functional DIC software</li>
+            <li>Total revenue target: ₹50 Lakhs</li>
+          </ul>
+          <span class="tl-badge tl-next">&#9654; In Progress</span>
         </div>
       </div>
 
-      <!-- Item 8 -->
-      <div class="timeline-item right" data-aos="fade-left">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="year">2026 &amp; Beyond</div>
-          <h3>Global Reach</h3>
-          <p>Targeting international research institutes and industrial R&amp;D labs. Building the next generation of instruments with automated testing, AI-assisted analysis, and broader compatibility.</p>
-          <span class="status status-upcoming">&#9670; Upcoming</span>
+      <!-- Dec 2026 -->
+      <div class="tl-item" data-aos="fade-right">
+        <div class="tl-dot future"></div>
+        <div class="tl-card">
+          <div class="period">December 2026</div>
+          <h4>New Product Launches</h4>
+          <ul>
+            <li>Own assembly line setup</li>
+            <li>RITE launch — stress-strain in under 5 minutes</li>
+            <li>High-temp add-on (up to 1400°C)</li>
+            <li>AI integration for microstructure analysis software</li>
+          </ul>
+          <span class="tl-badge tl-ahead">&#9670; Upcoming</span>
+        </div>
+      </div>
+
+      <!-- Dec 2027 -->
+      <div class="tl-item right" data-aos="fade-left">
+        <div class="tl-dot future"></div>
+        <div class="tl-card">
+          <div class="period">December 2027</div>
+          <h4>10 Units &amp; Digital Twin</h4>
+          <ul>
+            <li>10 units sold, ₹2 Crore revenue</li>
+            <li>Launch of customized digital twin software for real-time material modelling</li>
+          </ul>
+          <span class="tl-badge tl-ahead">&#9670; Upcoming</span>
+        </div>
+      </div>
+
+      <!-- Jul 2028 -->
+      <div class="tl-item" data-aos="fade-right">
+        <div class="tl-dot future"></div>
+        <div class="tl-card">
+          <div class="period">July 2028</div>
+          <h4>Global Expansion</h4>
+          <ul>
+            <li>Team size: 25+</li>
+            <li>SEM-compatible uniaxial testing setup</li>
+            <li>15 units sold, ₹3 Crore revenue</li>
+          </ul>
+          <span class="tl-badge tl-ahead">&#9670; Upcoming</span>
         </div>
       </div>
 
@@ -262,17 +664,140 @@
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ── AWARDS ── -->
+<section class="awards-section">
+  <div class="container">
+    <div class="row mb-5 text-center">
+      <div class="col-12">
+        <span class="section-label">Recognition</span>
+        <h2 class="section-heading">Awards &amp; Exhibitions</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+
+      <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="award-card">
+          <div class="award-icon"><i class="ti-star"></i></div>
+          <h5>Most Promising Startup</h5>
+          <p>ELCINA ESDM Awards</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="award-card">
+          <div class="award-icon"><i class="ti-layout-grid2"></i></div>
+          <h5>HTSE 2023</h5>
+          <p>High-Tech Startup Exhibition — Exhibitor</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="award-card">
+          <div class="award-icon"><i class="ti-layout-grid2"></i></div>
+          <h5>Cera4S 2024</h5>
+          <p>International Ceramics Conference — Exhibitor</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="award-card">
+          <div class="award-icon"><i class="ti-layout-grid2"></i></div>
+          <h5>ICONS 2023 &amp; IInventiv 2025</h5>
+          <p>National Innovation Conferences — Exhibitor</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CASE STUDIES ── -->
+<section class="cases-section">
+  <div class="container">
+    <div class="row mb-5 text-center">
+      <div class="col-12">
+        <span class="section-label">Real problems. Real results.</span>
+        <h2 class="section-heading">Case Studies</h2>
+        <p class="section-subtext">A few of the problems our instruments and services have already solved.</p>
+      </div>
+    </div>
+    <div class="row">
+
+      <!-- Case 1 -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="case-card">
+          <span class="case-tag">Automobile</span>
+          <h4>Hardened Layer Testing — Rane Madras Limited</h4>
+          <div class="case-meta">
+            <span class="case-meta-item"><strong>Location:</strong> Chennai</span>
+            <span class="case-meta-item"><strong>Type:</strong> Testing Service</span>
+          </div>
+          <p>Rane needed tensile testing on hardened layer parts manufactured for automotive applications. Standard ASTM sub-sized specimens were too large. They also needed data for FEM models alongside quality testing.</p>
+          <div class="case-result"><i class="ti-check"></i> Miniature specimens tested via EDM cutting — full stress-strain data delivered for FEM validation.</div>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="case-card">
+          <span class="case-tag">Research — IIT Madras</span>
+          <h4>Single Crystal Elastic Constants from Polycrystalline HEO</h4>
+          <div class="case-meta">
+            <span class="case-meta-item"><strong>Location:</strong> Chennai</span>
+            <span class="case-meta-item"><strong>Type:</strong> Product Use</span>
+          </div>
+          <p>Conventional methods require large single crystals — difficult to synthesize for High Entropy Oxides. No technique existed to estimate Single Crystal Elastic Constants from polycrystalline samples under ambient conditions.</p>
+          <div class="case-result"><i class="ti-check"></i> Novel hybrid methodology combining ultrasonic resonant frequency testing and in-situ XRD — successfully extracted diffraction elastic constants.</div>
+        </div>
+      </div>
+
+      <!-- Case 3 -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="case-card">
+          <span class="case-tag">Additive Manufacturing — Vel Tech</span>
+          <h4>Compressive Strength of Additively Manufactured Metal</h4>
+          <div class="case-meta">
+            <span class="case-meta-item"><strong>Location:</strong> Chennai</span>
+            <span class="case-meta-item"><strong>Type:</strong> Testing Service</span>
+          </div>
+          <p>Additive manufacturing is costly and preparing standard ASTM specimens is not feasible at scale. Small-sized specimens were needed to characterise compressive strength with DIC strain measurement.</p>
+          <div class="case-result"><i class="ti-check"></i> Miniature specimens prepared with speckle pattern — compressive strength successfully characterised.</div>
+        </div>
+      </div>
+
+      <!-- Case 4 -->
+      <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="case-card">
+          <span class="case-tag">Ceramics AM — IIT Madras</span>
+          <h4>Mechanical Strength of 3D-Printed Alumina Ceramics</h4>
+          <div class="case-meta">
+            <span class="case-meta-item"><strong>Location:</strong> Chennai</span>
+            <span class="case-meta-item"><strong>Type:</strong> Product Use</span>
+          </div>
+          <p>Additive manufacturing of ceramics is even more expensive than metal AM. Standard specimen preparation wasn't feasible. Miniature specimens were tested in compression and bending.</p>
+          <div class="case-result"><i class="ti-check"></i> Max variation of only 5% — reduced material cost and experiment time by <strong>90%</strong>.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
 <section class="call-to-action-app section bg-blue">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h2>Want to be part of our journey?</h2>
+        <h2>Want to work with us or learn more?</h2>
         <ul class="list-inline">
           <li class="list-inline-item">
             <a href="contact.html" class="btn btn-rounded-icon">
-              <i class="ti-email"></i>
-              Contact us!!
+              <i class="ti-email"></i> Contact Us
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="products.html" class="btn btn-rounded-icon">
+              <i class="ti-layout-grid2"></i> Our Products
             </a>
           </li>
         </ul>
@@ -298,9 +823,10 @@
         </div>
         <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
           <div class="block-2">
-            <h6>Product</h6>
+            <h6>Products</h6>
             <ul>
-              <li><a href="solutions.html">Solutions</a></li>
+              <li><a href="products.html">M3TEq-U</a></li>
+              <li><a href="products.html">EduDIC</a></li>
             </ul>
           </div>
         </div>
@@ -309,7 +835,7 @@
             <h6>Company</h6>
             <ul>
               <li><a href="about.html">About Us</a></li>
-              <li><a href="timeline.html">Timeline</a></li>
+              <li><a href="solutions.html">Solutions</a></li>
               <li><a href="contact.html">Contact</a></li>
             </ul>
           </div>
@@ -322,14 +848,10 @@
   </div>
 </footer>
 
-<div class="scroll-top-to">
-  <i class="ti-angle-up"></i>
-</div>
+<div class="scroll-top-to"><i class="ti-angle-up"></i></div>
 
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/bootstrap.min.js"></script>
-<script src="plugins/slick/slick.min.js"></script>
-<script src="plugins/fancybox/jquery.fancybox.min.js"></script>
 <script src="plugins/aos/aos.js"></script>
 <script src="js/script.js"></script>
 
