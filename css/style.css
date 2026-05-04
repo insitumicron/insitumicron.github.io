@@ -1981,3 +1981,36 @@ hr {
   }
 }
 /*# sourceMappingURL=style.css.map */
+
+.team-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px;
+  display: block;
+  border: 3px solid #f0edff;
+}
+.team-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+.team-link-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f0edff;
+  color: #6c63ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.team-link-icon:hover {
+  background: #6c63ff;
+  color: #fff;
+}
