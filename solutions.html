@@ -2,24 +2,406 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>InsituMicron | Solutions</title>
+  <title>InsituMicron | Case Studies &amp; Blogs</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="InsituMicron material testing solutions — miniature mechanical testing, in-situ characterization, failure analysis">
+  <meta name="description" content="InsituMicron case studies and blogs — real applications of miniature mechanical testing and DIC">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 
   <link rel="shortcut icon" type="image/x-icon" href="images/logo-insitu_micron.png" />
-
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
-  <link rel="stylesheet" href="plugins/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick/slick-theme.css">
-  <link rel="stylesheet" href="plugins/fancybox/jquery.fancybox.min.css">
   <link rel="stylesheet" href="plugins/aos/aos.css">
   <link href="css/style.css" rel="stylesheet">
+
+  <style>
+    /* ─── Page tabs ─── */
+    .page-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      background: #fff;
+      border-bottom: 2px solid #f0f0f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .page-tab {
+      padding: 18px 48px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #888;
+      text-decoration: none;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .page-tab:hover { color: #6c63ff; text-decoration: none; }
+    .page-tab.active { color: #6c63ff; border-bottom-color: #6c63ff; }
+
+    /* ─── Sections ─── */
+    .cs-section  { padding: 80px 0; background: #f8f9fa; }
+    .blog-section { padding: 80px 0; background: #fff; }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #6c63ff;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .section-heading {
+      font-size: 34px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 12px;
+    }
+    .section-subtext {
+      font-size: 16px;
+      color: #666;
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ─── Case study card ─── */
+    .cs-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      overflow: hidden;
+      margin-bottom: 28px;
+      transition: box-shadow 0.25s;
+    }
+    .cs-card:hover { box-shadow: 0 8px 36px rgba(108,99,255,0.13); }
+
+    .cs-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 220px;
+      overflow: hidden;
+    }
+    .cs-img-wrap {
+      overflow: hidden;
+      position: relative;
+      background: #e8e8f0;
+    }
+    .cs-img-wrap:first-child { border-right: 2px solid #fff; }
+    .cs-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .cs-card:hover .cs-img-wrap img { transform: scale(1.04); }
+    .cs-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #e8e8f0, #d4d0f0);
+      color: #aaa;
+    }
+    .cs-img-placeholder i  { font-size: 2rem; margin-bottom: 8px; }
+    .cs-img-placeholder span { font-size: 12px; }
+
+    .cs-header {
+      padding: 24px 28px 20px;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .cs-header:hover .cs-title { color: #6c63ff; }
+
+    .cs-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .cs-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .cs-tag-sector { background: #f0edff; color: #5a52cc; }
+    .cs-tag-type   { background: #e8f5e9; color: #2e7d32; }
+    .cs-tag-loc    { background: #fff3e0; color: #e65100; }
+
+    .cs-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin: 0;
+      transition: color 0.2s;
+      line-height: 1.35;
+    }
+    .cs-toggle-icon {
+      flex-shrink: 0;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: #f0edff;
+      display: flex; align-items: center; justify-content: center;
+      color: #6c63ff;
+      font-size: 14px;
+      transition: background 0.2s, transform 0.3s;
+      margin-top: 3px;
+    }
+    .cs-card.open .cs-toggle-icon {
+      background: #6c63ff;
+      color: #fff;
+      transform: rotate(180deg);
+    }
+
+    .cs-body {
+      display: none;
+      padding: 0 28px 28px;
+      border-top: 1px solid #f0f0f0;
+      animation: fadeSlide 0.3s ease;
+    }
+    .cs-card.open .cs-body { display: block; }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .cs-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .cs-block h6 {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #6c63ff;
+      margin-bottom: 8px;
+    }
+    .cs-block p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .cs-result-box {
+      margin-top: 20px;
+      background: #f0edff;
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .cs-result-box i { color: #6c63ff; font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .cs-result-box p { font-size: 14px; color: #433b9e; font-weight: 600; margin: 0; line-height: 1.6; }
+
+    .cs-client-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .cs-client-logo {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: #1a1a2e;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 800; color: #fff;
+      flex-shrink: 0;
+    }
+    .cs-client-info .name { font-size: 14px; font-weight: 700; color: #1a1a2e; margin: 0; }
+    .cs-client-info .sub  { font-size: 12px; color: #888; margin: 0; }
+
+    /* ─── Blog card ─── */
+    .blog-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      overflow: hidden;
+      margin-bottom: 28px;
+      transition: box-shadow 0.25s;
+      border: 1px solid #f0f0f0;
+    }
+    .blog-card:hover { box-shadow: 0 8px 36px rgba(108,99,255,0.13); }
+
+    .blog-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 200px;
+      overflow: hidden;
+    }
+    .blog-img-wrap {
+      overflow: hidden;
+      background: #e8e8f0;
+    }
+    .blog-img-wrap:first-child { border-right: 2px solid #fff; }
+    .blog-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .blog-card:hover .blog-img-wrap img { transform: scale(1.04); }
+    .blog-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      color: #aaa;
+    }
+    .blog-img-placeholder i { font-size: 2rem; margin-bottom: 8px; color: #a5d6a7; }
+    .blog-img-placeholder span { font-size: 12px; }
+
+    .blog-header {
+      padding: 22px 28px 18px;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .blog-header:hover .blog-title { color: #6c63ff; }
+
+    .blog-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+      align-items: center;
+    }
+    .blog-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: #e3f2fd;
+      color: #1565c0;
+    }
+    .blog-date, .blog-read-time {
+      font-size: 12px;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .blog-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin: 0 0 6px;
+      transition: color 0.2s;
+      line-height: 1.35;
+    }
+    .blog-excerpt { font-size: 14px; color: #888; margin: 0; line-height: 1.6; }
+
+    .blog-toggle-icon {
+      flex-shrink: 0;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: #e3f2fd;
+      display: flex; align-items: center; justify-content: center;
+      color: #1565c0;
+      font-size: 14px;
+      transition: background 0.2s, transform 0.3s;
+      margin-top: 3px;
+    }
+    .blog-card.open .blog-toggle-icon {
+      background: #6c63ff;
+      color: #fff;
+      transform: rotate(180deg);
+    }
+    .blog-body {
+      display: none;
+      padding: 0 28px 28px;
+      border-top: 1px solid #f0f0f0;
+      animation: fadeSlide 0.3s ease;
+    }
+    .blog-card.open .blog-body { display: block; }
+
+    .blog-content { margin-top: 20px; font-size: 15px; color: #444; line-height: 1.85; }
+    .blog-content h5 { font-size: 17px; font-weight: 700; color: #1a1a2e; margin: 24px 0 10px; }
+    .blog-content p  { margin-bottom: 14px; }
+    .blog-content ul { padding-left: 20px; margin-bottom: 14px; }
+    .blog-content ul li { margin-bottom: 6px; }
+
+    .blog-author-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .blog-author-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6c63ff, #a78bfa);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+    .blog-author-info .name { font-size: 14px; font-weight: 700; color: #1a1a2e; margin: 0; }
+    .blog-author-info .sub  { font-size: 12px; color: #888; margin: 0; }
+
+    /* ─── CTA box ─── */
+    .contribute-box {
+      border-radius: 14px;
+      padding: 40px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    .contribute-box.purple { background: #f0edff; }
+    .contribute-box.green  { background: #e8f5e9; }
+    .contribute-box h4 { font-size: 22px; font-weight: 700; color: #1a1a2e; margin-bottom: 10px; }
+    .contribute-box p  { font-size: 15px; color: #666; margin-bottom: 22px; }
+    .btn-contribute {
+      border: none;
+      border-radius: 30px;
+      padding: 13px 36px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.2s;
+      color: #fff;
+    }
+    .btn-contribute:hover { opacity: 0.88; color: #fff; text-decoration: none; }
+    .btn-contribute.purple { background: #6c63ff; }
+    .btn-contribute.green  { background: #2e7d32; }
+
+    @media (max-width: 768px) {
+      .cs-images, .blog-images { height: 150px; }
+      .cs-body-grid { grid-template-columns: 1fr; }
+      .page-tab { padding: 14px 22px; font-size: 13px; }
+      .cs-header, .blog-header { padding: 18px 18px 14px; }
+      .cs-body, .blog-body { padding: 0 18px 20px; }
+    }
+  </style>
 </head>
 
-<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
+<body class="body-wrapper">
 
+<!-- Nav — exact as specified -->
 <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
   <div class="container">
     <a class="navbar-brand" href="index.html"><img src="images/title.png" width="200" height="auto" alt="logo"></a>
@@ -36,7 +418,7 @@
           <a class="nav-link" href="about.html">Products</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link active" href="solutions.html">Case studies & blogs</a>
+          <a class="nav-link active" href="solutions.html">Case studies &amp; blogs</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="timeline.html">About us</a>
@@ -57,232 +439,428 @@
     <div class="shape" data-aos="fade-up-right" data-aos-duration="1000" data-aos-delay="200"></div>
     <div class="shape" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"></div>
     <div class="shape" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"></div>
-    <div class="shape" data-aos="fade-down-right" data-aos-duration="500" data-aos-delay="200"></div>
     <div class="shape" data-aos="zoom-out" data-aos-duration="2000" data-aos-delay="500"></div>
   </div>
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-md-7 text-center text-md-left">
-        <h1 class="text-white font-weight-bold mb-4">Our Solutions</h1>
-        <p class="text-white mb-5">Innovative technologies to meet your material testing and characterization needs — from microscale mechanical testing to real-time in-situ analysis.</p>
-        <a href="contact.html" class="btn btn-main-md">Talk to Our Team</a>
-      </div>
-      <div class="col-md-5 text-center mt-5 mt-md-0" data-aos="fade-left" data-aos-duration="1000">
-        <img class="img-fluid" src="images/Solutions/Solutions.png" alt="InsituMicron solutions">
+      <div class="col-md-8 text-center text-md-left">
+        <h1 class="text-white font-weight-bold mb-4">Case Studies &amp; Blogs</h1>
+        <p class="text-white mb-5">Real problems solved with our instruments, and thoughts on materials science, testing technology, and the future of R&amp;D.</p>
+        <a href="#case-studies" class="btn btn-main-md mr-3">Case Studies</a>
+        <a href="#blogs" class="btn btn-main-md" style="background:transparent; border:2px solid rgba(255,255,255,0.8);">Blogs</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Solutions Detail — Miniature Mechanical Testing -->
-<section class="feature section pt-0">
+<!-- Sticky tabs -->
+<div class="page-tabs">
+  <a class="page-tab active" href="#case-studies" onclick="setTab(0, this); return true;">
+    <i class="ti-bar-chart mr-2"></i>Case Studies
+  </a>
+  <a class="page-tab" href="#blogs" onclick="setTab(1, this); return true;">
+    <i class="ti-pencil mr-2"></i>Blogs
+  </a>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     CASE STUDIES
+══════════════════════════════════════ -->
+<section class="cs-section" id="case-studies">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6" data-aos="fade-right">
-        <div class="image-content">
-          <img class="img-fluid" src="images/Gifs/Miniatured-mech-testing-3.gif" alt="Miniature Mechanical Testing">
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="feature-content">
-          <img src="images/icons/testing.png" width="60" alt="Miniature Testing icon" class="mb-3">
-          <h2>Miniature Mechanical Testing</h2>
-          <p class="desc">Our state-of-the-art testing solutions allow for precise characterization of materials at the microscale. Testing in-service components is essential to understand failure — it helps design new materials, manufacturing methods, and parts.</p>
-          <p class="mt-3">Miniaturised testing allows site-specific testing, which is vital to comprehend material behaviour under thermal and mechanical stresses during manufacturing. Additive manufacturing demands this as well.</p>
-          <div class="mt-4">
-            <span class="badge badge-secondary mr-2 mb-2 p-2">Uniaxial Tension</span>
-            <span class="badge badge-secondary mr-2 mb-2 p-2">Biaxial Tension</span>
-            <span class="badge badge-secondary mr-2 mb-2 p-2">Compression</span>
-            <span class="badge badge-secondary mr-2 mb-2 p-2">Bending</span>
-            <span class="badge badge-secondary mr-2 mb-2 p-2">Fracture</span>
-          </div>
-        </div>
+    <div class="row mb-5 text-center">
+      <div class="col-12">
+        <span class="section-label">Real problems. Real results.</span>
+        <h2 class="section-heading">Case Studies</h2>
+        <p class="section-subtext">A growing collection of problems our instruments and services have helped researchers and engineers solve. Click any title to read the full case.</p>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- Solutions Detail — In-Situ Characterization -->
-<section class="feature section pt-0 bg-gray">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-2 order-lg-1">
-        <div class="feature-content">
-          <img src="images/icons/insitu.png" width="60" alt="In-situ icon" class="mb-3">
-          <h2>In-Situ Characterization</h2>
-          <p>Conduct real-time testing under realistic conditions to gather critical data on material performance. In-situ characterization augments the information obtained because it's carried out under actual loading conditions.</p>
-          <p class="mt-3">The vital information collected is essential for identifying failure mechanisms and allows material manufacturers to design better materials. It's especially powerful for measuring single crystal elastic constants — which are challenging and expensive to determine otherwise.</p>
-          <div class="mt-4">
-            <span class="badge badge-secondary mr-2 mb-2 p-2">XRD</span>
-            <span class="badge badge-secondary mr-2 mb-2 p-2">Raman Spectroscopy</span>
-            <span class="badge badge-secondary mr-2 mb-2 p-2">Optical Microscopy</span>
-            <span class="badge badge-secondary mr-2 mb-2 p-2">SEM</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
-        <div class="image-content">
-          <img class="img-fluid" src="images/Gifs/insitu-testing_4.gif" alt="In-situ testing">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Solutions Detail — Failure Analysis -->
-<section class="feature section pt-0">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6" data-aos="fade-right">
-        <div class="image-content text-center">
-          <img src="images/icons/analysis.png" class="img-fluid" width="200" alt="Failure Analysis">
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="feature-content">
-          <h2>Failure Analysis</h2>
-          <p class="desc">Our comprehensive failure analysis services help identify the root causes of material or product failure, ensuring improved designs and increased reliability.</p>
-          <p class="mt-3">Whether it's a fractured component from an industrial process or a research specimen behaving unexpectedly, we help you understand why — and what to do about it.</p>
-          <a href="contact.html" class="btn btn-main-md mt-4">Request Analysis</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Capabilities Grid -->
-<section class="service section bg-gray">
-  <div class="container-fluid p-0">
     <div class="row">
-      <div class="col-lg-12">
-        <div class="section-title">
-          <h2>CAPABILITIES</h2>
-          <p>What our instruments can measure and characterize</p>
-        </div>
-      </div>
-    </div>
-    <div class="row no-gutters">
-      <div class="col-lg-5 col-md-5 mr-auto align-self-center pl-5 pr-5">
-        <div class="capability-box">
-          <div class="capability-item">
-            <img class="img-fluid" src="images/icons/Tension.png" width="50">
-            <img class="img-fluid" src="images/icons/tension bi.png" width="50">
-            <h3>Uniaxial and Biaxial Tension</h3>
-            <p>Stress-strain behaviour, strain hardening and plastic anisotropy.</p>
+      <div class="col-12">
+
+        <!-- Case 1 -->
+        <div class="cs-card" data-aos="fade-up">
+          <div class="cs-images">
+            <div class="cs-img-wrap">
+              <!-- Replace: images/cases/rane-setup.jpg -->
+              <div class="cs-img-placeholder"><i class="ti-image"></i><span>Specimen setup</span></div>
+            </div>
+            <div class="cs-img-wrap">
+              <!-- Replace: images/cases/rane-curve.jpg -->
+              <div class="cs-img-placeholder"><i class="ti-bar-chart"></i><span>Stress-strain curve</span></div>
+            </div>
+          </div>
+          <div class="cs-header" onclick="toggleCard(this)">
+            <div>
+              <div class="cs-meta-row">
+                <span class="cs-tag cs-tag-sector">Automobile</span>
+                <span class="cs-tag cs-tag-type">Testing Service</span>
+                <span class="cs-tag cs-tag-loc"><i class="ti-location-pin mr-1"></i>Chennai</span>
+              </div>
+              <h3 class="cs-title">Tensile Testing of Hardened Layer Parts for Automotive Applications</h3>
+            </div>
+            <div class="cs-toggle-icon"><i class="ti-angle-down"></i></div>
+          </div>
+          <div class="cs-body">
+            <div class="cs-body-grid">
+              <div class="cs-block">
+                <h6>The Problem</h6>
+                <p>Rane Madras Limited needed tensile testing on hardened layer parts manufactured for automotive components. Standard ASTM sub-sized specimens were still too large to isolate the hardened layer. They also needed data compatible with FEM models — not just pass/fail.</p>
+              </div>
+              <div class="cs-block">
+                <h6>Our Approach</h6>
+                <p>EDM cutting was used to extract miniature specimens directly from the hardened layer. Specimens were tested in the M3TEq-U fixture under displacement-controlled loading, with full load-displacement data captured at each step.</p>
+              </div>
+            </div>
+            <div class="cs-result-box">
+              <i class="ti-check-box"></i>
+              <p>Full stress-strain data successfully extracted from the hardened layer. Data fed directly into the client's FEM model — quality testing and simulation validation achieved in a single campaign.</p>
+            </div>
+            <div class="cs-client-row">
+              <div class="cs-client-logo">RM</div>
+              <div class="cs-client-info">
+                <p class="name">Rane Madras Limited</p>
+                <p class="sub">Automotive Components Manufacturer · Chennai</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="capability-box">
-          <div class="capability-item">
-            <img class="img-fluid" src="images/icons/compression.png" width="50">
-            <img class="img-fluid" src="images/icons/biaxial compression.png" width="50">
-            <h3>Uniaxial and Biaxial Compression</h3>
-            <p>Strength of brittle materials, toughness and deformation behaviour.</p>
+
+        <!-- Case 2 -->
+        <div class="cs-card" data-aos="fade-up" data-aos-delay="60">
+          <div class="cs-images">
+            <div class="cs-img-wrap">
+              <div class="cs-img-placeholder"><i class="ti-image"></i><span>XRD diffraction pattern</span></div>
+            </div>
+            <div class="cs-img-wrap">
+              <div class="cs-img-placeholder"><i class="ti-bar-chart"></i><span>Lattice strain vs load</span></div>
+            </div>
+          </div>
+          <div class="cs-header" onclick="toggleCard(this)">
+            <div>
+              <div class="cs-meta-row">
+                <span class="cs-tag cs-tag-sector">Research</span>
+                <span class="cs-tag cs-tag-type">In-Situ XRD</span>
+                <span class="cs-tag cs-tag-loc"><i class="ti-location-pin mr-1"></i>Chennai</span>
+              </div>
+              <h3 class="cs-title">Calculating Single Crystal Elastic Constants of a Polycrystalline High Entropy Oxide</h3>
+            </div>
+            <div class="cs-toggle-icon"><i class="ti-angle-down"></i></div>
+          </div>
+          <div class="cs-body">
+            <div class="cs-body-grid">
+              <div class="cs-block">
+                <h6>The Problem</h6>
+                <p>Conventional single crystal elastic constant (SEC) measurement requires large single crystals — extremely difficult to synthesize for High Entropy Oxides. No existing technique could estimate SECs from polycrystalline samples under ambient conditions.</p>
+              </div>
+              <div class="cs-block">
+                <h6>Our Approach</h6>
+                <p>A novel hybrid methodology combining ultrasonic resonant frequency testing and in-situ XRD under uniaxial compression. Polycrystalline pellets were loaded stepwise in our custom fixture while lattice strains were simultaneously measured by XRD.</p>
+              </div>
+            </div>
+            <div class="cs-result-box">
+              <i class="ti-check-box"></i>
+              <p>Diffraction Elastic Constants successfully extracted from polycrystalline HEO — a first for this material class under ambient conditions. Results validated against computational predictions.</p>
+            </div>
+            <div class="cs-client-row">
+              <div class="cs-client-logo">IIT</div>
+              <div class="cs-client-info">
+                <p class="name">IIT Madras</p>
+                <p class="sub">Department of Metallurgical &amp; Materials Engineering</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="capability-box">
-          <div class="capability-item">
-            <img class="img-fluid" src="images/icons/bending.png" width="70">
-            <img class="img-fluid" src="images/icons/fracture.png" width="70">
-            <h3>Bending and Fracture</h3>
-            <p>Bending strength, fracture toughness, crack propagation.</p>
+
+        <!-- Case 3 -->
+        <div class="cs-card" data-aos="fade-up" data-aos-delay="120">
+          <div class="cs-images">
+            <div class="cs-img-wrap">
+              <div class="cs-img-placeholder"><i class="ti-image"></i><span>AM metal specimen</span></div>
+            </div>
+            <div class="cs-img-wrap">
+              <div class="cs-img-placeholder"><i class="ti-image"></i><span>DIC strain field</span></div>
+            </div>
+          </div>
+          <div class="cs-header" onclick="toggleCard(this)">
+            <div>
+              <div class="cs-meta-row">
+                <span class="cs-tag cs-tag-sector">Additive Manufacturing</span>
+                <span class="cs-tag cs-tag-type">DIC + Compression</span>
+                <span class="cs-tag cs-tag-loc"><i class="ti-location-pin mr-1"></i>Chennai</span>
+              </div>
+              <h3 class="cs-title">Compressive Strength of Additively Manufactured Metal with Full-Field DIC Strain Measurement</h3>
+            </div>
+            <div class="cs-toggle-icon"><i class="ti-angle-down"></i></div>
+          </div>
+          <div class="cs-body">
+            <div class="cs-body-grid">
+              <div class="cs-block">
+                <h6>The Problem</h6>
+                <p>Additive manufacturing is expensive and preparing standard ASTM specimens wastes costly material. Full-field strain measurement was also required to understand deformation uniformity — something a load cell alone can't provide.</p>
+              </div>
+              <div class="cs-block">
+                <h6>Our Approach</h6>
+                <p>Miniature specimens were prepared with a speckle pattern and tested in compression using the M3TEq-U. EduDIC simultaneously tracked full-field strain across the specimen surface, revealing localisation zones invisible in global load-displacement data.</p>
+              </div>
+            </div>
+            <div class="cs-result-box">
+              <i class="ti-check-box"></i>
+              <p>Compressive strength characterised from miniature specimens. DIC revealed strain localisation consistent with build-direction anisotropy — a critical finding for AM process optimisation.</p>
+            </div>
+            <div class="cs-client-row">
+              <div class="cs-client-logo">VT</div>
+              <div class="cs-client-info">
+                <p class="name">Vel Tech University</p>
+                <p class="sub">Department of Mechanical Engineering · Chennai</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-2 col-md-2 align-self-center text-center d-none d-md-block">
-        <img src="images/Render9_1.png" width="280" alt="InsituMicron device">
-      </div>
-      <div class="col-lg-5 col-md-5 ml-auto align-self-center pl-5 pr-5">
-        <div class="capability-box">
-          <div class="capability-item">
-            <img class="img-fluid" src="images/icons/XXRD.png" width="70">
-            <h3>XRD</h3>
-            <p>Finding single crystal elastic constants, stress-induced phase changes and strain partitioning.</p>
+
+        <!-- Case 4 -->
+        <div class="cs-card" data-aos="fade-up" data-aos-delay="180">
+          <div class="cs-images">
+            <div class="cs-img-wrap">
+              <div class="cs-img-placeholder"><i class="ti-image"></i><span>3D-printed alumina</span></div>
+            </div>
+            <div class="cs-img-wrap">
+              <div class="cs-img-placeholder"><i class="ti-bar-chart"></i><span>Bending load-displacement</span></div>
+            </div>
+          </div>
+          <div class="cs-header" onclick="toggleCard(this)">
+            <div>
+              <div class="cs-meta-row">
+                <span class="cs-tag cs-tag-sector">Ceramics</span>
+                <span class="cs-tag cs-tag-type">Bending + Compression</span>
+                <span class="cs-tag cs-tag-loc"><i class="ti-location-pin mr-1"></i>Chennai</span>
+              </div>
+              <h3 class="cs-title">Mechanical Strength of 3D-Printed Alumina Ceramics — 90% Reduction in Cost &amp; Time</h3>
+            </div>
+            <div class="cs-toggle-icon"><i class="ti-angle-down"></i></div>
+          </div>
+          <div class="cs-body">
+            <div class="cs-body-grid">
+              <div class="cs-block">
+                <h6>The Problem</h6>
+                <p>Ceramic AM is even more expensive than metal AM. Preparing standard ASTM specimens was economically unfeasible. The team needed a way to characterise bending and compressive strength from small, as-printed samples without further machining.</p>
+              </div>
+              <div class="cs-block">
+                <h6>Our Approach</h6>
+                <p>3D-printed alumina samples were tested directly in both compression and 3-point bending using the M3TEq-U's multi-mode fixture — no additional specimen machining required. Multiple specimens tested to assess repeatability.</p>
+              </div>
+            </div>
+            <div class="cs-result-box">
+              <i class="ti-check-box"></i>
+              <p>Maximum variation across specimens was just 5%. Material cost and experiment time reduced by <strong>90%</strong> vs. ASTM-standard specimen preparation. Results validated against published sintered alumina literature.</p>
+            </div>
+            <div class="cs-client-row">
+              <div class="cs-client-logo">IIT</div>
+              <div class="cs-client-info">
+                <p class="name">IIT Madras</p>
+                <p class="sub">Department of Metallurgical &amp; Materials Engineering</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="capability-box">
-          <div class="capability-item">
-            <img class="img-fluid" src="images/icons/raman.png" width="60">
-            <h3>Raman Spectroscopy</h3>
-            <p>Localized changes in chemical bonding and deformation mapping.</p>
-          </div>
+
+        <!-- CTA -->
+        <div class="contribute-box purple" data-aos="fade-up">
+          <i class="ti-plus" style="font-size:2rem; color:#6c63ff; display:block; margin-bottom:12px;"></i>
+          <h4>Have a testing challenge?</h4>
+          <p>If you've solved an interesting problem using our instruments or services, we'd love to document it. Or reach out with your challenge — let's figure out if we can help.</p>
+          <a href="contact.html" class="btn-contribute purple">Talk to Us</a>
         </div>
-        <div class="capability-box">
-          <div class="capability-item">
-            <img class="img-fluid" src="images/icons/instrument.png" width="50">
-            <h3>Optical Microscopy</h3>
-            <p>Understand failure mechanisms and microscale deformation analysis.</p>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- Features -->
-<section class="service section">
-  <div class="container-fluid p-0">
+
+<!-- ══════════════════════════════════════
+     BLOGS
+══════════════════════════════════════ -->
+<section class="blog-section" id="blogs">
+  <div class="container">
+    <div class="row mb-5 text-center">
+      <div class="col-12">
+        <span class="section-label">Knowledge &amp; Insights</span>
+        <h2 class="section-heading">Blogs</h2>
+        <p class="section-subtext">Thoughts on materials testing, instrument design, characterization techniques, and data-driven R&amp;D — written by researchers who do this every day.</p>
+      </div>
+    </div>
+
     <div class="row">
-      <div class="col-lg-12">
-        <div class="section-title">
-          <h2>FEATURES</h2>
-          <p>What makes InsituMicron instruments stand out</p>
+      <div class="col-12">
+
+        <!-- Blog 1 -->
+        <div class="blog-card" data-aos="fade-up">
+          <div class="blog-images">
+            <div class="blog-img-wrap">
+              <!-- Replace: images/blogs/miniature-testing-1.jpg -->
+              <div class="blog-img-placeholder"><i class="ti-image"></i><span>Blog cover</span></div>
+            </div>
+            <div class="blog-img-wrap">
+              <!-- Replace: images/blogs/miniature-testing-2.jpg -->
+              <div class="blog-img-placeholder"><i class="ti-image"></i><span>Supporting figure</span></div>
+            </div>
+          </div>
+          <div class="blog-header" onclick="toggleBlog(this)">
+            <div style="flex:1;">
+              <div class="blog-meta-row">
+                <span class="blog-tag">Miniature Testing</span>
+                <span class="blog-date"><i class="ti-calendar"></i>May 2025</span>
+                <span class="blog-read-time"><i class="ti-time"></i>5 min read</span>
+              </div>
+              <h3 class="blog-title">Why Miniature Mechanical Testing Is the Future of Materials Qualification</h3>
+              <p class="blog-excerpt">Standard ASTM specimens are expensive, wasteful, and often impractical. Here's why the industry is shifting to miniaturised testing — and what it unlocks for AM, in-service components, and site-specific characterisation.</p>
+            </div>
+            <div class="blog-toggle-icon"><i class="ti-angle-down"></i></div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-content">
+              <p>Traditional mechanical testing requires large, carefully machined specimens — a process that consumes expensive material, takes time, and often isn't feasible for in-service or additively manufactured components. The ASTM E8 tensile specimen alone requires a 50 mm gauge length and significant grip sections. For a hardened surface layer a few hundred microns thick, this simply doesn't work.</p>
+              <h5>What miniature testing actually means</h5>
+              <p>It doesn't mean less rigorous testing — it means extracting the same mechanical property data from specimens 5–10× smaller. The stress state must still be well-defined, load measurement must be precise (our load cells are accuracy class 0.2), and displacement control must be smooth enough to capture full stress-strain behaviour.</p>
+              <h5>Where it's most valuable</h5>
+              <ul>
+                <li><strong>In-service components</strong> — test the actual part. Cut miniature specimens from a specific location, test, feed results into your FEM model.</li>
+                <li><strong>Additive manufacturing</strong> — AM produces location-dependent properties due to thermal gradients and build direction. Site-specific miniature testing is the only way to capture this.</li>
+                <li><strong>Thin films and coatings</strong> — surface layers and DLC coatings are only accessible at the miniature scale.</li>
+                <li><strong>Ceramics and brittle materials</strong> — preparing large specimens from ceramics is expensive and often causes pre-test fracture during machining.</li>
+              </ul>
+              <h5>The practical outcome</h5>
+              <p>A 70–90% reduction in material cost and specimen preparation time. More importantly, it makes testing economically feasible where it wasn't before — enabling more data points, better statistics, and faster design iteration. At InsituMicron, we've designed the M3TEq-U specifically so miniature testing is reliable, repeatable, and directly compatible with characterisation equipment.</p>
+            </div>
+            <div class="blog-author-row">
+              <div class="blog-author-avatar">KP</div>
+              <div class="blog-author-info">
+                <p class="name">Dr. Kousik Papakollu</p>
+                <p class="sub">Co-Founder &amp; CEO, InsituMicron</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="row no-gutters">
-      <div class="col-lg-6 align-self-center">
-        <div class="service-thumb left" data-aos="fade-right">
-          <img class="img-fluid" src="images/TOP_VIEW4.png" width="800" height="auto" alt="InsituMicron top view">
+
+        <!-- Blog 2 -->
+        <div class="blog-card" data-aos="fade-up" data-aos-delay="60">
+          <div class="blog-images">
+            <div class="blog-img-wrap">
+              <div class="blog-img-placeholder"><i class="ti-image"></i><span>DIC speckle pattern</span></div>
+            </div>
+            <div class="blog-img-wrap">
+              <div class="blog-img-placeholder"><i class="ti-image"></i><span>Strain field map</span></div>
+            </div>
+          </div>
+          <div class="blog-header" onclick="toggleBlog(this)">
+            <div style="flex:1;">
+              <div class="blog-meta-row">
+                <span class="blog-tag">DIC</span>
+                <span class="blog-date"><i class="ti-calendar"></i>March 2025</span>
+                <span class="blog-read-time"><i class="ti-time"></i>7 min read</span>
+              </div>
+              <h3 class="blog-title">Digital Image Correlation: What It Is, What It Isn't, and When You Actually Need It</h3>
+              <p class="blog-excerpt">DIC has become one of the most powerful tools in experimental mechanics — and one of the most misunderstood. A plain-language guide to what DIC measures, its real limitations, and whether it's right for your application.</p>
+            </div>
+            <div class="blog-toggle-icon"><i class="ti-angle-down"></i></div>
+          </div>
+          <div class="blog-body">
+            <div class="blog-content">
+              <p>Digital Image Correlation is a full-field optical strain measurement technique. "Full-field" means you get strain at every pixel in the image — not just at one point where a strain gauge is bonded. "Optical" means it's non-contact — no adhesive, no local stiffness disturbance, no risk of gauge debonding at high strains.</p>
+              <h5>How it works</h5>
+              <p>DIC tracks the motion of a random speckle pattern applied to the specimen surface. A reference image is captured before loading. During loading, images are acquired at set intervals. Software correlates subsets of pixels between images to calculate displacement — and from displacement gradients, computes strain. The spatial resolution of the strain field depends on subset size, which you control.</p>
+              <h5>What it measures (and what it doesn't)</h5>
+              <ul>
+                <li><strong>Does measure</strong>: surface displacement, surface strain (εxx, εyy, εxy), rigid body motion, crack opening displacement, deformation localisation</li>
+                <li><strong>Doesn't measure</strong>: sub-surface deformation, stress (without a material model), crystal-level deformation (use EBSD or XRD for that)</li>
+                <li><strong>2D DIC specifically</strong>: assumes flat surface and in-plane deformation. Out-of-plane motion introduces errors — that's where stereo 3D DIC is needed.</li>
+              </ul>
+              <h5>When you actually need it</h5>
+              <p>DIC earns its place when you need to see where deformation localises — not just the average behaviour. Heterogeneous materials (composites, welds, AM parts), crack propagation studies, and any scenario where a single strain gauge tells only part of the story. Our EduDIC is designed to be approachable — good hardware, straightforward software, and documentation that explains what parameters actually mean for your results.</p>
+            </div>
+            <div class="blog-author-row">
+              <div class="blog-author-avatar">MM</div>
+              <div class="blog-author-info">
+                <p class="name">Mayank Mishra</p>
+                <p class="sub">Co-Founder &amp; CMO, InsituMicron</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-6 mr-auto align-self-center">
-        <div class="service-content right">
-          <div class="service-item" data-aos="fade-up" data-aos-delay="0">
-            <div class="d-flex align-items-center mb-3">
-              <img class="mr-3" src="images/compact-design-icon.png" width="50" alt="Compact">
-              <h3 class="mb-0">Compact Design</h3>
+
+        <!-- Blog 3 -->
+        <div class="blog-card" data-aos="fade-up" data-aos-delay="120">
+          <div class="blog-images">
+            <div class="blog-img-wrap">
+              <div class="blog-img-placeholder"><i class="ti-image"></i><span>In-situ XRD setup</span></div>
             </div>
-            <p>The novel miniature fixture design allows for seamless integration into characterization equipment.</p>
+            <div class="blog-img-wrap">
+              <div class="blog-img-placeholder"><i class="ti-image"></i><span>Peak shift analysis</span></div>
+            </div>
           </div>
-          <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="d-flex align-items-center mb-3">
-              <img class="mr-3" src="images/multifunctionality-icon.png" width="50" alt="Multifunctionality">
-              <h3 class="mb-0">Multifunctionality</h3>
+          <div class="blog-header" onclick="toggleBlog(this)">
+            <div style="flex:1;">
+              <div class="blog-meta-row">
+                <span class="blog-tag">In-Situ XRD</span>
+                <span class="blog-date"><i class="ti-calendar"></i>January 2025</span>
+                <span class="blog-read-time"><i class="ti-time"></i>6 min read</span>
+              </div>
+              <h3 class="blog-title">In-Situ XRD Under Mechanical Load: What It Tells You That Post-Mortem Analysis Can't</h3>
+              <p class="blog-excerpt">Post-mortem characterisation shows what a material looked like after failure. In-situ XRD under load shows what was happening inside the crystal lattice as failure progressed. These are very different things.</p>
             </div>
-            <p>Our innovative clamp design made testing tension, compression, and bending modes possible in one instrument.</p>
+            <div class="blog-toggle-icon"><i class="ti-angle-down"></i></div>
           </div>
-          <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="d-flex align-items-center mb-3">
-              <img class="mr-3" src="images/reliability-icon.png" width="50" alt="Reliability">
-              <h3 class="mb-0">Reliability</h3>
+          <div class="blog-body">
+            <div class="blog-content">
+              <p>When a material is loaded to failure, the microstructural changes that drive that failure are transient — they happen during loading and may partially or fully recover on unloading. Phase transformations, stress-induced martensitic transformation, intergranular stress redistribution, and lattice strain partitioning can only be captured in-situ.</p>
+              <h5>What in-situ XRD adds</h5>
+              <ul>
+                <li><strong>Lattice strain measurement</strong>: XRD measures d-spacing changes in real time. Under load, you can watch lattice strains build in individual phases and specific crystallographic directions — critical for understanding elastic anisotropy.</li>
+                <li><strong>Phase transformation tracking</strong>: if your material undergoes deformation-induced transformation (e.g. austenite to martensite in TRIP steels, or tetragonal to monoclinic in zirconia ceramics), XRD tells you exactly when it starts and what load triggers it.</li>
+                <li><strong>Stress partitioning in composites</strong>: in multi-phase materials, load is not distributed equally between phases. In-situ XRD can measure lattice strain in each phase separately — essential for validating composite mechanics models.</li>
+              </ul>
+              <h5>Practical considerations</h5>
+              <p>The main constraint is that your loading fixture must fit inside the XRD goniometer — which is exactly the problem InsituMicron's compact fixture solves. With a 25 cm footprint, the M3TEq-U fits comfortably on most diffractometer stages without blocking the beam path. Quasi-static step-hold loading protocols work best for correlating mechanical and diffraction data.</p>
             </div>
-            <p>The perfectly optimized system makes our equipment produce reliable and consistent results every time.</p>
-          </div>
-          <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-            <div class="d-flex align-items-center mb-3">
-              <img class="mr-3" src="images/userfriendly.png" width="50" alt="User-Friendly">
-              <h3 class="mb-0">User-Friendly</h3>
+            <div class="blog-author-row">
+              <div class="blog-author-avatar">LB</div>
+              <div class="blog-author-info">
+                <p class="name">Dr. Lalith Bhaskar</p>
+                <p class="sub">Co-Founder &amp; Director, InsituMicron</p>
+              </div>
             </div>
-            <p>Our custom-built software is easy-to-use, which makes testing effortless even for first-time users.</p>
           </div>
         </div>
+
+        <!-- Blog CTA -->
+        <div class="contribute-box green" data-aos="fade-up">
+          <i class="ti-pencil-alt" style="font-size:2rem; color:#2e7d32; display:block; margin-bottom:12px;"></i>
+          <h4>Want to contribute a blog?</h4>
+          <p>If you've done interesting work with our instruments and want to write about it, we'd love to publish it here. We also welcome guest posts from researchers in materials testing, DIC, and characterization.</p>
+          <a href="contact.html" class="btn-contribute green">Get in Touch</a>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- Interested CTA -->
+
+<!-- CTA -->
 <section class="call-to-action-app section bg-blue">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h2>Interested in trying our products?<br>Want to test your samples in our setup?</h2>
+        <h2>Ready to generate your own case study?</h2>
         <ul class="list-inline">
           <li class="list-inline-item">
-            <a href="contact.html" class="btn btn-rounded-icon">
-              <i class="ti-email"></i>
-              Contact us!!
-            </a>
+            <a href="contact.html" class="btn btn-rounded-icon"><i class="ti-email"></i>Contact Us</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="products.html" class="btn btn-rounded-icon"><i class="ti-layout-grid2"></i>Our Products</a>
           </li>
         </ul>
       </div>
@@ -299,17 +877,16 @@
           <div class="block">
             <a href="index.html"><img src="images/title2.png" width="200" height="auto" alt="footer-logo"></a>
             <ul class="social-icon list-inline">
-              <li class="list-inline-item">
-                <a href="https://linkedin.com/"><i class="ti-linkedin"></i></a>
-              </li>
+              <li class="list-inline-item"><a href="https://linkedin.com/"><i class="ti-linkedin"></i></a></li>
             </ul>
           </div>
         </div>
         <div class="col-lg-2 col-md-3 col-6 mt-5 mt-lg-0">
           <div class="block-2">
-            <h6>Product</h6>
+            <h6>Products</h6>
             <ul>
-              <li><a href="solutions.html">Solutions</a></li>
+              <li><a href="products.html">M3TEq-U</a></li>
+              <li><a href="products.html">EduDIC</a></li>
             </ul>
           </div>
         </div>
@@ -317,8 +894,8 @@
           <div class="block-2">
             <h6>Company</h6>
             <ul>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="timeline.html">Timeline</a></li>
+              <li><a href="timeline.html">About Us</a></li>
+              <li><a href="solutions.html">Case Studies &amp; Blogs</a></li>
               <li><a href="contact.html">Contact</a></li>
             </ul>
           </div>
@@ -331,16 +908,51 @@
   </div>
 </footer>
 
-<div class="scroll-top-to">
-  <i class="ti-angle-up"></i>
-</div>
+<div class="scroll-top-to"><i class="ti-angle-up"></i></div>
 
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/bootstrap.min.js"></script>
-<script src="plugins/slick/slick.min.js"></script>
-<script src="plugins/fancybox/jquery.fancybox.min.js"></script>
 <script src="plugins/aos/aos.js"></script>
 <script src="js/script.js"></script>
+
+<script>
+  /* ── Tab active state ── */
+  function setTab(idx, el) {
+    document.querySelectorAll('.page-tab').forEach(function(t) { t.classList.remove('active'); });
+    el.classList.add('active');
+  }
+
+  /* Highlight tab based on scroll position */
+  window.addEventListener('scroll', function() {
+    var blogs = document.getElementById('blogs');
+    var cs    = document.getElementById('case-studies');
+    var tabs  = document.querySelectorAll('.page-tab');
+    var y     = window.scrollY + 140;
+    if (blogs && y >= blogs.offsetTop) {
+      tabs[0].classList.remove('active');
+      tabs[1].classList.add('active');
+    } else if (cs && y >= cs.offsetTop) {
+      tabs[0].classList.add('active');
+      tabs[1].classList.remove('active');
+    }
+  });
+
+  /* ── Accordion: case studies ── */
+  function toggleCard(header) {
+    var card   = header.closest('.cs-card');
+    var isOpen = card.classList.contains('open');
+    document.querySelectorAll('.cs-card.open').forEach(function(c) { c.classList.remove('open'); });
+    if (!isOpen) { card.classList.add('open'); }
+  }
+
+  /* ── Accordion: blogs ── */
+  function toggleBlog(header) {
+    var card   = header.closest('.blog-card');
+    var isOpen = card.classList.contains('open');
+    document.querySelectorAll('.blog-card.open').forEach(function(c) { c.classList.remove('open'); });
+    if (!isOpen) { card.classList.add('open'); }
+  }
+</script>
 
 </body>
 </html>
