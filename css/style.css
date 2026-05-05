@@ -2014,3 +2014,30 @@ hr {
   background: #6c63ff;
   color: #fff;
 }
+.read-full-blog-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fa;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.read-full-blog-btn:hover {
+  background: #f0edff;
+  border-color: #6c63ff;
+  color: #6c63ff;
+  text-decoration: none;
+}
+.read-full-blog-btn i {
+  font-size: 13px;
+  transition: transform 0.2s;
+}
+.read-full-blog-btn:hover i {
+  transform: translateX(4px);
+}
