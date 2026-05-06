@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 
   <link rel="shortcut icon" type="image/x-icon" href="images/logo-insitu_micron.png" />
-
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
   <link rel="stylesheet" href="plugins/slick/slick.css">
@@ -18,128 +17,218 @@
   <link href="css/style.css" rel="stylesheet">
 
   <style>
+    /* ============================================================
+       DESIGN TOKENS — single source of truth for the whole page
+       Primary:   #1a1a2e  (deep navy — logo dark)
+       Accent:    #6c63ff  (purple — logo accent)
+       Accent lt: #a78bfa  (light purple — tints)
+       Mid navy:  #0f3460  (mid navy — logo mid)
+       Body text: #444
+       Muted:     #888
+       Bg light:  #f8f9fa
+       Bg white:  #fff
+    ============================================================ */
 
-    /* ── Applications Section ── */
-    .applications-section {
-      padding: 90px 0;
-      background: #fff;
-    }
-    .applications-section .section-label {
+    /* ── Shared section utilities ── */
+    .im-label {
+      display: block;
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #6c63ff;
-      display: block;
       margin-bottom: 10px;
     }
-    .applications-section .section-heading {
+    .im-heading {
       font-size: 34px;
       font-weight: 700;
       color: #1a1a2e;
       margin-bottom: 12px;
+      line-height: 1.25;
     }
-    .applications-section .section-sub {
+    .im-sub {
       font-size: 16px;
       color: #666;
-      margin-bottom: 50px;
+      line-height: 1.7;
+      margin-bottom: 0;
     }
+
+    /* ── Value-props card strip ── */
+    .vp-strip {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(26,26,46,0.10);
+      padding: 48px 40px;
+    }
+    .vp-item { text-align: center; padding: 0 12px; }
+    .vp-icon-wrap {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      background: #f0edff;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .vp-icon-wrap img { max-width: 36px; max-height: 36px; object-fit: contain; }
+    .vp-item h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+    .vp-item p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── Feature sections ── */
+    .im-feature { padding: 80px 0; }
+    .im-feature.bg-light-gray { background: #f8f9fa; }
+    .im-feature.bg-white { background: #fff; }
+
+    .im-feature .feat-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #6c63ff;
+      background: #f0edff;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .im-feature h2 {
+      font-size: 30px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .im-feature p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+    .feat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a1a2e;
+      background: #f8f9fa;
+      border: 1px solid #e8e8f0;
+      border-radius: 20px;
+      padding: 5px 14px;
+      margin: 4px 4px 0 0;
+    }
+    .feat-badge i { color: #6c63ff; }
+
+    /* ── FEATURES grid section ── */
+    .im-features-grid { padding: 80px 0; background: #f8f9fa; }
+    .feat-grid-img {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 36px rgba(26,26,46,0.12);
+    }
+    .feat-grid-img img { width: 100%; display: block; }
+
+    .feat-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .feat-item:last-child { border-bottom: none; }
+    .feat-item-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: #f0edff;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .feat-item-icon img { max-width: 26px; max-height: 26px; object-fit: contain; }
+    .feat-item h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+    .feat-item p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── Applications section ── */
+    .applications-section { padding: 90px 0; background: #fff; }
+
     .app-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 22px;
     }
-    @media (max-width: 991px) { .app-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 575px) { .app-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 991px) { .app-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 575px)  { .app-grid { grid-template-columns: 1fr; } }
 
     .app-card {
       border-radius: 14px;
       overflow: hidden;
       position: relative;
-      cursor: default;
+      height: 260px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.09);
       transition: transform 0.3s, box-shadow 0.3s;
-      height: 260px;
     }
     .app-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 14px 40px rgba(108,99,255,0.18);
     }
-    .app-card-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
+    .app-card-img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.4s; }
     .app-card:hover .app-card-img { transform: scale(1.06); }
 
-    /* Image placeholder until you add real images */
     .app-card-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      gap: 10px;
+      width:100%; height:100%;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap: 10px; font-size:13px; color:rgba(255,255,255,0.7);
     }
     .app-card-placeholder i { font-size: 2.5rem; }
 
-    /* Colour backgrounds for placeholder */
+    /* All placeholders use brand palette only */
     .app-card:nth-child(1) .app-card-placeholder { background: linear-gradient(135deg,#1a1a2e,#0f3460); }
     .app-card:nth-child(2) .app-card-placeholder { background: linear-gradient(135deg,#0f3460,#6c63ff); }
     .app-card:nth-child(3) .app-card-placeholder { background: linear-gradient(135deg,#6c63ff,#a78bfa); }
-    .app-card:nth-child(4) .app-card-placeholder { background: linear-gradient(135deg,#2e7d32,#388e3c); }
-    .app-card:nth-child(5) .app-card-placeholder { background: linear-gradient(135deg,#e65100,#f57c00); }
-    .app-card:nth-child(6) .app-card-placeholder { background: linear-gradient(135deg,#1565c0,#1976d2); }
+    .app-card:nth-child(4) .app-card-placeholder { background: linear-gradient(135deg,#1a1a2e,#6c63ff); }
+    .app-card:nth-child(5) .app-card-placeholder { background: linear-gradient(135deg,#0f3460,#a78bfa); }
+    .app-card:nth-child(6) .app-card-placeholder { background: linear-gradient(135deg,#6c63ff,#1a1a2e); }
 
     .app-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.18) 55%, transparent 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      position:absolute; inset:0;
+      background: linear-gradient(to top, rgba(26,26,46,0.82) 0%, rgba(26,26,46,0.18) 55%, transparent 100%);
+      display:flex; flex-direction:column; justify-content:flex-end;
       padding: 22px 22px 20px;
       transition: background 0.3s;
     }
     .app-card:hover .app-card-overlay {
-      background: linear-gradient(to top, rgba(108,99,255,0.82) 0%, rgba(108,99,255,0.3) 55%, transparent 100%);
+      background: linear-gradient(to top, rgba(108,99,255,0.88) 0%, rgba(108,99,255,0.35) 55%, transparent 100%);
     }
     .app-card-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 6px;
+      font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:1px;
+      color: rgba(255,255,255,0.72); margin-bottom:6px; display:block;
     }
-    .app-card-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: #fff;
-      margin: 0 0 6px;
-      line-height: 1.3;
-    }
+    .app-card-title { font-size:17px; font-weight:700; color:#fff; margin:0 0 6px; line-height:1.3; }
     .app-card-desc {
-      font-size: 13px;
-      color: rgba(255,255,255,0.0);
-      margin: 0;
-      line-height: 1.5;
-      max-height: 0;
-      overflow: hidden;
+      font-size:13px; color:rgba(255,255,255,0); margin:0; line-height:1.5;
+      max-height:0; overflow:hidden;
       transition: max-height 0.35s ease, color 0.3s;
     }
-    .app-card:hover .app-card-desc {
-      color: rgba(255,255,255,0.88);
-      max-height: 80px;
-    }
+    .app-card:hover .app-card-desc { color:rgba(255,255,255,0.88); max-height:80px; }
 
-    /* ── Advantages Section ── */
+    /* ── Advantages section ── */
     .advantages-section {
       padding: 90px 0;
       background: #1a1a2e;
@@ -147,253 +236,143 @@
       overflow: hidden;
     }
     .advantages-section::before {
-      content: '';
-      position: absolute;
-      top: -80px; right: -80px;
-      width: 400px; height: 400px;
+      content:''; position:absolute; top:-80px; right:-80px;
+      width:400px; height:400px;
       background: radial-gradient(circle, rgba(108,99,255,0.18) 0%, transparent 70%);
-      pointer-events: none;
+      pointer-events:none;
     }
     .advantages-section::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: -80px;
-      width: 350px; height: 350px;
+      content:''; position:absolute; bottom:-80px; left:-80px;
+      width:350px; height:350px;
       background: radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%);
-      pointer-events: none;
+      pointer-events:none;
     }
-    .advantages-section .section-label { color: #a78bfa; }
-    .advantages-section .section-heading { color: #fff; }
-    .advantages-section .section-sub { color: rgba(255,255,255,0.6); }
-
     .adv-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 50px;
+      display:grid; grid-template-columns:repeat(2,1fr);
+      gap:22px; margin-top:50px;
     }
-    @media (max-width: 767px) { .adv-grid { grid-template-columns: 1fr; } }
+    @media (max-width:767px) { .adv-grid { grid-template-columns:1fr; } }
 
     .adv-card {
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.10);
       border-radius: 14px;
-      padding: 36px 32px;
-      display: flex;
-      align-items: flex-start;
-      gap: 22px;
+      padding: 34px 30px;
+      display:flex; align-items:flex-start; gap:22px;
       transition: background 0.25s, border-color 0.25s, transform 0.25s;
     }
     .adv-card:hover {
-      background: rgba(108,99,255,0.15);
-      border-color: rgba(108,99,255,0.4);
+      background: rgba(108,99,255,0.14);
+      border-color: rgba(108,99,255,0.40);
       transform: translateY(-4px);
     }
     .adv-number {
-      font-size: 42px;
-      font-weight: 900;
-      line-height: 1;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, #6c63ff, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      min-width: 80px;
+      font-size:42px; font-weight:900; line-height:1; flex-shrink:0; min-width:85px;
+      background: linear-gradient(135deg,#6c63ff,#a78bfa);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
     }
-    .adv-text h4 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
+    .adv-icon {
+      width:38px; height:38px; border-radius:50%;
+      background: rgba(108,99,255,0.22);
+      display:flex; align-items:center; justify-content:center; margin-bottom:10px;
     }
-    .adv-text p {
-      font-size: 14px;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.65;
-      margin: 0;
-    }
-    .adv-icon-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-    .adv-icon-circle {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      background: rgba(108,99,255,0.25);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .adv-icon-circle i { font-size: 1rem; color: #a78bfa; }
+    .adv-icon i { font-size:1rem; color:#a78bfa; }
+    .adv-text h4 { font-size:17px; font-weight:700; color:#fff; margin-bottom:8px; }
+    .adv-text p  { font-size:14px; color:rgba(255,255,255,0.60); line-height:1.65; margin:0; }
 
-    /* ── Customers / Logo Ticker ── */
-    .customers-section {
-      padding: 70px 0;
-      background: #f8f9fa;
-    }
-    .customers-section .section-label { color: #6c63ff; display: block; text-align: center; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-    .customers-section .section-heading { text-align: center; font-size: 32px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; }
-    .customers-section .section-sub { text-align: center; font-size: 15px; color: #888; margin-bottom: 48px; }
+    /* ── Customers ticker ── */
+    .customers-section { padding: 70px 0; background: #f8f9fa; }
 
-    /* Ticker wrapper */
     .ticker-outer {
-      overflow: hidden;
-      position: relative;
-      padding: 10px 0;
+      overflow:hidden; position:relative; padding:10px 0;
     }
-    /* Fade edges */
     .ticker-outer::before,
     .ticker-outer::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 100px;
-      z-index: 2;
-      pointer-events: none;
+      content:''; position:absolute; top:0; bottom:0; width:120px; z-index:2; pointer-events:none;
     }
-    .ticker-outer::before { left: 0;  background: linear-gradient(to right, #f8f9fa, transparent); }
-    .ticker-outer::after  { right: 0; background: linear-gradient(to left,  #f8f9fa, transparent); }
+    .ticker-outer::before { left:0;  background:linear-gradient(to right,#f8f9fa,transparent); }
+    .ticker-outer::after  { right:0; background:linear-gradient(to left, #f8f9fa,transparent); }
 
     .ticker-track {
-      display: flex;
-      gap: 24px;
-      width: max-content;
-      animation: ticker-scroll 28s linear infinite;
+      display:flex; gap:20px; width:max-content;
+      animation: ticker-scroll 30s linear infinite;
     }
-    .ticker-outer:hover .ticker-track { animation-play-state: paused; }
+    .ticker-outer:hover .ticker-track { animation-play-state:paused; }
 
     @keyframes ticker-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0%   { transform:translateX(0); }
+      100% { transform:translateX(-50%); }
     }
 
     .customer-chip {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: #fff;
+      display:flex; align-items:center; gap:14px;
+      background:#fff;
       border: 1.5px solid #e8e8f0;
-      border-radius: 50px;
-      padding: 12px 24px 12px 14px;
-      white-space: nowrap;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius:50px;
+      padding:10px 22px 10px 12px;
+      white-space:nowrap;
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
       transition: border-color 0.2s, box-shadow 0.2s;
-      flex-shrink: 0;
+      flex-shrink:0;
     }
     .customer-chip:hover {
-      border-color: #6c63ff;
-      box-shadow: 0 4px 18px rgba(108,99,255,0.12);
+      border-color:#6c63ff;
+      box-shadow:0 4px 18px rgba(108,99,255,0.12);
     }
     .customer-logo {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      object-fit: contain;
-      background: #f0f0f0;
-      padding: 4px;
-      flex-shrink: 0;
+      width:44px; height:44px; border-radius:50%;
+      object-fit:contain; background:#f0f0f0; padding:4px; flex-shrink:0;
     }
-    .customer-logo-placeholder {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #1a1a2e, #0f3460);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 800; color: #fff;
-      flex-shrink: 0;
-    }
-    .customer-name {
-      font-size: 14px;
-      font-weight: 700;
-      color: #1a1a2e;
-    }
-    .customer-type {
-      font-size: 11px;
-      color: #888;
-      margin-top: 1px;
-    }
-
-    /* Testimonial below ticker */
-    .testimonial-strip {
-      margin-top: 52px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    @media (max-width: 767px) { .testimonial-strip { grid-template-columns: 1fr; } }
-    .testi-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 3px 16px rgba(0,0,0,0.06);
-      border: 1px solid #f0f0f0;
-    }
-    .testi-stars { color: #f59e0b; font-size: 13px; margin-bottom: 10px; letter-spacing: 1px; }
-    .testi-quote { font-size: 14px; color: #555; line-height: 1.7; font-style: italic; margin: 0 0 16px; }
-    .testi-author { display: flex; align-items: center; gap: 10px; }
-    .testi-avatar {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: linear-gradient(135deg,#6c63ff,#a78bfa);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 800; color: #fff; flex-shrink: 0;
-    }
-    .testi-name { font-size: 13px; font-weight: 700; color: #1a1a2e; margin: 0; }
-    .testi-inst { font-size: 11px; color: #888; margin: 0; }
+    .customer-name { font-size:14px; font-weight:700; color:#1a1a2e; }
+    .customer-type { font-size:11px; color:#888; margin-top:1px; }
 
   </style>
 </head>
 
 <body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 
-<!-- Nav -->
+<!-- ── Nav ── -->
 <nav class="navbar main-nav navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0">
   <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="images/title.png" width="200" height="auto" alt="logo"></a>
+    <a class="navbar-brand" href="index.html">
+      <img src="images/title.png" width="200" height="auto" alt="InsituMicron logo">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="ti-menu"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown active">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="solutions.html">Case Studies &amp; Blogs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="timeline.html">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
+        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="solutions.html">Case Studies &amp; Blogs</a></li>
+        <li class="nav-item"><a class="nav-link" href="timeline.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Hero -->
+<!-- ── Hero ── -->
 <section class="section gradient-banner moveupn50">
   <div class="shapes-container">
-    <div class="shape" data-aos="fade-down-left" data-aos-duration="1500" data-aos-delay="100"></div>
-    <div class="shape" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100"></div>
-    <div class="shape" data-aos="fade-up-right" data-aos-duration="1000" data-aos-delay="200"></div>
-    <div class="shape" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"></div>
-    <div class="shape" data-aos="fade-down-left" data-aos-duration="1000" data-aos-delay="100"></div>
-    <div class="shape" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"></div>
-    <div class="shape" data-aos="fade-down-right" data-aos-duration="500" data-aos-delay="200"></div>
-    <div class="shape" data-aos="zoom-out" data-aos-duration="2000" data-aos-delay="500"></div>
-    <div class="shape" data-aos="fade-up-right" data-aos-duration="500" data-aos-delay="200"></div>
-    <div class="shape" data-aos="fade-down-left" data-aos-duration="500" data-aos-delay="100"></div>
+    <div class="shape" data-aos="fade-down-left"  data-aos-duration="1500" data-aos-delay="100"></div>
+    <div class="shape" data-aos="fade-down"       data-aos-duration="1000" data-aos-delay="100"></div>
+    <div class="shape" data-aos="fade-up-right"   data-aos-duration="1000" data-aos-delay="200"></div>
+    <div class="shape" data-aos="fade-up"         data-aos-duration="1000" data-aos-delay="200"></div>
+    <div class="shape" data-aos="fade-down-left"  data-aos-duration="1000" data-aos-delay="100"></div>
+    <div class="shape" data-aos="zoom-in"         data-aos-duration="1000" data-aos-delay="300"></div>
+    <div class="shape" data-aos="fade-down-right" data-aos-duration="500"  data-aos-delay="200"></div>
+    <div class="shape" data-aos="zoom-out"        data-aos-duration="2000" data-aos-delay="500"></div>
+    <div class="shape" data-aos="fade-up-right"   data-aos-duration="500"  data-aos-delay="200"></div>
+    <div class="shape" data-aos="fade-down-left"  data-aos-duration="500"  data-aos-delay="100"></div>
   </div>
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-6 order-2 order-md-1 text-center text-md-left">
         <h1 class="text-white font-weight-bold mb-4">Next Generation<br>Mechanical Testing</h1>
         <p class="text-white mb-5">Unravelling the unknown &amp; aiding groundbreaking research.</p>
-        <a href="products.html" class="btn btn-main-md mr-3">Our Products</a>
+        <a href="about.html" class="btn btn-main-md mr-3">Our Products</a>
         <a href="contact.html" class="btn btn-main-md" style="background:transparent; border:2px solid rgba(255,255,255,0.8);">Contact Us</a>
       </div>
       <div class="col-md-6 text-center order-1 order-md-2">
@@ -403,394 +382,294 @@
   </div>
 </section>
 
-<!-- Value props -->
+<!-- ── Value props strip ── -->
 <section class="section pt-0 position-relative pull-top">
   <div class="container">
-    <div class="rounded shadow p-5 bg-white">
-      <div class="d-flex justify-content-center flex-wrap">
-        <div class="col-lg-3 col-md-6 mt-3 mt-md-0 text-center">
-          <img class="img-fluid" src="images/icons/innovate.png" width="50" alt="Innovate">
-          <h3 class="mt-4 text-capitalize h5">Innovate</h3>
-          <p class="regular text-muted">Create innovative products which aid in augmented materials research.</p>
+    <div class="vp-strip">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 vp-item">
+          <div class="vp-icon-wrap"><img src="images/icons/innovate.png" alt="Innovate"></div>
+          <h3>Innovate</h3>
+          <p>Create innovative products which aid in augmented materials research.</p>
         </div>
-        <div class="col-lg-3 col-md-6 mt-3 mt-md-0 text-center">
-          <img class="img-fluid" src="images/icons/shake hand.png" width="110" alt="Collaborate">
-          <h3 class="mt-4 text-capitalize h5">Collaborate</h3>
-          <p class="regular text-muted">Partner with academia and industry to enhance product capabilities.</p>
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 vp-item">
+          <div class="vp-icon-wrap"><img src="images/icons/shake hand.png" alt="Collaborate" style="max-width:46px;"></div>
+          <h3>Collaborate</h3>
+          <p>Partner with academia and industry to enhance product capabilities.</p>
         </div>
-        <div class="col-lg-3 col-md-6 mt-3 mt-md-0 text-center">
-          <img class="img-fluid" src="images/icons/democra.png" width="60" alt="Democratize">
-          <h3 class="mt-4 text-capitalize h5">Democratize</h3>
-          <p class="regular text-muted">Make our technologies accessible to all research institutes.</p>
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 vp-item">
+          <div class="vp-icon-wrap"><img src="images/icons/democra.png" alt="Democratize"></div>
+          <h3>Democratize</h3>
+          <p>Make our technologies accessible to all research institutes.</p>
         </div>
-        <div class="col-lg-3 col-md-6 mt-3 mt-md-0 text-center">
-          <img class="img-fluid" src="images/icons/advance.png" width="70" alt="Advance">
-          <h3 class="mt-4 text-capitalize h5">Advance</h3>
-          <p class="regular text-muted">Strategically expand the horizon of materials testing and characterization.</p>
+        <div class="col-lg-3 col-md-6 vp-item">
+          <div class="vp-icon-wrap"><img src="images/icons/advance.png" alt="Advance"></div>
+          <h3>Advance</h3>
+          <p>Strategically expand the horizon of materials testing and characterization.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Feature 1 -->
-<section class="feature section pt-0">
+<!-- ── Feature 1 — Miniaturized Testing ── -->
+<section class="im-feature bg-white">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-6 ml-auto justify-content-center">
-        <div class="image-content" data-aos="fade-right">
-          <img class="img-fluid" src="images/Gifs/Miniatured-mech-testing-3.gif" alt="Miniaturized testing">
-        </div>
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+        <img class="img-fluid" style="border-radius:14px;" src="images/Gifs/Miniatured-mech-testing-3.gif" alt="Miniaturized testing">
       </div>
-      <div class="col-lg-6 mr-auto align-self-center">
-        <div class="feature-content">
-          <h2>Miniaturized Mechanical Testing</h2>
-          <p class="desc">Testing in-service components are essential to understand their failure. This helps design new materials, manufacturing methods, and parts. Miniaturised testing allows site-specific testing, which is vital to comprehend material under the thermal and mechanical stresses during manufacturing. Additive manufacturing also demands site-specific testing because of its inherent nature.</p>
+      <div class="col-lg-6 pl-lg-5">
+        <span class="feat-label">Core capability</span>
+        <h2>Miniaturized Mechanical Testing</h2>
+        <p>Testing in-service components is essential to understand failure. Miniaturised testing allows site-specific characterisation — vital to comprehend material behaviour under thermal and mechanical stresses during manufacturing. Additive manufacturing also demands this because of its inherent microstructural variability.</p>
+        <div class="mt-4">
+          <span class="feat-badge"><i class="ti-check"></i> Tension &amp; Compression</span>
+          <span class="feat-badge"><i class="ti-check"></i> 3 &amp; 4 Point Bending</span>
+          <span class="feat-badge"><i class="ti-check"></i> 5 kN Capacity</span>
+          <span class="feat-badge"><i class="ti-check"></i> Class 0.2 Load Cell</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Feature 2 -->
-<section class="feature section pt-0">
+<!-- ── Feature 2 — In-situ Testing ── -->
+<section class="im-feature bg-light-gray">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-6 ml-auto align-self-center">
-        <div class="feature-content">
-          <h2>In-situ Testing</h2>
-          <p>In-situ characterization augments the information obtained as it is carried out under real-time loading. The vital information collected is essential for identifying the failure mechanism and allows material manufacturers to design new materials. Here it is employed for measuring single crystal elastic constants for new materials that are challenging and expensive to determine otherwise.</p>
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-2 order-lg-1 pr-lg-5">
+        <span class="feat-label">Real-time insight</span>
+        <h2>In-Situ Testing</h2>
+        <p>In-situ characterisation augments the information obtained because it is carried out under real-time loading conditions. The vital data collected is essential for identifying failure mechanisms and allows material manufacturers to design better materials. Particularly powerful for measuring single crystal elastic constants — challenging and expensive to determine by any other method.</p>
+        <div class="mt-4">
+          <span class="feat-badge"><i class="ti-check"></i> XRD Compatible</span>
+          <span class="feat-badge"><i class="ti-check"></i> Raman Spectroscopy</span>
+          <span class="feat-badge"><i class="ti-check"></i> Optical Microscopy</span>
+          <span class="feat-badge"><i class="ti-check"></i> DIC Ready</span>
         </div>
       </div>
-      <div class="col-lg-6 mr-auto justify-content-center">
-        <div class="image-content" data-aos="fade-left">
-          <img class="img-fluid" src="images/Gifs/insitu-testing_4.gif" alt="In-situ testing">
-        </div>
+      <div class="col-lg-6 order-1 order-lg-2 mb-5 mb-lg-0" data-aos="fade-left">
+        <img class="img-fluid" style="border-radius:14px;" src="images/Gifs/insitu-testing_4.gif" alt="In-situ testing">
       </div>
     </div>
   </div>
 </section>
 
-<!-- Features / Capabilities -->
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="section-title">
-					<h2>FEATURES</h2>
-				</div>
-			</div>
-		</div>
-		<div class="row no-gutters">
-			<div class="col-lg-6 align-self-center">
-				<!-- Feature Image -->
-				<div class="service-thumb left" data-aos="fade-right">
-					<img class="img-fluid" src="images/TOP_VIEW4.png" padding= "200" width="800" height="auto" alt="iphone-ipad">
-				</div>
-			</div>
-			<div class="col-lg-5 mr-auto align-self-center">
-				<div class="service-box">
-					<div class="row align-items-center">
-						<div class="col-md-6 col-xs-12">
-							<!-- Service 01 -->
-							<div class="service-item">
-								<!-- Icon -->
-								<img class="img-fluid" src="images/compact-design-icon.png">
-								<!-- Heading -->
-								<h3>Compact Design</h3>
-								<!-- Description -->
-								<p>The novel miniature fixture design allows for seamless integration into characterization equipment.</p>
-							</div>
-						</div>
-						<div class="col-md-6 col-xs-12">
-							<!-- Service 01 -->
-							<div class="service-item">
-								<!-- Icon -->
-								<img class="img-fluid" src="images/multifunctionality-icon.png">
-								<!-- Heading -->
-								<h3>Multifunctionality</h3>
-								<!-- Description -->
-								<p>Our innovative clamp design made testing tension, compression, and bending modes possible.</p>
-							</div>
-						</div>
-						<div class="col-md-6 col-xs-12">
-							<!-- Service 01 -->
-							<div class="service-item">
-								<!-- Icon -->
-								<img class="img-fluid" src="images/reliability-icon.png">
-								<!-- Heading -->
-								<h3>Reliability</h3>
-								<!-- Description -->
-								<p>The perfectly optimized system makes our equipment produce reliable and consistent results.</p>
-							</div>
-						</div>
-						<div class="col-md-6 col-xs-12">
-							<!-- Service 01 -->
-							<div class="service-item">
-								<!-- Icon -->
-								<img class="img-fluid" src="images/userfriendly.png">
-								<!-- Heading -->
-								<h3>User-Friendly</h3>
-								<!-- Description -->
-								<p>Our custom-built software is easy-to-use which makes testing effortless.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
+<!-- ── Features grid ── -->
+<section class="im-features-grid">
+  <div class="container">
+    <div class="row mb-5 text-center">
+      <div class="col-12">
+        <span class="im-label">What sets us apart</span>
+        <h2 class="im-heading">Product Features</h2>
+        <p class="im-sub" style="max-width:540px; margin:0 auto;">Every design decision in our instruments was made to give researchers better data with less friction.</p>
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+        <div class="feat-grid-img">
+          <img src="images/TOP_VIEW4.png" alt="InsituMicron top view">
+        </div>
+      </div>
+      <div class="col-lg-6 pl-lg-5">
+        <div class="feat-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="feat-item-icon"><img src="images/compact-design-icon.png" alt="Compact"></div>
+          <div>
+            <h4>Compact Design</h4>
+            <p>The miniature fixture integrates seamlessly with XRD, Raman, and optical microscope stages — no modifications to your existing equipment needed.</p>
+          </div>
+        </div>
+        <div class="feat-item" data-aos="fade-up" data-aos-delay="80">
+          <div class="feat-item-icon"><img src="images/multifunctionality-icon.png" alt="Multifunctional"></div>
+          <div>
+            <h4>Multifunctionality</h4>
+            <p>One instrument handles tension, compression, and bending — our innovative clamp design eliminates the need for multiple setups.</p>
+          </div>
+        </div>
+        <div class="feat-item" data-aos="fade-up" data-aos-delay="160">
+          <div class="feat-item-icon"><img src="images/reliability-icon.png" alt="Reliable"></div>
+          <div>
+            <h4>Reliability</h4>
+            <p>Optimised load train and Class 0.2 load cell ensure consistent, repeatable results — every single test.</p>
+          </div>
+        </div>
+        <div class="feat-item" data-aos="fade-up" data-aos-delay="240">
+          <div class="feat-item-icon"><img src="images/userfriendly.png" alt="User friendly"></div>
+          <div>
+            <h4>User-Friendly Software</h4>
+            <p>Our custom-built software makes experiment setup, live data monitoring, and export straightforward — even for first-time users.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════════════════════════════
-     APPLICATIONS SECTION
+     APPLICATIONS
 ══════════════════════════════════════ -->
 <section class="applications-section">
   <div class="container">
-    <div class="row mb-2">
+    <div class="row mb-4">
       <div class="col-lg-8">
-        <span class="section-label">Where it's used</span>
-        <h2 class="section-heading">Applications</h2>
-        <p class="section-sub">Our instruments are built for the problems that conventional testing can't reach — across materials, industries, and research domains.</p>
+        <span class="im-label">Where it's used</span>
+        <h2 class="im-heading">Applications</h2>
+        <p class="im-sub">Our instruments are built for the problems that conventional testing can't reach — across materials, industries, and research domains.</p>
       </div>
     </div>
-
     <div class="app-grid">
-
-      <!-- Card 1 -->
       <div class="app-card" data-aos="fade-up" data-aos-delay="0">
-        <!-- Replace with real image: <img class="app-card-img" src="images/applications/aerospace.jpg" alt="Aerospace"> -->
-        <div class="app-card-placeholder">
-          <i class="ti-rocket"></i>
-          <span>Replace with image</span>
-        </div>
+        <div class="app-card-placeholder"><i class="ti-rocket"></i><span>Replace with image</span></div>
         <div class="app-card-overlay">
           <span class="app-card-tag">High-Performance</span>
           <h4 class="app-card-title">Aerospace &amp; Defence</h4>
           <p class="app-card-desc">Site-specific testing of turbine blades, composite panels, and coatings. In-situ XRD to track phase transformations under service loads.</p>
         </div>
       </div>
-
-      <!-- Card 2 -->
       <div class="app-card" data-aos="fade-up" data-aos-delay="60">
-        <div class="app-card-placeholder">
-          <i class="ti-car"></i>
-          <span>Replace with image</span>
-        </div>
+        <div class="app-card-placeholder"><i class="ti-car"></i><span>Replace with image</span></div>
         <div class="app-card-overlay">
           <span class="app-card-tag">Automotive</span>
           <h4 class="app-card-title">Automotive &amp; EV</h4>
           <p class="app-card-desc">Hardened layer testing, weld characterisation, and battery electrode material testing. FEM-ready data from miniature specimens.</p>
         </div>
       </div>
-
-      <!-- Card 3 -->
       <div class="app-card" data-aos="fade-up" data-aos-delay="120">
-        <div class="app-card-placeholder">
-          <i class="ti-layers"></i>
-          <span>Replace with image</span>
-        </div>
+        <div class="app-card-placeholder"><i class="ti-layers"></i><span>Replace with image</span></div>
         <div class="app-card-overlay">
           <span class="app-card-tag">Manufacturing</span>
           <h4 class="app-card-title">Additive Manufacturing</h4>
           <p class="app-card-desc">Build-direction anisotropy, layer-by-layer property gradients, and process qualification — all from small as-printed specimens.</p>
         </div>
       </div>
-
-      <!-- Card 4 -->
       <div class="app-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="app-card-placeholder">
-          <i class="ti-desktop"></i>
-          <span>Replace with image</span>
-        </div>
+        <div class="app-card-placeholder"><i class="ti-desktop"></i><span>Replace with image</span></div>
         <div class="app-card-overlay">
           <span class="app-card-tag">Electronics</span>
           <h4 class="app-card-title">Semiconductors &amp; Electronics</h4>
           <p class="app-card-desc">Thin film mechanical properties, solder joint reliability, and substrate fracture toughness at the microscale.</p>
         </div>
       </div>
-
-      <!-- Card 5 -->
       <div class="app-card" data-aos="fade-up" data-aos-delay="60">
-        <div class="app-card-placeholder">
-          <i class="ti-panel"></i>
-          <span>Replace with image</span>
-        </div>
+        <div class="app-card-placeholder"><i class="ti-panel"></i><span>Replace with image</span></div>
         <div class="app-card-overlay">
           <span class="app-card-tag">Advanced Materials</span>
           <h4 class="app-card-title">Ceramics &amp; Composites</h4>
-          <p class="app-card-desc">Bending strength, fracture toughness, and in-situ Raman of ceramics and fibre-reinforced composites — without large specimen preparation costs.</p>
+          <p class="app-card-desc">Bending strength, fracture toughness, and in-situ Raman — without large specimen preparation costs.</p>
         </div>
       </div>
-
-      <!-- Card 6 -->
       <div class="app-card" data-aos="fade-up" data-aos-delay="120">
-        <div class="app-card-placeholder">
-          <i class="ti-flask"></i>
-          <span>Replace with image</span>
-        </div>
+        <div class="app-card-placeholder"><i class="ti-flask"></i><span>Replace with image</span></div>
         <div class="app-card-overlay">
           <span class="app-card-tag">Academia</span>
           <h4 class="app-card-title">Research &amp; Education</h4>
-          <p class="app-card-desc">Accessible, affordable instruments for university labs. EduDIC makes full-field strain measurement available to every research group, not just well-funded ones.</p>
+          <p class="app-card-desc">Accessible, affordable instruments for university labs. EduDIC makes full-field strain measurement available to every research group.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-
 <!-- ══════════════════════════════════════
-     ADVANTAGES OF MINIATURISED TESTING
+     ADVANTAGES
 ══════════════════════════════════════ -->
 <section class="advantages-section">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto text-center">
-        <span class="section-label" style="font-size:12px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#a78bfa; display:block; margin-bottom:10px;">Why go smaller</span>
-        <h2 class="section-heading" style="font-size:34px; font-weight:700; color:#fff; margin-bottom:12px;">Advantages of Miniaturised Testing</h2>
-        <p class="section-sub" style="font-size:16px; color:rgba(255,255,255,0.6); margin-bottom:0;">Numbers don't lie. Here's what switching to miniature specimens actually delivers.</p>
+        <span class="im-label" style="color:#a78bfa;">Why go smaller</span>
+        <h2 class="im-heading" style="color:#fff;">Advantages of Miniaturised Testing</h2>
+        <p class="im-sub" style="color:rgba(255,255,255,0.60);">Numbers don't lie. Here's what switching to miniature specimens actually delivers.</p>
       </div>
     </div>
-
     <div class="adv-grid">
-
       <div class="adv-card" data-aos="fade-up" data-aos-delay="0">
         <div class="adv-number">70%</div>
         <div class="adv-text">
-          <div class="adv-icon-row">
-            <div class="adv-icon-circle"><i class="ti-money"></i></div>
-          </div>
+          <div class="adv-icon"><i class="ti-money"></i></div>
           <h4>Reduction in Material Cost</h4>
           <p>Miniature specimens require a fraction of the raw material. Critical for expensive alloys, AM metals, and rare ceramics where every gram counts.</p>
         </div>
       </div>
-
       <div class="adv-card" data-aos="fade-up" data-aos-delay="80">
         <div class="adv-number">60%</div>
         <div class="adv-text">
-          <div class="adv-icon-row">
-            <div class="adv-icon-circle"><i class="ti-timer"></i></div>
-          </div>
+          <div class="adv-icon"><i class="ti-timer"></i></div>
           <h4>Reduction in Sample Preparation Time</h4>
-          <p>Less material to machine means faster turnaround. More specimens per batch, faster design iteration, and quicker time-to-insight.</p>
+          <p>Less material to machine means faster turnaround. More specimens per batch, faster design iteration, quicker time-to-insight.</p>
         </div>
       </div>
-
       <div class="adv-card" data-aos="fade-up" data-aos-delay="160">
-        <div class="adv-number"><i class="ti-link" style="font-size:32px; -webkit-text-fill-color:#a78bfa;"></i></div>
+        <div class="adv-number" style="font-size:32px; padding-top:6px;"><i class="ti-link" style="-webkit-text-fill-color:#a78bfa;"></i></div>
         <div class="adv-text">
-          <div class="adv-icon-row">
-            <div class="adv-icon-circle"><i class="ti-settings"></i></div>
-          </div>
+          <div class="adv-icon"><i class="ti-settings"></i></div>
           <h4>Seamless Integration with Characterisation Equipment</h4>
-          <p>Compact fixture design fits directly on XRD goniometers, Raman stages, and optical microscopes — run mechanical and structural characterisation simultaneously.</p>
+          <p>Compact fixture fits directly on XRD goniometers, Raman stages, and optical microscopes — mechanical and structural characterisation simultaneously.</p>
         </div>
       </div>
-
       <div class="adv-card" data-aos="fade-up" data-aos-delay="240">
         <div class="adv-number">90%</div>
         <div class="adv-text">
-          <div class="adv-icon-row">
-            <div class="adv-icon-circle"><i class="ti-layers"></i></div>
-          </div>
+          <div class="adv-icon"><i class="ti-layers"></i></div>
           <h4>Saving in Printing Time &amp; Cost for AM</h4>
-          <p>Additive manufacturing is expensive. Miniature specimens reduce printing time and cost by up to 90% — making iterative process qualification actually feasible.</p>
+          <p>Additive manufacturing is expensive. Miniature specimens reduce printing time and cost by up to 90% — making iterative process qualification feasible.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-
 <!-- ══════════════════════════════════════
-     CUSTOMERS LOGO TICKER
+     CUSTOMERS TICKER
 ══════════════════════════════════════ -->
 <section class="customers-section">
   <div class="container-fluid">
     <div class="container">
-      <span class="section-label">Trusted by researchers &amp; industry</span>
-      <h2 class="section-heading">Our Customers</h2>
-      <p class="section-sub">From IIT labs to industrial R&amp;D — teams across academia and manufacturing rely on InsituMicron.</p>
+      <span class="im-label" style="text-align:center; display:block;">Trusted by researchers &amp; industry</span>
+      <h2 class="im-heading" style="text-align:center;">Our Customers</h2>
+      <p class="im-sub" style="text-align:center; margin-bottom:44px;">From IIT labs to industrial R&amp;D — teams across academia and manufacturing rely on InsituMicron.</p>
     </div>
-
-    <!-- Auto-scrolling ticker -->
     <div class="ticker-outer">
       <div class="ticker-track" id="tickerTrack">
-
-        <!-- Set 1 — will be cloned by JS for infinite loop -->
         <div class="customer-chip">
           <img class="customer-logo" src="images/iitm.png" alt="IIT Madras">
-          <div>
-            <div class="customer-name">IIT Madras</div>
-            <div class="customer-type">Research Institution</div>
-          </div>
+          <div><div class="customer-name">IIT Madras</div><div class="customer-type">Research Institution</div></div>
         </div>
-
         <div class="customer-chip">
-          <img class="customer-logo" src="images/Rane.png" alt="IIT Madras">
-          <div>
-            <div class="customer-name">Rane Madras Ltd.</div>
-            <div class="customer-type">Industry</div>
-          </div>
+          <img class="customer-logo" src="images/Rane.png" alt="Rane Madras">
+          <div><div class="customer-name">Rane Madras Ltd.</div><div class="customer-type">Industry</div></div>
         </div>
-
         <div class="customer-chip">
-          <img class="customer-logo" src="images/veltech.png" alt="IIT Madras">
-          <div>
-            <div class="customer-name">Vel Tech University</div>
-            <div class="customer-type">Research Institution</div>
-          </div>
+          <img class="customer-logo" src="images/veltech.png" alt="Vel Tech">
+          <div><div class="customer-name">Vel Tech University</div><div class="customer-type">Research Institution</div></div>
         </div>
-
         <div class="customer-chip">
-          <img class="customer-logo" src="images/iitj.png" alt="IIT Madras">
-          <div>
-            <div class="customer-name">IIT Jammu</div>
-            <div class="customer-type">Research Institution</div>
-          </div>
+          <img class="customer-logo" src="images/iitj.png" alt="IIT Jammu">
+          <div><div class="customer-name">IIT Jammu</div><div class="customer-type">Research Institution</div></div>
         </div>
-
         <div class="customer-chip">
-          <img class="customer-logo" src="images/iitp.png" alt="IIT Madras">
-          <div>
-            <div class="customer-name">IIT Patna</div>
-            <div class="customer-type">Research Institution</div>
-          </div>
+          <img class="customer-logo" src="images/iitp.png" alt="IIT Patna">
+          <div><div class="customer-name">IIT Patna</div><div class="customer-type">Research Institution</div></div>
         </div>
-
         <div class="customer-chip">
-          <img class="customer-logo" src="images/sg.png" alt="IIT Madras">
-          <div>
-            <div class="customer-name">Saint Gobain</div>
-            <div class="customer-type">Industry</div>
-          </div>
+          <img class="customer-logo" src="images/sg.png" alt="Saint Gobain">
+          <div><div class="customer-name">Saint Gobain</div><div class="customer-type">Industry</div></div>
         </div>
-		  
         <div class="customer-chip">
-          <img class="customer-logo" src="images/iitbbs.png" alt="IIT Madras">
-          <div>
-            <div class="customer-name">IIT Bhubaneshwar</div>
-            <div class="customer-type">Research Institution</div>
-          </div>
+          <img class="customer-logo" src="images/iitbbs.png" alt="IIT Bhubaneswar">
+          <div><div class="customer-name">IIT Bhubaneswar</div><div class="customer-type">Research Institution</div></div>
         </div>
-
         <div class="customer-chip">
-          <img class="customer-logo" src="images/nitt.png" alt="IIT Madras">
-          <div>
-            <div class="customer-name">NIT Trichy</div>
-            <div class="customer-type">Research Institution</div>
-          </div>
+          <img class="customer-logo" src="images/nitt.png" alt="NIT Trichy">
+          <div><div class="customer-name">NIT Trichy</div><div class="customer-type">Research Institution</div></div>
         </div>
-		  
-      </div><!-- end ticker-track -->
-    </div><!-- end ticker-outer -->
-
+      </div>
+    </div>
   </div>
 </section>
 
-
-<!-- Video Promo -->
+<!-- ── Video Promo ── -->
 <section class="video-promo section bg-1">
   <div class="container">
     <div class="row">
@@ -807,7 +686,7 @@
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ── CTA ── -->
 <section class="call-to-action-app section bg-blue">
   <div class="container">
     <div class="row">
@@ -816,8 +695,7 @@
         <ul class="list-inline">
           <li class="list-inline-item">
             <a href="contact.html" class="btn btn-rounded-icon">
-              <i class="ti-email"></i>
-              Contact us!!
+              <i class="ti-email"></i> Contact us!!
             </a>
           </li>
         </ul>
@@ -826,14 +704,14 @@
   </div>
 </section>
 
-<!-- Footer -->
+<!-- ── Footer ── -->
 <footer>
   <div class="footer-main">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
           <div class="block">
-            <a href="index.html"><img src="images/title2.png" width="200" height="auto" alt="footer-logo"></a>
+            <a href="index.html"><img src="images/title2.png" width="200" height="auto" alt="InsituMicron"></a>
             <ul class="social-icon list-inline">
               <li class="list-inline-item">
                 <a href="https://linkedin.com/"><i class="ti-linkedin"></i></a>
@@ -845,8 +723,8 @@
           <div class="block-2">
             <h6>Products</h6>
             <ul>
-              <li><a href="products.html">M3TEq-U</a></li>
-              <li><a href="products.html">EduDIC</a></li>
+              <li><a href="about.html">M3TEq-U</a></li>
+              <li><a href="about.html">EduDIC</a></li>
             </ul>
           </div>
         </div>
@@ -868,9 +746,7 @@
   </div>
 </footer>
 
-<div class="scroll-top-to">
-  <i class="ti-angle-up"></i>
-</div>
+<div class="scroll-top-to"><i class="ti-angle-up"></i></div>
 
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/bootstrap.min.js"></script>
@@ -880,13 +756,10 @@
 <script src="js/script.js"></script>
 
 <script>
-  /* ── Infinite ticker: clone the items so the loop is seamless ── */
   (function() {
     var track = document.getElementById('tickerTrack');
     if (!track) return;
-    // Clone all chips and append — creates the seamless loop
-    var clone = track.innerHTML;
-    track.innerHTML = clone + clone;
+    track.innerHTML = track.innerHTML + track.innerHTML;
   })();
 </script>
 
