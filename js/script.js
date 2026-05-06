@@ -170,5 +170,40 @@
     // });
 
   });
+<script>
+(function() {
+  var track    = document.getElementById('mediaTrack');
+  if (!track) return;
+  var cards    = Array.from(track.querySelectorAll('.media-card'));
+  var total    = cards.length;
+  var current  = 0;   // index of the centre card
 
+  function update() {
+    cards.forEach(function(card, i) {
+      card.classList.remove('active', 'side');
+      var diff = i - current;
+      // Wrap around
+      if (diff > total / 2)  diff -= total;
+      if (diff < -total / 2) diff += total;
+
+      if (diff === 0)        card.classList.add('active');
+      else if (Math.abs(diff) === 1) card.classList.add('side');
+
+      // Reorder in DOM so centre is visually prominent
+      card.style.order = diff;
+    });
+  }
+
+  document.getElementById('mediaNext').addEventListener('click', function() {
+    current = (current + 1) % total;
+    update();
+  });
+  document.getElementById('mediaPrev').addEventListener('click', function() {
+    current = (current - 1 + total) % total;
+    update();
+  });
+
+  update();
+})();
+</script>
 })(jQuery);
