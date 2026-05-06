@@ -72,30 +72,54 @@
 
 })(jQuery);
 
-/* ── Media Carousel (runs after DOM ready, outside jQuery wrapper) ── */
+/* ── Media Carousel — 3-card rotated platter effect ── */
 (function() {
-  var track = document.getElementById('mediaTrack');
-  if (!track) return;
-  var cards   = Array.from(track.querySelectorAll('.media-card'));
+  var stage = document.getElementById('mediaStage');
+  if (!stage) return;
+
+  var cards   = Array.from(stage.querySelectorAll('.media-card'));
   var total   = cards.length;
-  var current = 0;
+  var current = 1; // start: card index 1 is centre
+
+  var POSITIONS = ['pos-left', 'pos-center', 'pos-right', 'pos-hidden'];
 
   function update() {
     cards.forEach(function(card, i) {
-      card.classList.remove('active', 'side');
+      card.classList.remove('pos-left', 'pos-center', 'pos-right', 'pos-hidden');
+
+      // position relative to current centre
       var diff = i - current;
+
+      // wrap
       if (diff > total / 2)  diff -= total;
       if (diff < -total / 2) diff += total;
-      if (diff === 0)                card.classList.add('active');
-      else if (Math.abs(diff) === 1) card.classList.add('side');
-      card.style.order = diff;
+
+      if      (diff === 0)  card.classList.add('pos-center');
+      else if (diff === -1) card.classList.add('pos-left');
+      else if (diff === 1)  card.classList.add('pos-right');
+      else                  card.classList.add('pos-hidden');
     });
   }
 
   var nextBtn = document.getElementById('mediaNext');
   var prevBtn = document.getElementById('mediaPrev');
-  if (nextBtn) nextBtn.addEventListener('click', function() { current = (current + 1) % total; update(); });
-  if (prevBtn) prevBtn.addEventListener('click', function() { current = (current - 1 + total) % total; update(); });
+
+  if (nextBtn) nextBtn.addEventListener('click', function() {
+    current = (current + 1) % total;
+    update();
+  });
+  if (prevBtn) prevBtn.addEventListener('click', function() {
+    current = (current - 1 + total) % total;
+    update();
+  });
+
+  // click side cards to navigate
+  cards.forEach(function(card, i) {
+    card.addEventListener('click', function() {
+      if (card.classList.contains('pos-left'))  { current = (current - 1 + total) % total; update(); }
+      if (card.classList.contains('pos-right')) { current = (current + 1) % total; update(); }
+    });
+  });
 
   update();
 })();
