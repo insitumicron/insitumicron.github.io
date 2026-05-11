@@ -2224,18 +2224,37 @@ hr {
 }
 .adv-icon i { font-size: 1rem; }
 
-.product-img-wrap{
+.product-img-wrap {
   position: relative;
   width: 100%;
-  height: 420px;   /* adjust if needed */
+  height: 340px;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 14px;
   background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
 }
 
-.product-img-wrap img{
+.product-img-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* fills entire box */
+  object-fit: contain;   /* contain — never crops, shows full instrument */
   display: block;
+  padding: 16px;         /* breathing room so image doesn't touch edges */
 }
+
+.product-img-placeholder {
+  text-align: center;
+  color: #bbb;
+  padding: 40px;
+}
+
+.product-img-placeholder i {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.product-img-placeholder span { font-size: 14px; }
