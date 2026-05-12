@@ -2044,7 +2044,7 @@ hr {
 
 /* ── Media Coverage Carousel ── */
 .media-carousel-wrap {
-  background: #12153d;
+  background: linear-gradient(135deg, #54bec4 0%, #247ba0 100%);
   border-radius: 20px;
   padding: 50px 0 44px;
   position: relative;
@@ -2204,9 +2204,14 @@ hr {
   transition: background 0.2s, border-color 0.2s, transform 0.15s;
 }
 .media-nav-btn:hover {
-  background: #6c63ff;
-  border-color: #6c63ff;
+  background: rgba(255,255,255,0.35);
+  border-color: rgba(255,255,255,0.6);
   transform: scale(1.08);
+}
+.media-read-btn:hover {
+  background: #2da6a1;
+  color: #fff;
+  text-decoration: none;
 }
 
 @media (max-width: 767px) {
