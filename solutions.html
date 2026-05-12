@@ -77,26 +77,40 @@
     }
     .cs-card:hover { box-shadow: 0 8px 36px rgba(108,99,255,0.13); }
 
+/* ─── Case study images ─── */
     .cs-images {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      height: 220px;
+      height: 280px;
       overflow: hidden;
+      background: #fff;
     }
     .cs-img-wrap {
       overflow: hidden;
       position: relative;
-      background: #e8e8f0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .cs-img-wrap:first-child { border-right: 2px solid #fff; }
+    .cs-img-wrap:first-child {
+      border-right: 1px solid #f0f0f0;
+    }
     .cs-img-wrap img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;      /* shows full image, no cropping */
+      object-position: center;
       display: block;
+      padding: 12px;            /* breathing room so image doesn't touch edges */
       transition: transform 0.4s ease;
+      box-sizing: border-box;
     }
-    .cs-card:hover .cs-img-wrap img { transform: scale(1.04); }
+    .cs-card:hover .cs-img-wrap img {
+      transform: scale(1.03);
+    }
+    
+    /* placeholder when no image */
     .cs-img-placeholder {
       width: 100%;
       height: 100%;
@@ -104,11 +118,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #e8e8f0, #d4d0f0);
+      background: linear-gradient(135deg, #f0edff, #e8e8f0);
       color: #aaa;
     }
-    .cs-img-placeholder i  { font-size: 2rem; margin-bottom: 8px; }
+    .cs-img-placeholder i    { font-size: 2rem; margin-bottom: 8px; }
     .cs-img-placeholder span { font-size: 12px; }
+
 
     .cs-header {
       padding: 24px 28px 20px;
@@ -244,21 +259,30 @@
     .blog-images {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      height: 200px;
+      height: 220px;
       overflow: hidden;
+      background: #fff;
     }
     .blog-img-wrap {
       overflow: hidden;
-      background: #e8e8f0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .blog-img-wrap:first-child { border-right: 2px solid #fff; }
+    .blog-img-wrap:first-child { border-right: 1px solid #f0f0f0; }
     .blog-img-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
       display: block;
+      padding: 10px;
+      box-sizing: border-box;
       transition: transform 0.4s ease;
     }
-    .blog-card:hover .blog-img-wrap img { transform: scale(1.04); }
+    .blog-card:hover .blog-img-wrap img { transform: scale(1.03); }
+    
     .blog-img-placeholder {
       width: 100%; height: 100%;
       display: flex; flex-direction: column;
@@ -266,7 +290,7 @@
       background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
       color: #aaa;
     }
-    .blog-img-placeholder i { font-size: 2rem; margin-bottom: 8px; color: #a5d6a7; }
+    .blog-img-placeholder i    { font-size: 2rem; margin-bottom: 8px; color: #a5d6a7; }
     .blog-img-placeholder span { font-size: 12px; }
 
     .blog-header {
@@ -390,7 +414,8 @@
     .btn-contribute.green  { background: #247ba0; }
 
     @media (max-width: 768px) {
-      .cs-images, .blog-images { height: 150px; }
+      .cs-images   { height: 200px; }
+      .blog-images { height: 180px; }
       .cs-body-grid { grid-template-columns: 1fr; }
       .page-tab { padding: 14px 22px; font-size: 13px; }
       .cs-header, .blog-header { padding: 18px 18px 14px; }
