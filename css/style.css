@@ -2002,7 +2002,7 @@ hr {
   height: 34px;
   border-radius: 50%;
   background: #f0edff;
-  color: #6c63ff;
+  color: #54bec4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2011,7 +2011,7 @@ hr {
   transition: background 0.2s, color 0.2s;
 }
 .team-link-icon:hover {
-  background: #6c63ff;
+  background: #54bec4;
   color: #fff;
 }
 .read-full-blog-btn {
@@ -2030,8 +2030,8 @@ hr {
 }
 .read-full-blog-btn:hover {
   background: #f0edff;
-  border-color: #6c63ff;
-  color: #6c63ff;
+  border-color: #54bec4;
+  color: #54bec4;
   text-decoration: none;
 }
 .read-full-blog-btn i {
@@ -2130,7 +2130,7 @@ hr {
   width: 100%;
   height: 200px;
   overflow: hidden;
-  background: linear-gradient(135deg, #6c63ff, #a78bfa);
+  background: linear-gradient(135deg, #54bec4, #a78bfa);
 }
 .media-img-wrap img {
   width: 100%; height: 100%;
@@ -2154,7 +2154,7 @@ hr {
   font-size: 15px;
   font-weight: 800;
   font-style: italic;
-  color: #6c63ff;
+  color: #54bec4;
 }
 .media-headline {
   font-size: 15px;
@@ -2180,7 +2180,7 @@ hr {
   transition: background 0.2s;
 }
 .media-read-btn:hover {
-  background: #6c63ff;
+  background: #54bec4;
   color: #fff;
   text-decoration: none;
 }
