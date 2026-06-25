@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIC Research Explorer — InsituMicron</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/logo-insitu_micron.png" />
+<link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal:        #2da6a1;
+    --teal-dark:   #247ba0;
+    --navy:        #1a1a2e;
+    --navy2:       #0f2340;
+    --bg:          #f4f7f9;
+    --bg-white:    #ffffff;
+    --bg-sidebar:  #1a1a2e;
+    --border:      #e2e8f0;
+    --border-dark: rgba(255,255,255,0.10);
+    --text:        #1a1a2e;
+    --text-muted:  #5a6478;
+    --text-dim:    #94a3b8;
+    --text-white:  #e8eef4;
+    --text-w-dim:  #7a90aa;
+    /* domain accents */
+    --mat:         #2da6a1;
+    --mat-bg:      rgba(45,166,161,0.12);
+    --mech:        #247ba0;
+    --mech-bg:     rgba(36,123,160,0.12);
+    --aero:        #5667b5;
+    --aero-bg:     rgba(86,103,181,0.12);
+    --mono: 'Courier New', monospace;
+    --radius: 10px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── TOP NAV BAR ── */
+  .top-bar {
+    background: var(--navy);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 2rem;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+  .top-bar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .top-bar-brand img { height: 30px; }
+  .top-bar-brand span {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.5px;
+  }
+  .top-bar-sep {
+    width: 1px; height: 20px;
+    background: rgba(255,255,255,0.15);
+  }
+  .top-bar-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-white);
+    letter-spacing: 0.3px;
+  }
+  .top-bar-back {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--teal);
+    text-decoration: none;
+    padding: 7px 14px;
+    border: 1px solid rgba(45,166,161,0.3);
+    border-radius: 20px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .top-bar-back:hover {
+    background: rgba(45,166,161,0.12);
+    border-color: var(--teal);
+    text-decoration: none;
+    color: var(--teal);
+  }
+
+  /* ── HERO STRIP ── */
+  .hero-strip {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, #0d2a4a 100%);
+    padding: 2rem 2rem 1.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-strip::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(45,166,161,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-family: var(--mono);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .hero-strip h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .hero-strip h1 span { color: var(--teal); }
+  .hero-sub {
+    color: var(--text-w-dim);
+    font-size: 13.5px;
+    max-width: 560px;
+    line-height: 1.65;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-w-dim);
+  }
+  .hero-stat-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .dot-mat  { background: var(--mat); }
+  .dot-mech { background: var(--mech); }
+  .dot-aero { background: var(--aero); }
+
+  /* ── APP SHELL ── */
+  .shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 248px 1fr;
+    gap: 0;
+    min-height: calc(100vh - 140px);
+  }
+
+  /* ── SIDEBAR ── */
+  aside {
+    background: var(--bg-sidebar);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    padding: 1.2rem 0.8rem 2rem 1.2rem;
+    position: sticky;
+    top: 58px;
+    height: calc(100vh - 58px);
+    overflow-y: auto;
+  }
+  aside::-webkit-scrollbar { width: 4px; }
+  aside::-webkit-scrollbar-track { background: transparent; }
+  aside::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+  .sidebar-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    font-family: var(--mono);
+    margin-bottom: 1rem;
+    padding-left: 6px;
+  }
+  .domain-group { margin-bottom: 1.2rem; }
+  .domain-heading {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 6px 6px;
+    margin-bottom: 3px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .domain-heading::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .domain-heading.mat { color: var(--mat); }
+  .domain-heading.mat::before { background: var(--mat); }
+  .domain-heading.mech { color: var(--mech); }
+  .domain-heading.mech::before { background: var(--mech); }
+  .domain-heading.aero { color: var(--aero); }
+  .domain-heading.aero::before { background: var(--aero); }
+
+  .area-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.52);
+    font-size: 12.5px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1.4;
+    font-family: inherit;
+  }
+  .area-btn:hover { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.85); }
+  .area-btn.active { color: #fff; font-weight: 600; }
+  .area-btn.active.mat  { background: var(--mat-bg);  border-left: 2px solid var(--mat);  padding-left: 6px; }
+  .area-btn.active.mech { background: var(--mech-bg); border-left: 2px solid var(--mech); padding-left: 6px; }
+  .area-btn.active.aero { background: var(--aero-bg); border-left: 2px solid var(--aero); padding-left: 6px; }
+
+  /* ── MAIN ── */
+  main {
+    padding: 1.6rem 1.8rem 3rem;
+    overflow-y: auto;
+    background: var(--bg);
+  }
+
+  /* ── LANDING STATE ── */
+  .landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5rem 2rem;
+    gap: 1rem;
+    min-height: 400px;
+  }
+  .landing-icon-wrap {
+    width: 72px; height: 72px;
+    background: linear-gradient(135deg, rgba(45,166,161,0.12), rgba(36,123,160,0.12));
+    border: 1px solid rgba(45,166,161,0.25);
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+  .landing h2 { font-size: 18px; font-weight: 700; color: var(--text); }
+  .landing p  { font-size: 14px; color: var(--text-muted); max-width: 340px; line-height: 1.6; }
+  .landing-hint {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  .landing-tag {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    background: var(--bg-white);
+  }
+
+  /* ── DETAIL PANEL ── */
+  #detail { display: none; }
+
+  .detail-header {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .detail-domain-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-family: var(--mono);
+  }
+  .badge-mat  { background: var(--mat-bg);  color: var(--mat);  border: 1px solid rgba(45,166,161,0.25); }
+  .badge-mech { background: var(--mech-bg); color: var(--mech); border: 1px solid rgba(36,123,160,0.25); }
+  .badge-aero { background: var(--aero-bg); color: var(--aero); border: 1px solid rgba(86,103,181,0.25); }
+
+  .detail-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+  .detail-desc {
+    color: var(--text-muted);
+    font-size: 14px;
+    max-width: 720px;
+    line-height: 1.75;
+    border-left: 3px solid var(--teal);
+    padding-left: 14px;
+    margin: 0;
+  }
+
+  /* ── SECTION CARDS ── */
+  .sections { display: flex; flex-direction: column; gap: 10px; }
+
+  /* Always-open: Applications */
+  .section-always {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .section-always-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 18px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to right, rgba(45,166,161,0.04), transparent);
+  }
+  .section-always-body { padding: 4px 18px 16px; }
+
+  /* Collapsible sections */
+  .section-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .section-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    color: var(--navy);
+    padding: 14px 18px;
+    cursor: pointer;
+    gap: 1rem;
+    text-align: left;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .section-toggle:hover { background: var(--bg); }
+  .section-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .section-icon {
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 7px;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .icon-app     { background: rgba(45,166,161,0.12); color: var(--teal); }
+  .icon-method  { background: rgba(36,123,160,0.12); color: var(--mech); }
+  .icon-equip   { background: rgba(86,103,181,0.12); color: var(--aero); }
+  .icon-papers  { background: rgba(26,26,46,0.08);   color: var(--navy); }
+
+  .chevron {
+    color: var(--text-dim);
+    font-size: 11px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .section-toggle[aria-expanded="true"] .chevron { transform: rotate(90deg); }
+
+  .section-body {
+    display: none;
+    padding: 0 18px 16px;
+    border-top: 1px solid var(--border);
+  }
+  .section-body.open { display: block; }
+
+  /* ── LIST ITEMS ── */
+  .app-list, .method-list, .equip-list, .papers-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 12px;
+  }
+  .app-list li {
+    display: flex;
+    gap: 10px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    padding: 2px 0;
+  }
+  .app-list li::before {
+    content: '→';
+    color: var(--teal);
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-weight: 600;
+  }
+
+  .method-list li, .equip-list li {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 9px 13px;
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .method-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    background: rgba(36,123,160,0.10);
+    color: var(--mech);
+    padding: 2px 7px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    border: 1px solid rgba(36,123,160,0.18);
+    white-space: nowrap;
+  }
+  .equip-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    background: rgba(86,103,181,0.10);
+    color: var(--aero);
+    padding: 2px 7px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    border: 1px solid rgba(86,103,181,0.18);
+    white-space: nowrap;
+  }
+
+  /* ── PAPERS ── */
+  .paper-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 15px;
+    border-left: 3px solid var(--navy2);
+  }
+  .paper-title {
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 4px;
+    line-height: 1.45;
+  }
+  .paper-meta {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-family: var(--mono);
+  }
+
+  /* ── FOOTER BAR ── */
+  .footer-bar {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 16px 2rem;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+  .footer-bar a { color: var(--teal); text-decoration: none; }
+  .footer-bar a:hover { text-decoration: underline; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .shell { grid-template-columns: 1fr; }
+    aside {
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem;
+    }
+    main { padding: 1rem; }
+    .hero-strip { padding: 1.4rem 1rem 1.2rem; }
+    .hero-strip h1 { font-size: 20px; }
+    .top-bar { padding: 0 1rem; }
+    .detail-header { padding: 18px 16px; }
+    .section-toggle, .section-always-header { padding: 12px 14px; }
+    .section-body, .section-always-body { padding: 0 14px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top nav bar -->
+<div class="top-bar">
+  <a class="top-bar-brand" href="index.html">
+    <img src="images/title2.png" alt="InsituMicron logo">
+    <div class="top-bar-sep"></div>
+    <span class="top-bar-title">DIC Research Explorer</span>
+  </a>
+  <a class="top-bar-back" href="about.html">
+    &#8592; Back to Products
+  </a>
+</div>
+
+<!-- Hero strip -->
+<div class="hero-strip">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">EduDIC &nbsp;·&nbsp; Digital Image Correlation</div>
+    <h1>DIC Research Explorer <span>/</span> Application Map</h1>
+    <p class="hero-sub">Select a research area from the sidebar to see how DIC can be applied — applications, testing methods, equipment, and reference papers for your domain.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-dot dot-mat"></div>10 Material Science areas</div>
+      <div class="hero-stat"><div class="hero-stat-dot dot-mech"></div>9 Mechanical Engineering areas</div>
+      <div class="hero-stat"><div class="hero-stat-dot dot-aero"></div>10 Aerospace Engineering areas</div>
+    </div>
+  </div>
+</div>
+
+<!-- App shell -->
+<div class="shell">
+  <aside>
+    <div class="sidebar-label">Research areas</div>
+
+    <div class="domain-group">
+      <div class="domain-heading mat">Material Science &amp; Metallurgy</div>
+      <button class="area-btn mat" data-id="fracture">Deformation &amp; fracture mechanics</button>
+      <button class="area-btn mat" data-id="fatigue">Fatigue behavior</button>
+      <button class="area-btn mat" data-id="phase">Phase transformation studies</button>
+      <button class="area-btn mat" data-id="texture">Texture &amp; anisotropy</button>
+      <button class="area-btn mat" data-id="plastic">Plastic deformation mechanisms</button>
+      <button class="area-btn mat" data-id="creep">Creep &amp; high-temp behavior</button>
+      <button class="area-btn mat" data-id="weld">Weld &amp; joint characterization</button>
+      <button class="area-btn mat" data-id="thinfilm">Thin film &amp; coating adhesion</button>
+      <button class="area-btn mat" data-id="microstructure">Microstructure-property correlation</button>
+      <button class="area-btn mat" data-id="nanoindent">Nanoindentation &amp; micro-scale testing</button>
+    </div>
+
+    <div class="domain-group">
+      <div class="domain-heading mech">Mechanical Engineering</div>
+      <button class="area-btn mech" data-id="structural">Structural integrity &amp; failure analysis</button>
+      <button class="area-btn mech" data-id="vibration">Vibration &amp; dynamic analysis</button>
+      <button class="area-btn mech" data-id="residual">Residual stress validation</button>
+      <button class="area-btn mech" data-id="composite">Composite material testing</button>
+      <button class="area-btn mech" data-id="polymer">Polymer &amp; rubber mechanics</button>
+      <button class="area-btn mech" data-id="am">Additive manufacturing validation</button>
+      <button class="area-btn mech" data-id="joints">Joint &amp; fastener mechanics</button>
+      <button class="area-btn mech" data-id="thermal">Thermal-mechanical coupling</button>
+      <button class="area-btn mech" data-id="fem">FEM validation</button>
+    </div>
+
+    <div class="domain-group">
+      <div class="domain-heading aero">Aerospace Engineering</div>
+      <button class="area-btn aero" data-id="airframe">Airframe structural testing</button>
+      <button class="area-btn aero" data-id="aerocomp">Composite aerostructures</button>
+      <button class="area-btn aero" data-id="tps">Thermal protection systems</button>
+      <button class="area-btn aero" data-id="turbine">Turbine blade mechanics</button>
+      <button class="area-btn aero" data-id="sandwich">Sandwich panel characterization</button>
+      <button class="area-btn aero" data-id="aeroelastic">Aeroelastic deformation</button>
+      <button class="area-btn aero" data-id="impact">Impact &amp; ballistic response</button>
+      <button class="area-btn aero" data-id="repair">Repair &amp; patch validation</button>
+      <button class="area-btn aero" data-id="landinggear">Landing gear &amp; actuators</button>
+      <button class="area-btn aero" data-id="space">Space structures &amp; deployable mechanisms</button>
+    </div>
+  </aside>
+
+  <main>
+    <!-- Landing state -->
+    <div class="landing" id="landing">
+      <div class="landing-icon-wrap">⌖</div>
+      <h2>Select a research area</h2>
+      <p>Choose any area from the sidebar to explore DIC applications, testing methods, equipment, and reference papers relevant to your work.</p>
+      <div class="landing-hint">
+        <span class="landing-tag">Fracture mechanics</span>
+        <span class="landing-tag">Fatigue</span>
+        <span class="landing-tag">Composites</span>
+        <span class="landing-tag">AM validation</span>
+        <span class="landing-tag">FEM validation</span>
+        <span class="landing-tag">+ 24 more</span>
+      </div>
+    </div>
+
+    <!-- Detail panel -->
+    <div id="detail">
+      <div class="detail-header">
+        <div id="detail-badge" class="detail-domain-badge"></div>
+        <div id="detail-title" class="detail-title"></div>
+        <p id="detail-desc" class="detail-desc"></p>
+      </div>
+      <div class="sections" id="sections-container"></div>
+    </div>
+  </main>
+</div>
+
+<div class="footer-bar">
+  &copy; <script>document.write(new Date().getFullYear())</script> InsituMicron &nbsp;·&nbsp;
+  <a href="about.html">Products</a> &nbsp;·&nbsp;
+  <a href="contact.html">Contact</a> &nbsp;·&nbsp;
+  Powered by EduDIC
+</div>
+
+<script>
+const DATA = {
+  fracture: {
+    domain: "Material Science & Metallurgy", domainClass: "mat",
+    title: "Deformation & Fracture Mechanics",
+    desc: "Full-field strain mapping using DIC reveals the complete deformation state around crack tips, notches, and defects — something no strain gauge array can replicate. It's the foundation of quantitative fracture mechanics characterization.",
+    applications: [
+      "Crack tip strain field mapping and J-integral computation from displacement data",
+      "Mode I, II, and mixed-mode stress intensity factor extraction",
+      "Crack growth rate measurement under static and cyclic loading",
+      "Identification of plastic zone size and shape around propagating cracks",
+      "Detection of sub-critical damage and micro-crack initiation",
+      "Fracture toughness testing of metals, ceramics, and composites (SENB, CT specimens)",
+      "Real-time monitoring of crack branching and coalescence events"
+    ],
+    methods: [
+      { tag: "Stereo DIC", desc: "3D surface deformation tracking for out-of-plane fracture displacement" },
+      { tag: "High-speed DIC", desc: "Capturing fast crack propagation events at 10k–1M fps" },
+      { tag: "Micro-DIC", desc: "SEM-based DIC for sub-micron crack fields in brittle materials" },
+      { tag: "X-ray DIC", desc: "Volumetric strain mapping around subsurface cracks" }
+    ],
+    equipment: [
+      { tag: "Camera", desc: "High-resolution CCD/CMOS cameras (5–50 MP) for static testing; Photron or Phantom for dynamic" },
+      { tag: "Illumination", desc: "LED or halogen diffuse lighting; laser for micro-scale" },
+      { tag: "Speckle", desc: "Spray paint, airbrush, or lithography-patterned speckle patterns" },
+      { tag: "Software", desc: "Vic-2D/Vic-3D (Correlated Solutions), GOM Correlate, DICe (open source)" },
+      { tag: "Load frame", desc: "Servo-hydraulic MTS or Instron with synchronized trigger output" }
+    ],
+    papers: [
+      { title: "Measurement of crack-tip displacement field using DIC: A review of recent progress", meta: "Engineering Fracture Mechanics, 2016" },
+      { title: "J-integral evaluation using DIC on a compact tension specimen", meta: "International Journal of Fracture, 2012" },
+      { title: "Crack tip plastic zone characterization in titanium alloys using high-resolution DIC", meta: "Acta Materialia, 2019" }
+    ]
+  },
+  fatigue: {
+    domain: "Material Science & Metallurgy", domainClass: "mat",
+    title: "Fatigue Behavior",
+    desc: "DIC captures where and how damage accumulates cycle by cycle — identifying crack initiation sites, slip band emergence, and localized plasticity long before macroscopic failure. This is critical for fatigue life prediction and S-N curve development.",
+    applications: [
+      "Full-field strain tracking under cyclic loading for damage accumulation mapping",
+      "Identification of crack initiation sites from strain localization patterns",
+      "Measurement of crack opening displacement (COD) and closure effects",
+      "Characterization of mean stress effects and load ratio influence on fatigue life",
+      "Real-time fatigue crack propagation rate (da/dN) measurement",
+      "Validation of fatigue damage models and residual life assessment",
+      "Study of fatigue in welded joints and notched specimens"
+    ],
+    methods: [
+      { tag: "Cyclic DIC", desc: "Image capture at peak/valley loads per cycle over thousands of cycles" },
+      { tag: "High-speed DIC", desc: "Full-cycle strain evolution tracking at high frequencies (>10 Hz)" },
+      { tag: "Infrared + DIC", desc: "Combined thermography and DIC for energy dissipation and damage correlation" },
+      { tag: "In-situ SEM", desc: "Micro-scale DIC during fatigue loading inside scanning electron microscope" }
+    ],
+    equipment: [
+      { tag: "Cameras", desc: "Synchronized stereo cameras for 3D tracking; high-speed cameras for dynamic tests" },
+      { tag: "Load frame", desc: "Servo-hydraulic fatigue testing machine (Instron 8800, MTS 858) with trigger sync" },
+      { tag: "Software", desc: "Vic-3D, ARAMIS (Zeiss), MatchID for strain history extraction" },
+      { tag: "Lighting", desc: "Stroboscopic LED synchronized to load frequency to freeze motion" },
+      { tag: "IR camera", desc: "FLIR or InSb camera for concurrent thermographic measurements" }
+    ],
+    papers: [
+      { title: "Application of DIC to the study of fatigue crack growth in metallic materials", meta: "International Journal of Fatigue, 2013" },
+      { title: "Strain localization and fatigue crack initiation in polycrystalline copper studied by DIC", meta: "Acta Materialia, 2018" },
+      { title: "High-throughput fatigue testing combined with DIC for rapid material screening", meta: "Fatigue & Fracture of Engineering Materials, 2021" }
+    ]
+  },
+  phase: {
+    domain: "Material Science & Metallurgy", domainClass: "mat",
+    title: "Phase Transformation Studies",
+    desc: "DIC captures the shape changes and strain fields associated with phase transformations — martensitic, bainitic, and austenitic — under thermal or mechanical loading, enabling direct observation of transformation kinematics.",
+    applications: [
+      "Shape strain measurement during martensitic transformation in shape memory alloys",
+      "Tracking austenite-to-martensite transformation front propagation",
+      "Measuring transformation-induced plasticity (TRIP) strain in advanced high-strength steels",
+      "Characterization of bainitic transformation kinetics under stress",
+      "Thermal strain separation from transformation strain during heating/cooling",
+      "In-situ observation of twinning and detwinning in NiTi alloys",
+      "Local volume change measurement during phase boundary migration"
+    ],
+    methods: [
+      { tag: "High-temp DIC", desc: "DIC at elevated temperatures using IR-filtered or laser illumination" },
+      { tag: "Thermal DIC", desc: "Combined heating stage DIC for temperature-controlled transformation observation" },
+      { tag: "Stereo DIC", desc: "3D strain mapping to capture volume change during transformation" },
+      { tag: "In-situ XRD+DIC", desc: "Synchrotron diffraction correlated with surface strain fields" }
+    ],
+    equipment: [
+      { tag: "Heating stage", desc: "Linkam or custom furnace stage with optical access and precise temperature control" },
+      { tag: "Camera", desc: "Cameras with bandpass filters for high-temperature testing (650–1200 °C range)" },
+      { tag: "Illumination", desc: "Monochromatic or bandpass-filtered lighting to suppress thermal emission" },
+      { tag: "Software", desc: "Vic-3D, ARAMIS, or custom DIC codes with thermal drift compensation" }
+    ],
+    papers: [
+      { title: "DIC measurement of shape strain during martensitic transformation in NiTi", meta: "Acta Materialia, 2014" },
+      { title: "Strain field evolution during austenite decomposition studied by in-situ DIC", meta: "Materials Science and Engineering A, 2017" },
+      { title: "Full-field strain measurement during TRIP in advanced high-strength steels", meta: "Metallurgical and Materials Transactions A, 2020" }
+    ]
+  },
+  texture: {
+    domain: "Material Science & Metallurgy", domainClass: "mat",
+    title: "Texture & Anisotropy",
+    desc: "DIC reveals direction-dependent deformation in textured materials — rolled sheets, extruded profiles, and single crystals — providing experimental data for anisotropic constitutive model calibration and validation.",
+    applications: [
+      "Lankford coefficient (r-value) measurement in rolled sheet metals for formability assessment",
+      "Strain anisotropy mapping in orthotropic composites under biaxial loading",
+      "In-plane yield locus characterization using multi-axis DIC specimens",
+      "Crystallographic slip system activity determination in single crystals",
+      "Heterogeneous deformation mapping across grain boundaries in textured polycrystals",
+      "Texture evolution tracking during rolling, forming, and drawing operations",
+      "Shear strain measurement in off-axis specimens to determine shear modulus"
+    ],
+    methods: [
+      { tag: "Biaxial DIC", desc: "Cruciform specimen DIC for multi-axial stress state exploration" },
+      { tag: "Multi-camera", desc: "Stereo or multi-camera DIC for 3D tracking of out-of-plane deformation" },
+      { tag: "Micro-DIC", desc: "Grain-scale DIC using EBSD-correlated patterning for slip system identification" },
+      { tag: "Virtual fields", desc: "Virtual Fields Method applied to DIC data for anisotropy parameter identification" }
+    ],
+    equipment: [
+      { tag: "Biaxial frame", desc: "4-axis servo-hydraulic biaxial testing machine (e.g., Zwick BZ2.5/TN1S)" },
+      { tag: "Stereo cameras", desc: "Two synchronized 12–50 MP cameras in stereo configuration" },
+      { tag: "EBSD", desc: "Electron backscatter diffraction system for crystallographic correlation with DIC" },
+      { tag: "Software", desc: "ARAMIS, Vic-3D, or MatchID with virtual fields module" }
+    ],
+    papers: [
+      { title: "DIC-based characterization of plastic anisotropy in AA6016 aluminium sheets", meta: "International Journal of Plasticity, 2016" },
+      { title: "Grain-scale strain heterogeneity in deformed magnesium via HR-DIC and EBSD", meta: "Acta Materialia, 2020" },
+      { title: "Identification of Hill48 anisotropy parameters using DIC and virtual fields method", meta: "European Journal of Mechanics A/Solids, 2018" }
+    ]
+  },
+  plastic: {
+    domain: "Material Science & Metallurgy", domainClass: "mat",
+    title: "Plastic Deformation Mechanisms",
+    desc: "DIC directly images the spatial organization of plastic flow — Lüders bands, slip bands, shear bands, and strain localization zones — giving experimentalists a quantitative map of deformation physics that EBSD and TEM alone cannot provide.",
+    applications: [
+      "Visualization and velocity measurement of Lüders band propagation in mild steels",
+      "Strain localization and shear band angle characterization in metallic glasses",
+      "Portevin-Le Chatelier (PLC) band dynamics in Al-Mg alloys",
+      "Slip band emergence and spacing measurement in FCC single crystals",
+      "Deformation twinning strain characterization in hexagonal metals (Mg, Ti)",
+      "Necking onset detection and post-necking strain field evolution",
+      "Void nucleation and coalescence observation in ductile fracture"
+    ],
+    methods: [
+      { tag: "High-speed DIC", desc: "Capturing fast-moving Lüders and PLC bands at 1k–100k fps" },
+      { tag: "HR-DIC", desc: "High-resolution DIC at grain scale for slip band measurement" },
+      { tag: "In-situ SEM", desc: "SEM-based DIC with FIB or colloidal silica speckle patterning" },
+      { tag: "Stereo DIC", desc: "3D tracking for necking and large-strain localization" }
+    ],
+    equipment: [
+      { tag: "High-speed cam", desc: "Photron SA-X2 or Phantom v2512 for Lüders/PLC band imaging" },
+      { tag: "SEM stage", desc: "In-situ tensile stage for JEOL or FEI SEM (Kammrath & Weiss, Gatan)" },
+      { tag: "FIB", desc: "Focused ion beam for depositing high-contrast gold speckle patterns at micro-scale" },
+      { tag: "Software", desc: "Vic-2D, DICe, or custom Python-based correlators for band tracking" }
+    ],
+    papers: [
+      { title: "Quantitative DIC study of Lüders band kinematics in interstitial-free steel", meta: "Acta Materialia, 2015" },
+      { title: "Full-field strain measurement during PLC banding in Al-Mg alloys by high-speed DIC", meta: "Materials Science and Engineering A, 2012" },
+      { title: "Slip band characterization in nickel superalloys using HR-SEM-DIC", meta: "International Journal of Plasticity, 2021" }
+    ]
+  },
+  creep: {
+    domain: "Material Science & Metallurgy", domainClass: "mat",
+    title: "Creep & High-Temperature Behavior",
+    desc: "DIC at elevated temperature captures slow, time-dependent strain accumulation in superalloys, ceramics, and refractory metals — enabling quantitative creep rate measurement, damage mapping, and remaining life estimation.",
+    applications: [
+      "Creep strain rate measurement in nickel superalloys and refractory metals at 600–1100 °C",
+      "Tertiary creep damage zone identification and cavitation mapping",
+      "Creep rupture site prediction from full-field strain evolution",
+      "High-temperature oxidation effect on deformation behavior measurement",
+      "Stress relaxation strain field evolution in welded pressure vessel steels",
+      "Thermal fatigue damage accumulation in thermal barrier coatings",
+      "Multi-axial creep characterization using notched bars with DIC"
+    ],
+    methods: [
+      { tag: "High-temp DIC", desc: "DIC at temperatures up to 1400 °C using bandpass-filtered illumination" },
+      { tag: "IR-filtered DIC", desc: "Short-wavelength (405 nm) illumination with IR-cut filter to suppress blackbody emission" },
+      { tag: "Stereo DIC", desc: "3D shape and deformation tracking for creep specimen geometry change" },
+      { tag: "DIC + SEM", desc: "Post-creep SEM correlation of damage sites with DIC strain concentration zones" }
+    ],
+    equipment: [
+      { tag: "Furnace", desc: "High-temp test rig with quartz or sapphire windows (up to 1400 °C)" },
+      { tag: "Illumination", desc: "405 nm or 532 nm laser or LED with narrow bandpass filter; structured light sources" },
+      { tag: "Camera", desc: "Cooled CCD cameras with bandpass filters for high-temp operation" },
+      { tag: "Software", desc: "Vic-3D with thermal compensation modules; custom drift correction algorithms" },
+      { tag: "Speckle", desc: "Ceramic or zirconia spray coating for high-temperature speckle patterns" }
+    ],
+    papers: [
+      { title: "High-temperature DIC for full-field creep measurements on Ni-based superalloys", meta: "Experimental Mechanics, 2017" },
+      { title: "Thermal drift correction methods for DIC at elevated temperatures: a comparison", meta: "Optics and Lasers in Engineering, 2019" },
+      { title: "Full-field creep damage evolution in P91 steel welds using DIC", meta: "International Journal of Pressure Vessels and Piping, 2020" }
+    ]
+  },
+  weld: {
+    domain: "Material Science & Metallurgy", domainClass: "mat",
+    title: "Weld & Joint Characterization",
+    desc: "Welds are heterogeneous by nature — DIC maps strain across base metal, heat-affected zone, and fusion zone simultaneously, enabling direct experimental evidence of where joints will fail and why.",
+    applications: [
+      "Strain heterogeneity mapping across base metal, HAZ, and weld metal in tensile tests",
+      "Residual stress influence on deformation distribution in welded joints",
+      "Fatigue crack initiation site identification at weld toes and root regions",
+      "Dissimilar metal weld deformation compatibility measurement",
+      "Friction stir weld (FSW) microzone deformation behavior characterization",
+      "Laser and electron beam weld quality assessment through strain field analysis",
+      "Thermal distortion measurement during welding using in-process DIC"
+    ],
+    methods: [
+      { tag: "Multi-zone DIC", desc: "Wide-field DIC spanning full cross-weld gauge section" },
+      { tag: "High-res DIC", desc: "Fine speckle DIC zoomed on HAZ for localized strain extraction" },
+      { tag: "In-situ DIC", desc: "Real-time measurement during welding for thermal distortion capture" },
+      { tag: "Stereo DIC", desc: "3D out-of-plane distortion measurement in thin sheet welds" }
+    ],
+    equipment: [
+      { tag: "Wide-field cam", desc: "High-resolution full-frame camera (36–50 MP) covering full cross-weld region" },
+      { tag: "Macro lens", desc: "Macro or telecentric lenses for high-magnification HAZ imaging" },
+      { tag: "In-process rig", desc: "Protected camera mount for real-time welding DIC (heat and light shielding)" },
+      { tag: "Software", desc: "Vic-2D with region-of-interest analysis; GOM Correlate; ARAMIS" }
+    ],
+    papers: [
+      { title: "DIC analysis of deformation heterogeneity across friction stir welds in AA6082", meta: "Materials & Design, 2016" },
+      { title: "Local mechanical properties of dissimilar metal welds determined using DIC and nano-indentation", meta: "Materials Science and Engineering A, 2018" },
+      { title: "Fatigue crack initiation in high-strength steel welds characterized by full-field DIC", meta: "International Journal of Fatigue, 2020" }
+    ]
+  },
+  thinfilm: {
+    domain: "Material Science & Metallurgy", domainClass: "mat",
+    title: "Thin Film & Coating Adhesion",
+    desc: "DIC detects delamination onset, interfacial cracking, and coating fracture at strains far below what visual inspection reveals — critical for surface treatment qualification and tribological coating development.",
+    applications: [
+      "Delamination onset strain detection in thermal spray and PVD coatings",
+      "Channeling crack density and spacing measurement in brittle films on flexible substrates",
+      "Interfacial fracture toughness characterization via DIC-coupled beam bending tests",
+      "Residual stress influence on coating deformation tracking",
+      "Rolling contact delamination under cyclic tribological loading",
+      "DLC (diamond-like carbon) film fracture characterization on metal substrates",
+      "Thermal barrier coating (TBC) spallation precursor strain mapping"
+    ],
+    methods: [
+      { tag: "Micro-DIC", desc: "High-magnification DIC with sub-micron spatial resolution for thin film crack tracking" },
+      { tag: "SEM-DIC", desc: "Electron beam imaging DIC for nanoscale film deformation" },
+      { tag: "Stereo DIC", desc: "Out-of-plane bowing measurement in film-substrate systems" },
+      { tag: "In-situ bending", desc: "DIC during 4-point bend testing of coated beams for adhesion assessment" }
+    ],
+    equipment: [
+      { tag: "Microscope", desc: "Optical microscope or SEM with in-situ stage for micro/nano-DIC" },
+      { tag: "Speckle", desc: "Gold nanoparticles, colloidal silica, or e-beam lithography patterns for sub-micron speckle" },
+      { tag: "4-pt bend rig", desc: "Precision micro-bending stage compatible with microscope optical path" },
+      { tag: "Software", desc: "Vic-2D at high magnification; custom Python correlators for SEM-DIC; DICe" }
+    ],
+    papers: [
+      { title: "Delamination onset and adhesion of TBC systems measured by DIC", meta: "Surface and Coatings Technology, 2019" },
+      { title: "Channeling crack density in brittle films on elastomeric substrates characterized by DIC", meta: "Journal of the Mechanics and Physics of Solids, 2015" },
+      { title: "In-situ SEM-DIC of thin film fracture mechanisms in hard coatings", meta: "Thin Solid Films, 2021" }
+    ]
+  },
+  microstructure: {
+    domain: "Material Science & Metallurgy", domainClass: "mat",
+    title: "Microstructure-Property Correlation",
+    desc: "When DIC strain maps are overlaid on EBSD orientation maps or SEM images, you get direct experimental evidence linking local deformation behavior to grain size, phase distribution, and second-phase particle location.",
+    applications: [
+      "Correlation of local strain concentration with grain orientation and boundary character",
+      "Identifying soft and hard grains from DIC strain distribution in polycrystals",
+      "Damage initiation at inclusions and second-phase particles tracked via DIC",
+      "Strain partitioning between ferrite and martensite in dual-phase steels",
+      "Effect of grain boundary misorientation on deformation compatibility",
+      "Precipitate effect on slip band strain magnitude in precipitation-hardened alloys",
+      "Microstructure-targeted fatigue indicator parameter (FIP) mapping"
+    ],
+    methods: [
+      { tag: "HR-DIC + EBSD", desc: "High-resolution DIC with electron backscatter diffraction overlay" },
+      { tag: "HR-DIC + ECCI", desc: "DIC correlated with electron channeling contrast imaging for dislocation zones" },
+      { tag: "Multi-scale DIC", desc: "Concurrent macro and micro DIC for scale-bridging strain analysis" },
+      { tag: "Stereo SEM-DIC", desc: "3D deformation at grain scale using tilted SEM imaging" }
+    ],
+    equipment: [
+      { tag: "FE-SEM", desc: "Field emission SEM (JEOL 7001, Zeiss Merlin) with EBSD detector and in-situ stage" },
+      { tag: "EBSD", desc: "Oxford Instruments or Bruker EBSD for crystallographic orientation mapping" },
+      { tag: "In-situ stage", desc: "Kammrath & Weiss or Gatan Microtest tensile stage for SEM chamber" },
+      { tag: "Software", desc: "Vic-2D, MatchID, or Python DIC correlated with TSL OIM or ATEX EBSD software" }
+    ],
+    papers: [
+      { title: "Grain-scale deformation heterogeneity in dual-phase steel measured by HR-DIC and EBSD", meta: "Acta Materialia, 2019" },
+      { title: "Strain partitioning in ferrite-martensite microstructures: experiment and simulation", meta: "International Journal of Plasticity, 2021" },
+      { title: "Damage initiation at non-metallic inclusions in bearing steels observed by in-situ DIC", meta: "Materials Science and Engineering A, 2018" }
+    ]
+  },
+  nanoindent: {
+    domain: "Material Science & Metallurgy", domainClass: "mat",
+    title: "Nanoindentation & Micro-scale Testing",
+    desc: "DIC around micro-pillars, cantilevers, and indents gives you the displacement field that load-displacement curves alone cannot — enabling full-field stress state characterization and constitutive model calibration at small scales.",
+    applications: [
+      "Full-field deformation measurement around nanoindentation sites",
+      "Micropillar compression deformation characterization for crystal plasticity",
+      "Micro-cantilever bending fracture toughness from DIC-measured displacement",
+      "Small punch test material property extraction using DIC + inverse methods",
+      "Microbond and fiber push-out test strain field analysis for interfacial properties",
+      "Pop-in event strain field capture during nanoindentation",
+      "Anisotropic elastic constant identification from micro-scale DIC data"
+    ],
+    methods: [
+      { tag: "SEM-DIC", desc: "Electron beam DIC at 100 nm–10 µm scale using e-beam patterned speckle" },
+      { tag: "AFM-DIC", desc: "Atomic force microscopy image sequences correlated for nanoscale DIC" },
+      { tag: "Confocal DIC", desc: "Confocal laser scanning microscopy for surface topography + DIC" },
+      { tag: "Virtual fields", desc: "Virtual Fields Method applied to micro-DIC for elastic constant identification" }
+    ],
+    equipment: [
+      { tag: "Nanoindenter", desc: "Hysitron TI 980, Bruker BioScope, or Keysight G200 with optical imaging" },
+      { tag: "FIB-SEM", desc: "FIB system (FEI Helios, Zeiss Auriga) for micro-pillar fabrication and speckle deposition" },
+      { tag: "In-situ stage", desc: "Picoindenter (Hysitron, JEOL) compatible with SEM stage" },
+      { tag: "Software", desc: "Custom Matlab/Python DIC code; µDIC open-source package; Vic-2D at high magnification" }
+    ],
+    papers: [
+      { title: "DIC measurement of displacement fields around a nanoindent in a Ni single crystal", meta: "Experimental Mechanics, 2013" },
+      { title: "Micropillar compression: crystal plasticity parameter identification using in-situ SEM-DIC", meta: "Acta Materialia, 2017" },
+      { title: "Small punch test analysis using DIC and the virtual fields method", meta: "Strain, 2020" }
+    ]
+  },
+  structural: {
+    domain: "Mechanical Engineering", domainClass: "mech",
+    title: "Structural Integrity & Failure Analysis",
+    desc: "DIC gives engineers experimental proof of where a structure is about to fail — not where simulation says it should fail. Strain concentration zones, load path deviations, and hidden softness all show up in the full-field map before catastrophic failure.",
+    applications: [
+      "Strain concentration mapping in load-bearing components under service loads",
+      "Pre-failure warning: detecting yield onset before visible damage",
+      "Root cause analysis of field failures by reproducing load conditions in the lab",
+      "Validation of stress concentration factors (Kt) at holes, notches, fillets",
+      "Structural health monitoring through periodic DIC-based baseline comparison",
+      "Pressure vessel and pipeline deformation measurement under internal pressure",
+      "Fastener load sharing assessment in multi-bolt joints"
+    ],
+    methods: [
+      { tag: "Stereo DIC", desc: "3D full-field deformation for curved or complex structural geometries" },
+      { tag: "Wide-field DIC", desc: "Multi-camera stitching for large structures (full panels, frames)" },
+      { tag: "High-speed DIC", desc: "Dynamic failure events and impact-induced deformation capture" },
+      { tag: "In-service DIC", desc: "Portable DIC setups for on-site structural monitoring" }
+    ],
+    equipment: [
+      { tag: "Stereo rig", desc: "Calibrated stereo camera pair on rigid baseline frame" },
+      { tag: "Large camera", desc: "Full-frame 50 MP cameras for wide-area structural coverage" },
+      { tag: "Load cell", desc: "Synchronized load/pressure measurement with DIC image acquisition" },
+      { tag: "Software", desc: "GOM Correlate, ARAMIS, Vic-3D with multi-camera stitching capability" }
+    ],
+    papers: [
+      { title: "Full-field strain measurement for structural integrity assessment: a review", meta: "Experimental Mechanics, 2016" },
+      { title: "DIC-based validation of FEM predictions for complex aerospace bracket geometry", meta: "Journal of Strain Analysis, 2018" },
+      { title: "Failure analysis of welded pressure vessels using full-field DIC measurements", meta: "Engineering Failure Analysis, 2020" }
+    ]
+  },
+  vibration: {
+    domain: "Mechanical Engineering", domainClass: "mech",
+    title: "Vibration & Dynamic Analysis",
+    desc: "High-speed DIC replaces a forest of accelerometers with a full-field velocity and displacement map — capturing mode shapes, transient response, and impact-induced deformation without touching the structure.",
+    applications: [
+      "Experimental modal analysis: full-field mode shape measurement from high-speed DIC",
+      "Frequency response function (FRF) extraction from DIC displacement time series",
+      "Resonance identification and damping ratio measurement in panels and beams",
+      "Impact deformation fields and stress wave propagation visualization",
+      "Vibration-induced fatigue strain measurement in rotating and oscillating parts",
+      "Non-contact operational deflection shape measurement under real service conditions",
+      "Blisk and turbine blade vibration mode characterization"
+    ],
+    methods: [
+      { tag: "High-speed DIC", desc: "100k+ fps imaging for capturing transient dynamics and wave propagation" },
+      { tag: "Stroboscopic DIC", desc: "Phase-locked image capture for periodic vibration at any frequency" },
+      { tag: "Multi-point DIC", desc: "Multiple synchronized cameras for spatial mode shape capture" },
+      { tag: "DIC + ODS", desc: "DIC-based operational deflection shapes correlated with accelerometer data" }
+    ],
+    equipment: [
+      { tag: "High-speed cam", desc: "Photron SA-Z (2.1 Mfps), Phantom v2640 for high-frequency dynamics" },
+      { tag: "Stroboscope", desc: "Phase-synchronized LED strobes for quasi-static periodic vibration imaging" },
+      { tag: "Shaker", desc: "Electromagnetic or piezoelectric shaker (LDS, Brüel & Kjær) with DIC sync" },
+      { tag: "Software", desc: "Vic-3D, iDICs tools, MATLAB post-processing for modal extraction" }
+    ],
+    papers: [
+      { title: "Full-field operational modal analysis using high-speed stereo DIC", meta: "Mechanical Systems and Signal Processing, 2017" },
+      { title: "Impact response characterization of composite panels by high-speed DIC", meta: "Composite Structures, 2018" },
+      { title: "Non-contact mode shape measurement using DIC for blade vibration monitoring", meta: "Journal of Sound and Vibration, 2019" }
+    ]
+  },
+  residual: {
+    domain: "Mechanical Engineering", domainClass: "mech",
+    title: "Residual Stress Validation",
+    desc: "DIC can't measure residual stress directly, but it's the best tool for validating models that predict it — and when combined with incremental hole drilling or contour method cutting, it gives you quantitative residual stress maps.",
+    applications: [
+      "Hole drilling residual stress measurement: DIC replaces strain gauges for full-field analysis",
+      "Contour method: DIC measures cut surface displacements for 2D residual stress maps",
+      "Ring-core method strain field measurement for near-surface residual stress profiling",
+      "Validation of residual stress FEM predictions from welding and forming simulations",
+      "Shot peening and laser shock peening process effectiveness verification",
+      "Spring-back measurement in formed sheet metal for process optimization",
+      "Stress relief effectiveness measurement after heat treatment"
+    ],
+    methods: [
+      { tag: "Incremental DIC", desc: "DIC around incrementally drilled holes for depth-profiled residual stress" },
+      { tag: "Contour DIC", desc: "High-precision DIC on EDM-cut surfaces for 2D stress mapping" },
+      { tag: "Stereo DIC", desc: "3D spring-back measurement in sheet forming and press-brake operations" },
+      { tag: "High-res DIC", desc: "Sub-millimeter spatial resolution for near-hole strain field accuracy" }
+    ],
+    equipment: [
+      { tag: "Drill rig", desc: "High-speed air turbine drill (RS-200, Sint Technologies) with DIC setup" },
+      { tag: "EDM", desc: "Wire EDM for stress-free sectioning in contour method" },
+      { tag: "Precision cam", desc: "Telecentric lens + high-res camera for sub-pixel hole drilling DIC" },
+      { tag: "Software", desc: "H-DRILL software + DIC; Contour Method with Vic-2D or GOM" }
+    ],
+    papers: [
+      { title: "DIC-based hole-drilling residual stress measurement with improved sensitivity", meta: "Experimental Mechanics, 2014" },
+      { title: "The contour method combined with DIC for 2D residual stress mapping in welds", meta: "Experimental Mechanics, 2019" },
+      { title: "Spring-back measurement in advanced high-strength steels using stereo DIC", meta: "Journal of Materials Processing Technology, 2021" }
+    ]
+  },
+  composite: {
+    domain: "Mechanical Engineering", domainClass: "mech",
+    title: "Composite Material Testing",
+    desc: "CFRP and GFRP are heterogeneous at every scale. DIC reveals the full deformation field that single-point measurements miss — delamination fronts, ply splitting, fiber-matrix debonding, and load redistribution around damage.",
+    applications: [
+      "Inter-laminar shear strain measurement in short beam shear and Iosipescu tests",
+      "Delamination front propagation tracking in double cantilever beam (DCB) tests",
+      "Transverse cracking and ply splitting detection in cross-ply laminates",
+      "Strain field around open holes and cut-outs in composite panels",
+      "Failure mode identification in tensile and compressive specimens",
+      "Damage tolerance assessment around impact damage sites",
+      "Thermal expansion anisotropy measurement in fiber-reinforced polymers"
+    ],
+    methods: [
+      { tag: "Stereo DIC", desc: "3D deformation and out-of-plane deflection in thin laminates" },
+      { tag: "High-speed DIC", desc: "Delamination growth front velocity during dynamic fracture events" },
+      { tag: "Micro-DIC", desc: "Ply-scale and fiber-scale DIC for local damage mechanisms" },
+      { tag: "DIC + AE", desc: "DIC combined with acoustic emission for damage onset correlation" }
+    ],
+    equipment: [
+      { tag: "Stereo cameras", desc: "Synchronized stereo pair for 3D out-of-plane tracking in laminates" },
+      { tag: "High-speed cam", desc: "Photron or Phantom for delamination front propagation imaging" },
+      { tag: "AE system", desc: "Physical Acoustics or Mistras AE system synchronized with DIC" },
+      { tag: "Software", desc: "Vic-3D, ARAMIS, or MatchID with DIC + AE post-processing" }
+    ],
+    papers: [
+      { title: "DIC measurement of delamination in CFRP laminates under mode-I fracture", meta: "Composites Part A, 2015" },
+      { title: "Strain field characterization around open holes in composite laminates using DIC", meta: "Composite Structures, 2017" },
+      { title: "High-speed DIC of damage progression in woven CFRP under impact loading", meta: "Composites Science and Technology, 2020" }
+    ]
+  },
+  polymer: {
+    domain: "Mechanical Engineering", domainClass: "mech",
+    title: "Polymer & Rubber Mechanics",
+    desc: "Polymers undergo very large strains, rate-dependent behavior, and complex failure mechanisms. DIC handles strains of 50–500% without contact — something no extensometer can manage — and captures visco-elastic and hyper-elastic response directly.",
+    applications: [
+      "True stress-strain curve measurement at large strains in elastomers and rubbers",
+      "Hyper-elastic constitutive model (Mooney-Rivlin, Ogden) parameter identification",
+      "Strain localization and neck formation in semi-crystalline polymers (PE, PA, POM)",
+      "Fatigue crack growth in rubber compounds with full-field DIC",
+      "Rate-dependent deformation in visco-elastic polymers",
+      "Crazing and shear band detection in glassy polymers (PMMA, PC)",
+      "Strain distribution in 3D-printed polymer lattice structures"
+    ],
+    methods: [
+      { tag: "Large-strain DIC", desc: "Subpixel tracking with large displacement compensation for >50% strain" },
+      { tag: "Stereo DIC", desc: "3D deformation for axisymmetric rubber specimens" },
+      { tag: "High-speed DIC", desc: "Rate-dependent response and rapid failure event capture" },
+      { tag: "Multi-cam DIC", desc: "Full 360° surface deformation of cylindrical elastomer specimens" }
+    ],
+    equipment: [
+      { tag: "Cameras", desc: "12–20 MP cameras with wide dynamic range for black rubber specimens" },
+      { tag: "Speckle", desc: "White airbrush paint on rubber; talcum powder; self-adhesive dot patterns" },
+      { tag: "Load frame", desc: "Slow-rate Zwick or Instron with high-quality encoder for polymer rate tests" },
+      { tag: "Software", desc: "Vic-3D, GOM Correlate with large-strain interpolation; OpenDIC" }
+    ],
+    papers: [
+      { title: "Full-field DIC measurement of hyperelastic properties of rubber under biaxial loading", meta: "Polymer Testing, 2015" },
+      { title: "Crazing and shear banding in polycarbonate characterized by DIC", meta: "Engineering Fracture Mechanics, 2017" },
+      { title: "Rate-dependent deformation of semi-crystalline polymers measured by DIC and SAXS", meta: "Polymer, 2020" }
+    ]
+  },
+  am: {
+    domain: "Mechanical Engineering", domainClass: "mech",
+    title: "Additive Manufacturing Validation",
+    desc: "AM parts have inhomogeneous microstructure, anisotropic properties, and process-induced residual stresses. DIC is the only way to see how this actually manifests as deformation — and where an AM part will fail before anyone puts it into service.",
+    applications: [
+      "Local strain behavior in SLM/EBM titanium and steel AM parts vs wrought equivalents",
+      "Porosity-driven strain localization detection in AM specimens",
+      "Surface roughness effect on fatigue crack initiation identified via DIC",
+      "Anisotropy quantification in AM parts built in different orientations",
+      "Deformation of AM lattice structures and topology-optimized components",
+      "Support structure removal damage assessment via DIC",
+      "Real-time layer-by-layer thermal distortion monitoring during AM build"
+    ],
+    methods: [
+      { tag: "Stereo DIC", desc: "3D deformation of complex AM part geometries" },
+      { tag: "Micro-DIC", desc: "Meso-scale and grain-scale DIC for porosity-influenced deformation" },
+      { tag: "High-temp DIC", desc: "In-process DIC for thermal distortion during directed energy deposition" },
+      { tag: "DIC + CT", desc: "Correlating DIC surface strain with X-ray CT porosity maps" }
+    ],
+    equipment: [
+      { tag: "Micro-CT", desc: "Zeiss Xradia or Nikon XT H 225 for porosity mapping correlated with DIC" },
+      { tag: "Stereo DIC rig", desc: "Calibrated stereo DIC for complex AM geometry deformation" },
+      { tag: "In-process cam", desc: "Protected camera mount for directed energy deposition process monitoring" },
+      { tag: "Software", desc: "Vic-3D, GOM Correlate, Dragonfly for CT-DIC correlation" }
+    ],
+    papers: [
+      { title: "DIC characterization of mechanical behavior of laser powder bed fusion Ti-6Al-4V", meta: "Materials Science and Engineering A, 2018" },
+      { title: "Strain localization in SLM 316L stainless steel from porosity: a DIC study", meta: "Additive Manufacturing, 2019" },
+      { title: "Build direction anisotropy in AM Inconel 718 measured by full-field DIC", meta: "Journal of Alloys and Compounds, 2021" }
+    ]
+  },
+  joints: {
+    domain: "Mechanical Engineering", domainClass: "mech",
+    title: "Joint & Fastener Mechanics",
+    desc: "Joints concentrate stress by design. DIC shows exactly how load distributes across a bolted or bonded joint — revealing load sharing among fasteners, adhesive shear profiles, and stress concentration around holes that analytical models approximate poorly.",
+    applications: [
+      "Load sharing measurement between multiple bolts in shear-loaded joints",
+      "Bearing and bypass stress distribution around fastener holes via DIC",
+      "Adhesive bondline shear strain profile measurement in lap shear tests",
+      "Fretting fatigue strain field characterization at fastener contact zones",
+      "Pin-and-eyebar joint strain concentration factor experimental determination",
+      "Composite-to-metal bonded joint damage progression measurement",
+      "Riveted joint secondary bending and out-of-plane deformation measurement"
+    ],
+    methods: [
+      { tag: "Stereo DIC", desc: "3D out-of-plane secondary bending in thin joint specimens" },
+      { tag: "High-res DIC", desc: "Fine spatial resolution around fastener holes for Kt determination" },
+      { tag: "Transparent DIC", desc: "Visible bondline DIC using transparent adhesive + UV fluorescent dye" },
+      { tag: "Multi-cam DIC", desc: "Simultaneous front and back face DIC for secondary bending measurement" }
+    ],
+    equipment: [
+      { tag: "Macro lens", desc: "Macro or telecentric lenses for fastener-hole-scale strain imaging" },
+      { tag: "Load cell", desc: "Multi-axis load cell for combined tension-shear joint loading" },
+      { tag: "Clip gauge", desc: "Redundant clip gauge for DIC displacement validation" },
+      { tag: "Software", desc: "Vic-2D/3D; custom post-processing for Kt extraction from DIC strain maps" }
+    ],
+    papers: [
+      { title: "DIC measurement of load transfer in multi-bolt composite joints", meta: "Composite Structures, 2015" },
+      { title: "Full-field strain measurement in adhesively bonded joints using DIC", meta: "International Journal of Adhesion and Adhesives, 2017" },
+      { title: "Fretting fatigue strain field characterization using high-resolution DIC", meta: "Tribology International, 2019" }
+    ]
+  },
+  thermal: {
+    domain: "Mechanical Engineering", domainClass: "mech",
+    title: "Thermal-Mechanical Coupling",
+    desc: "Real components experience simultaneous thermal and mechanical loading. DIC — ideally combined with infrared thermography — separates and quantifies both contributions to total strain, validating thermo-mechanical fatigue (TMF) models.",
+    applications: [
+      "Thermal strain vs mechanical strain separation in heated specimens",
+      "Thermo-mechanical fatigue (TMF) damage accumulation mapping in superalloys",
+      "Thermal shock strain field measurement in ceramics and refractory materials",
+      "Coefficient of thermal expansion (CTE) mismatch characterization in bimaterial joints",
+      "Temperature gradient-induced deformation in electronics packaging and PCBs",
+      "Heat pipe and cold plate deformation under thermal cycling",
+      "Simultaneous DIC + IR thermography for coupled thermal-mechanical analysis"
+    ],
+    methods: [
+      { tag: "High-temp DIC", desc: "DIC at elevated temperature with thermal emission suppression" },
+      { tag: "DIC + IR", desc: "Simultaneous visible DIC and infrared thermography using dichroic beamsplitter" },
+      { tag: "Thermal DIC", desc: "Specimen heated by induction or radiative heating with optical access" },
+      { tag: "Stereo DIC", desc: "3D deformation of warped/distorted thermally loaded components" }
+    ],
+    equipment: [
+      { tag: "Induction heater", desc: "Ambrell or Radyne induction heating system with DIC window access" },
+      { tag: "IR camera", desc: "FLIR X6900sc or InSb detector for concurrent temperature measurement" },
+      { tag: "Beamsplitter", desc: "Dichroic beamsplitter allowing simultaneous visible + IR imaging on same FOV" },
+      { tag: "Software", desc: "Vic-3D with thermal correction; custom IR-DIC fusion code in MATLAB/Python" }
+    ],
+    papers: [
+      { title: "Combined DIC and infrared thermography for thermo-mechanical analysis of metals", meta: "Optics and Lasers in Engineering, 2016" },
+      { title: "High-temperature DIC for TMF life assessment of Ni superalloy specimens", meta: "International Journal of Fatigue, 2018" },
+      { title: "CTE mismatch characterization in bimaterial joints using full-field DIC under thermal loading", meta: "Experimental Mechanics, 2020" }
+    ]
+  },
+  fem: {
+    domain: "Mechanical Engineering", domainClass: "mech",
+    title: "FEM Validation",
+    desc: "DIC is the gold standard for FEM validation — you get a spatially continuous experimental displacement and strain field that can be compared point-by-point against model predictions. It exposes model errors that single-point measurements hide.",
+    applications: [
+      "Point-by-point comparison of FEM strain predictions vs DIC measurements",
+      "Identification of incorrect boundary conditions or material model parameters",
+      "Contact mechanics validation in press-fit assemblies and indentation",
+      "Validation of topology-optimized structures under intended loading",
+      "Model calibration using inverse methods with DIC as experimental input",
+      "Virtual extensometer placement on DIC data to replicate gauge-based validation",
+      "Error field mapping: (DIC - FEM) strain residuals for model improvement"
+    ],
+    methods: [
+      { tag: "Full-field comp.", desc: "Direct DIC vs FEM strain field subtraction using common coordinate grids" },
+      { tag: "Virtual fields", desc: "Extracting material constants directly from DIC data using VFM" },
+      { tag: "Inverse DIC", desc: "Finite element model updating (FEMU) driven by DIC displacement boundary conditions" },
+      { tag: "Stereo DIC", desc: "3D DIC for non-planar geometry FEM validation" }
+    ],
+    equipment: [
+      { tag: "Any DIC rig", desc: "Match sensor resolution to FEM element size for meaningful comparison" },
+      { tag: "FEM software", desc: "Abaqus, ANSYS, or LS-DYNA for prediction; matched mesh to DIC grid" },
+      { tag: "Post-processing", desc: "Python/MATLAB for DIC-FEM field interpolation and error quantification" },
+      { tag: "Software", desc: "DICe (open source, Sandia NL) has built-in FEM validation workflow" }
+    ],
+    papers: [
+      { title: "Quantitative comparison of DIC measurements and FEM predictions in notched specimens", meta: "Experimental Mechanics, 2013" },
+      { title: "Finite element model updating using full-field DIC measurements", meta: "Mechanical Systems and Signal Processing, 2018" },
+      { title: "Virtual fields method for stiffness identification using DIC: state of the art", meta: "Journal of Strain Analysis, 2020" }
+    ]
+  },
+  airframe: {
+    domain: "Aerospace Engineering", domainClass: "aero",
+    title: "Airframe Structural Testing",
+    desc: "Full-scale airframe testing is expensive once — DIC makes that test give you everything. Instead of hundreds of strain gauges covering a fraction of the surface, DIC covers entire panels and frames with spatial density no gauge network can match.",
+    applications: [
+      "Full-field strain monitoring on fuselage panels under internal pressure cycling",
+      "Wing box deformation and load redistribution under bending and torsion",
+      "Skin buckling detection and post-buckling strain field characterization",
+      "Doorframe and window surround strain concentration measurement",
+      "Full-scale static test strain field comparison against FEM predictions",
+      "Fatigue test strain monitoring for life validation of critical joints",
+      "Stiffener-skin debonding detection from strain field discontinuities"
+    ],
+    methods: [
+      { tag: "Multi-cam DIC", desc: "12–48 camera network covering full aircraft panel areas" },
+      { tag: "Stereo DIC", desc: "3D out-of-plane displacement and shape change on curved fuselage panels" },
+      { tag: "Photogrammetry + DIC", desc: "Combined large-scale photogrammetry and DIC for structure-scale measurement" },
+      { tag: "Portable DIC", desc: "Handheld or tripod-mounted DIC for spot-checking specific hot zones" }
+    ],
+    equipment: [
+      { tag: "Multi-cam network", desc: "48+ synchronized cameras (ARAMIS SRX, Vic-3D multi-camera) covering large areas" },
+      { tag: "LED arrays", desc: "Large-area LED lighting panels for uniform illumination of aircraft panels" },
+      { tag: "Photogrammetry", desc: "Aicon or GOM photogrammetry system for large-scale reference geometry" },
+      { tag: "Software", desc: "ARAMIS (Zeiss) or Vic-3D multi-camera; DLR's proprietary multi-cam DIC" }
+    ],
+    papers: [
+      { title: "Multi-camera DIC for full-scale fuselage panel pressure testing", meta: "AIAA Journal, 2017" },
+      { title: "Buckling detection and post-buckling field characterization in aerospace skin panels by DIC", meta: "Thin-Walled Structures, 2018" },
+      { title: "DIC validation of FEM predictions in full-scale wing structure static tests", meta: "Aerospace Science and Technology, 2020" }
+    ]
+  },
+  aerocomp: {
+    domain: "Aerospace Engineering", domainClass: "aero",
+    title: "Composite Aerostructures",
+    desc: "Carbon fibre structures in aircraft are tested to destruction because you need to know exactly how they'll fail. DIC makes that test interpretable — showing every damage mechanism from first ply cracking to catastrophic delamination.",
+    applications: [
+      "Delamination onset and growth characterization in CFRP spar and rib sections",
+      "Ply drop-off strain concentration measurement in tapered laminates",
+      "Impact damage assessment and residual strength measurement (CAI, BVID)",
+      "Open hole compression/tension strain field around structural cutouts",
+      "Stringer-skin pull-off delamination tracking in stiffened panel tests",
+      "Repair effectiveness measurement: bonded and bolted patch strain redistribution",
+      "Out-of-plane wave deformation in thermally distorted CFRP fuselage skins"
+    ],
+    methods: [
+      { tag: "Stereo DIC", desc: "3D panel deformation and out-of-plane displacement in thin laminate testing" },
+      { tag: "High-speed DIC", desc: "Delamination front propagation velocity and arrest behavior" },
+      { tag: "DIC + AE", desc: "DIC onset strain correlated with acoustic emission first-hit events" },
+      { tag: "DIC + CT", desc: "Pre/post X-ray CT internal damage correlated with DIC surface strain fields" }
+    ],
+    equipment: [
+      { tag: "Stereo cameras", desc: "Synchronized stereo pair with calibration for CFRP black surface challenges" },
+      { tag: "Speckle", desc: "White airbrush matte paint on CFRP surface for contrast; adhesive dot patterns" },
+      { tag: "Drop weight", desc: "Drop weight impact tower (Dynatup 9250HV) synchronized with DIC for impact tests" },
+      { tag: "Software", desc: "Vic-3D, ARAMIS, MatchID with AE synchronization plugins" }
+    ],
+    papers: [
+      { title: "DIC characterization of delamination in CFRP T-joints under pull-off loading", meta: "Composite Structures, 2016" },
+      { title: "Full-field DIC strain measurement around BVID in aerostructure composite panels", meta: "Composites Part B, 2019" },
+      { title: "Compression after impact failure analysis using DIC and micro-CT correlation", meta: "Aerospace Science and Technology, 2021" }
+    ]
+  },
+  tps: {
+    domain: "Aerospace Engineering", domainClass: "aero",
+    title: "Thermal Protection Systems",
+    desc: "Ablative heat shields and ceramic tiles operate in brutal multi-physics environments. DIC — particularly high-temperature DIC — provides the deformation data needed to validate TPS structural models that cannot be proved any other way.",
+    applications: [
+      "Thermal strain measurement on ceramic tiles and UHTC materials under arc-jet heating",
+      "Ablative material shape change tracking during simulated atmospheric re-entry",
+      "Tile gap and tile-to-carrier panel relative displacement under thermal cycling",
+      "Ceramic matrix composite (CMC) thermal distortion measurement in hot structures",
+      "Cohesive zone delamination in TPS bondline under combined thermal-mechanical load",
+      "Phenolic foam core crushing and deformation in honeycomb TPS panels",
+      "Edge-on DIC for thickness loss rate measurement during ablation"
+    ],
+    methods: [
+      { tag: "High-temp DIC", desc: "DIC at 1000–2000 °C with laser illumination and arc-jet facility integration" },
+      { tag: "Pyrometry + DIC", desc: "Simultaneous temperature and deformation measurement using dual imaging" },
+      { tag: "Stereo DIC", desc: "3D shape change tracking in ablating specimens" },
+      { tag: "Edge-on DIC", desc: "Side-view DIC of specimen to capture thickness reduction during ablation" }
+    ],
+    equipment: [
+      { tag: "Arc-jet", desc: "Plasma arc-jet facility with optical access ports for DIC imaging" },
+      { tag: "Laser illum.", desc: "High-power 532 nm or 473 nm laser illumination for high-temp DIC" },
+      { tag: "Pyrometer", desc: "Dual-wavelength pyrometer for surface temperature concurrent with DIC" },
+      { tag: "Software", desc: "Custom high-temperature DIC software with thermal emission correction" }
+    ],
+    papers: [
+      { title: "High-temperature DIC for deformation measurement of CMC hot structures", meta: "Journal of the European Ceramic Society, 2019" },
+      { title: "Full-field shape change measurement of ablating PICA during arc-jet testing by DIC", meta: "Acta Astronautica, 2020" },
+      { title: "DIC-based thermal strain characterization of ceramic tile TPS under simulated re-entry", meta: "Aerospace Science and Technology, 2021" }
+    ]
+  },
+  turbine: {
+    domain: "Aerospace Engineering", domainClass: "aero",
+    title: "Turbine Blade Mechanics",
+    desc: "Turbine blades are the hardest structural problem in aerospace — high temperature, high stress, complex geometry, and zero tolerance for failure. DIC at elevated temperature is one of the few tools that gives actual experimental deformation data on these components.",
+    applications: [
+      "Creep deformation tracking on Ni-superalloy blades at 900–1100 °C",
+      "Thermal-mechanical fatigue (TMF) strain field measurement in blade-platform junctions",
+      "Thermal barrier coating (TBC) delamination strain mapping on blade surfaces",
+      "Cooling hole stress concentration measurement under simulated combustion loading",
+      "Blade tip rub and contact deformation characterization",
+      "Foreign object damage (FOD) impact strain field on leading edge regions",
+      "Blade root attachment fretting fatigue zone identification via DIC"
+    ],
+    methods: [
+      { tag: "High-temp DIC", desc: "DIC on nickel superalloy surfaces at 800–1100 °C with laser or bandpass illum." },
+      { tag: "Stereo DIC", desc: "3D blade surface deformation mapping including twist and tip deflection" },
+      { tag: "High-speed DIC", desc: "FOD impact and blade vibration response at high frame rates" },
+      { tag: "Micro-DIC", desc: "DIC around cooling holes and film cooling slots at millimeter scale" }
+    ],
+    equipment: [
+      { tag: "Burner rig", desc: "Combustion-style burner rig or furnace with optical access for blade DIC" },
+      { tag: "Laser illum.", desc: "405 nm or 532 nm laser with bandpass filter to suppress blackbody emission" },
+      { tag: "Pyrometry", desc: "2-color pyrometer for simultaneous Tblade measurement" },
+      { tag: "Software", desc: "Vic-3D or custom high-temp DIC code; thermal drift correction essential" }
+    ],
+    papers: [
+      { title: "High-temperature DIC for creep deformation of Ni-base superalloy turbine blades", meta: "Experimental Mechanics, 2018" },
+      { title: "TMF damage mapping in turbine blade dovetail using full-field DIC", meta: "International Journal of Fatigue, 2019" },
+      { title: "DIC characterization of TBC spallation onset on turbine airfoils", meta: "Surface and Coatings Technology, 2020" }
+    ]
+  },
+  sandwich: {
+    domain: "Aerospace Engineering", domainClass: "aero",
+    title: "Sandwich Panel Characterization",
+    desc: "Sandwich panels fail through core shear, face-sheet wrinkling, or debonding — often with no warning. DIC catches the precursor strain signatures before any of those failure modes become visible.",
+    applications: [
+      "Core shear strain measurement in three-point and four-point bending tests",
+      "Face-sheet wrinkling instability onset detection via DIC strain field bifurcation",
+      "Skin-to-core debonding front tracking under peel, shear, and pressure loading",
+      "Low-velocity impact damage extent mapping on sandwich panels",
+      "Edgewise compression strain distribution leading to face-sheet buckling",
+      "Thermal gradient-induced warp and delamination in sandwich radomes and fairings",
+      "Repair patch effectiveness measurement on impact-damaged sandwich panels"
+    ],
+    methods: [
+      { tag: "Stereo DIC", desc: "3D panel deflection and face-sheet buckling deformation tracking" },
+      { tag: "Edge-on DIC", desc: "Side-view DIC to track core crushing thickness under compression" },
+      { tag: "Dual-face DIC", desc: "Simultaneous front + back face DIC for bending-induced strain asymmetry" },
+      { tag: "High-speed DIC", desc: "Impact event and dynamic delamination propagation capture" }
+    ],
+    equipment: [
+      { tag: "Stereo rig", desc: "Wide-baseline stereo DIC for large panel bending tests" },
+      { tag: "Multi-camera", desc: "Front + back synchronized camera pairs for dual-face monitoring" },
+      { tag: "Drop tower", desc: "Instrumented drop tower for low-velocity impact tests with DIC synchronization" },
+      { tag: "Software", desc: "Vic-3D, ARAMIS, MatchID with out-of-plane deflection extraction" }
+    ],
+    papers: [
+      { title: "DIC characterization of core shear failure in foam-core GFRP sandwich beams", meta: "Composites Part B, 2015" },
+      { title: "Face-sheet wrinkling detection in sandwich panels using full-field DIC", meta: "Thin-Walled Structures, 2018" },
+      { title: "DIC monitoring of skin-core debonding in aerospace sandwich structures under fatigue", meta: "International Journal of Fatigue, 2020" }
+    ]
+  },
+  aeroelastic: {
+    domain: "Aerospace Engineering", domainClass: "aero",
+    title: "Aeroelastic Deformation",
+    desc: "Wing flex, panel flutter, and aeroelastic coupling are predicted by models that need experimental validation. DIC — especially on wind tunnel models or in-flight — gives you the full deformation field that tells you whether those models are right.",
+    applications: [
+      "Wing tip deflection and twist angle measurement under aerodynamic loading",
+      "Static aeroelastic deformation measurement on wind tunnel models",
+      "Panel flutter shape and amplitude characterization in supersonic tests",
+      "Flexible wing membrane deformation in MAV and UAV aerodynamics",
+      "In-flight wing deformation measurement using optical DIC from fuselage cameras",
+      "Gust load wing deformation response measurement",
+      "Correlation of structural FEM aeroelastic predictions with wind tunnel DIC data"
+    ],
+    methods: [
+      { tag: "Wind tunnel DIC", desc: "DIC through optical-quality wind tunnel windows with non-intrusive setup" },
+      { tag: "Stereo DIC", desc: "3D wing deformation capturing both bending and twist" },
+      { tag: "High-speed DIC", desc: "Flutter and transient gust response at sufficient frame rates" },
+      { tag: "In-flight DIC", desc: "Camera arrays on fuselage imaging wing surface during flight test" }
+    ],
+    equipment: [
+      { tag: "Optical windows", desc: "Optical-quality glass or acrylic wind tunnel windows for DIC camera view" },
+      { tag: "Stereo cameras", desc: "Long working distance stereo DIC through tunnel wall ports" },
+      { tag: "High-speed cam", desc: "Phantom or Photron for flutter onset and transient dynamics" },
+      { tag: "Software", desc: "Vic-3D, GOM ARAMIS; DLR's specialized wind tunnel DIC software" }
+    ],
+    papers: [
+      { title: "Stereo DIC measurement of wing deformation in a low-speed wind tunnel", meta: "AIAA Journal, 2014" },
+      { title: "High-speed DIC for panel flutter characterization in supersonic wind tunnels", meta: "Journal of Fluids and Structures, 2018" },
+      { title: "In-flight wing shape measurement using DIC during flight test maneuvers", meta: "Aerospace Science and Technology, 2021" }
+    ]
+  },
+  impact: {
+    domain: "Aerospace Engineering", domainClass: "aero",
+    title: "Impact & Ballistic Response",
+    desc: "Impact events happen in microseconds. High-speed DIC is the only experimental technique that gives you the full evolving strain field during the event — not just before and after — allowing direct comparison with LS-DYNA predictions.",
+    applications: [
+      "Bird strike deformation characterization on composite fan blades and leading edges",
+      "Hail impact damage extent and dent depth measurement on aircraft skins",
+      "Ballistic impact strain field and deformation velocity in armour materials",
+      "FOD (foreign object damage) on fan and compressor blades",
+      "High-velocity impact on fuel tank and structural panels",
+      "Debris impact on spacecraft shielding (Whipple shield testing)",
+      "Tire and runway debris impact on airframe underbelly panels"
+    ],
+    methods: [
+      { tag: "Ultra high-speed", desc: "DIC at 500k–2M fps for ballistic and high-velocity events" },
+      { tag: "Stereo DIC", desc: "3D transient deformation field capturing out-of-plane dish deformation" },
+      { tag: "Retroreflective", desc: "Retroreflective speckle patterns for high-speed self-illuminated imaging" },
+      { tag: "DIC + DEM", desc: "DIC correlated with debris trajectory photogrammetry" }
+    ],
+    equipment: [
+      { tag: "Ultra-fast cam", desc: "Shimadzu HPV-X2 (10 Mfps), Specialised Imaging SIMD for extreme events" },
+      { tag: "Gas gun", desc: "Single or two-stage light gas gun for controlled high-velocity impact" },
+      { tag: "Drop weight", desc: "Instrumented Dynatup or custom drop weight for lower velocity tests" },
+      { tag: "Software", desc: "Vic-2D/3D high-speed module; in-house software for ultra-high-speed frame rates" }
+    ],
+    papers: [
+      { title: "High-speed DIC for impact characterization of composite fan blade materials", meta: "Composite Structures, 2017" },
+      { title: "Full-field deformation measurement of aluminium panels under ballistic impact by DIC", meta: "International Journal of Impact Engineering, 2019" },
+      { title: "Hail impact on CFRP: DIC strain field analysis and residual strength assessment", meta: "Composites Part A, 2021" }
+    ]
+  },
+  repair: {
+    domain: "Aerospace Engineering", domainClass: "aero",
+    title: "Repair & Patch Validation",
+    desc: "Repaired aircraft structure has to prove it can carry the original design load. DIC is how you validate that the repair actually redistributes load the way the analysis predicted — and identify where a poorly executed repair creates new stress concentrations.",
+    applications: [
+      "Strain redistribution measurement around bonded composite patches on metallic structure",
+      "Effectiveness comparison of different patch geometry and stiffness designs",
+      "Overlap joint shear strain mapping in structural repair lap splice designs",
+      "Fatigue life assessment of repaired structure through DIC-based strain monitoring",
+      "Detection of disbond at patch edge from DIC strain field gradient discontinuities",
+      "Riveted repair load bypass and bearing stress distribution measurement",
+      "Validation of regulatory-required repair design allowable strains"
+    ],
+    methods: [
+      { tag: "Wide-field DIC", desc: "Full-area DIC capturing both parent structure and repair patch simultaneously" },
+      { tag: "High-res DIC", desc: "Zoomed DIC at patch boundaries for edge stress concentration" },
+      { tag: "Stereo DIC", desc: "3D out-of-plane bending in asymmetric patch repairs on thin structure" },
+      { tag: "Cyclic DIC", desc: "Fatigue test DIC for progressive disbond detection at patch perimeter" }
+    ],
+    equipment: [
+      { tag: "Multi-lens setup", desc: "Wide-angle + macro lens pair for both area coverage and patch edge detail" },
+      { tag: "Stereo cameras", desc: "3D DIC rig for secondary bending quantification in one-sided patches" },
+      { tag: "Fatigue frame", desc: "Servo-hydraulic machine with DIC synchronization for repair fatigue tests" },
+      { tag: "Software", desc: "Vic-3D, ARAMIS; custom scripts for disbond front detection from strain gradient maps" }
+    ],
+    papers: [
+      { title: "DIC validation of bonded composite patch repair on cracked aluminium aircraft structure", meta: "International Journal of Fatigue, 2015" },
+      { title: "Load redistribution in bonded repairs to metallic aerospace structures measured by DIC", meta: "Engineering Fracture Mechanics, 2018" },
+      { title: "Disbond detection at patch edges using DIC strain gradient monitoring under fatigue", meta: "Composite Structures, 2020" }
+    ]
+  },
+  landinggear: {
+    domain: "Aerospace Engineering", domainClass: "aero",
+    title: "Landing Gear & Actuators",
+    desc: "Landing gear takes brutal multi-axial loads in a fraction of a second. DIC gives you the strain distribution on complex forged geometries where strain gauges can't be bonded reliably and FEM models make simplifying assumptions that may not hold.",
+    applications: [
+      "Contact stress measurement at trunnion bearing and pin interfaces",
+      "Drag and side brace deformation under combined vertical/lateral landing loads",
+      "Torsional strain distribution on torque link assemblies during ground maneuvers",
+      "Fretting fatigue precursor strain field identification at fitted joint interfaces",
+      "Actuator rod end and clevis joint strain concentration measurement",
+      "Shingling and delamination detection in composite landing gear doors",
+      "Fatigue crack initiation site identification from DIC strain hotspot mapping"
+    ],
+    methods: [
+      { tag: "Stereo DIC", desc: "3D deformation of complex curved landing gear forging geometries" },
+      { tag: "Multi-cam DIC", desc: "Multiple cameras covering different faces of landing gear assembly" },
+      { tag: "High-speed DIC", desc: "Drop test and ground impact transient deformation capture" },
+      { tag: "Micro-DIC", desc: "High-magnification DIC at bearing and contact interfaces" }
+    ],
+    equipment: [
+      { tag: "Multi-cam rig", desc: "3–6 synchronized cameras covering landing gear assembly in test rig" },
+      { tag: "Drop test tower", desc: "Landing gear drop test rig with synchronized DIC trigger" },
+      { tag: "High-speed cam", desc: "Phantom V2640 or Photron SA-X2 for drop test deformation capture" },
+      { tag: "Software", desc: "Vic-3D or ARAMIS with multi-camera merging for full assembly coverage" }
+    ],
+    papers: [
+      { title: "Full-field strain measurement on landing gear forgings by stereo DIC under combined loading", meta: "Journal of Strain Analysis, 2016" },
+      { title: "DIC characterization of fretting fatigue strain fields at landing gear pin interfaces", meta: "International Journal of Fatigue, 2019" },
+      { title: "High-speed DIC for transient deformation measurement during aircraft drop tests", meta: "Aerospace Science and Technology, 2020" }
+    ]
+  },
+  space: {
+    domain: "Aerospace Engineering", domainClass: "aero",
+    title: "Space Structures & Deployable Mechanisms",
+    desc: "Deployable structures in space have to fold compactly and unfurl reliably with no maintenance opportunity. DIC validates that folding/unfolding kinematics produce acceptable strain — and that creases and storage wrinkles don't compromise the deployed shape.",
+    applications: [
+      "Strain characterization during folding of solar array panel hinges and laminates",
+      "Deployable boom deformation and strain measurement under axial and lateral loads",
+      "Membrane antenna wrinkle pattern and in-plane strain distribution mapping",
+      "MEMS-scale DIC for micro-satellite structural deformation measurement",
+      "Vibration mode shapes of deployed solar arrays and appendages via high-speed DIC",
+      "Thermal distortion of large space reflectors under simulated vacuum-thermal conditions",
+      "Crease and fold recovery strain in ultra-thin film structures (Kapton, Mylar)"
+    ],
+    methods: [
+      { tag: "Non-contact DIC", desc: "DIC from large standoff for delicate low-stiffness space structures" },
+      { tag: "High-speed DIC", desc: "Deployment event and snap-through dynamics at 1k–10k fps" },
+      { tag: "Micro-DIC", desc: "Small-scale DIC for MEMS and micro-satellite structural components" },
+      { tag: "Vacuum DIC", desc: "DIC inside thermal-vacuum chamber with viewport access" }
+    ],
+    equipment: [
+      { tag: "Vacuum chamber", desc: "Thermal-vacuum chamber with optical-quality viewports for DIC camera access" },
+      { tag: "Long standoff", desc: "Long-focal-length lenses for large standoff non-contact measurement of fragile structures" },
+      { tag: "High-speed cam", desc: "Phantom or Photron for deployment transient events" },
+      { tag: "Software", desc: "Vic-3D, GOM Correlate; custom codes for wrinkle field analysis" }
+    ],
+    papers: [
+      { title: "DIC measurement of strain in deployable solar array hinge mechanisms", meta: "Acta Astronautica, 2018" },
+      { title: "Wrinkle characterization in space membrane structures using DIC", meta: "Journal of Spacecraft and Rockets, 2019" },
+      { title: "High-speed DIC for deployment dynamics of bistable composite tape-spring booms", meta: "Composite Structures, 2021" }
+    ]
+  }
+};
+
+const domainColors = { mat: 'badge-mat', mech: 'badge-mech', aero: 'badge-aero' };
+
+function render(id) {
+  const d = DATA[id];
+  if (!d) return;
+
+  document.getElementById('landing').style.display = 'none';
+  const detail = document.getElementById('detail');
+  detail.style.display = 'block';
+
+  document.getElementById('detail-badge').textContent = d.domain;
+  document.getElementById('detail-badge').className = 'detail-domain-badge ' + domainColors[d.domainClass];
+  document.getElementById('detail-title').textContent = d.title;
+  document.getElementById('detail-desc').textContent = d.desc;
+
+  const c = document.getElementById('sections-container');
+  c.innerHTML = '';
+
+  // Applications
+  const appCard = document.createElement('div');
+  appCard.className = 'section-always';
+  appCard.innerHTML = `
+    <div class="section-always-header">
+      <span class="section-icon icon-app">⌖</span>
+      DIC applications in this area
+    </div>
+    <div class="section-always-body">
+      <ul class="app-list">${d.applications.map(a => `<li>${a}</li>`).join('')}</ul>
+    </div>`;
+  c.appendChild(appCard);
+
+  c.appendChild(makeCollapsible('Testing methods', '⬡', 'icon-method',
+    `<ul class="method-list">${d.methods.map(m => `<li><span class="method-tag">${m.tag}</span>${m.desc}</li>`).join('')}</ul>`
+  ));
+  c.appendChild(makeCollapsible('Equipment', '◈', 'icon-equip',
+    `<ul class="equip-list">${d.equipment.map(e => `<li><span class="equip-tag">${e.tag}</span>${e.desc}</li>`).join('')}</ul>`
+  ));
+  c.appendChild(makeCollapsible('Reference papers', '☰', 'icon-papers',
+    `<ul class="papers-list">${d.papers.map(p => `<li class="paper-item"><div class="paper-title">${p.title}</div><div class="paper-meta">${p.meta}</div></li>`).join('')}</ul>`
+  ));
+
+  if (window.innerWidth <= 720) {
+    document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function makeCollapsible(label, icon, iconClass, bodyHtml) {
+  const card = document.createElement('div');
+  card.className = 'section-card';
+  const bodyId = 'sb-' + Math.random().toString(36).slice(2);
+  card.innerHTML = `
+    <button class="section-toggle" aria-expanded="false" onclick="toggleSection(this, '${bodyId}')">
+      <span class="section-toggle-label">
+        <span class="section-icon ${iconClass}">${icon}</span>
+        ${label}
+      </span>
+      <span class="chevron">▶</span>
+    </button>
+    <div class="section-body" id="${bodyId}">${bodyHtml}</div>`;
+  return card;
+}
+
+function toggleSection(btn, bodyId) {
+  const body = document.getElementById(bodyId);
+  const open = body.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+
+document.querySelectorAll('.area-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.area-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render(btn.dataset.id);
+  });
+});
+</script>
+</body>
+</html>
